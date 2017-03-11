@@ -48,4 +48,72 @@ Alan said, "Peter is learning JavaScript".
 
 > \f	换页符
 
+## 获取其他位置字符串
+- 使用 [索引]来获得一个字符串中的其他位置的字符。
+
+## 得到字符串的长度
+- 你可以通过在字符串变量或字符串后面写上 .length 来获得字符串变量 字符串 值的长度。
+
+## 最后一位字符串
+- 得到一个字符串的最后一个字符，用[字符串的长度减去一]
+
+## 数组的方法
+- 选取一个数组 ``array[index]`` index为索引值 从零开始
+```javascript
+var array=[1,2,3,4,5];
+
+array[0]; //1;
+
+var manyArray = [[1,2],[3,4,5],[7,8],9,10];
+
+manyArray[0];//[1,2]
+manyArray[0][0];//1
+```
+- 数组的push方法:``.push()`` 接受把一个或多个参数，并把它“推”入到数组的末尾。
+```javascript
+var arr = [1,2,3];
+arr.push(4);
+// 现在arr的值为 [1,2,3,4]
+```
+- 数组的pop方法:``.pop()`` 函数用来“抛出”一个数组末尾的值。
+> 数组中任何类型的条目（数值，字符串，甚至是数组）可以被“抛出来” 。
+```javascript
+var myArray = [["John", 23], ["dog", 3]];
+
+var removedFromMyArray = myArray.pop();//["dog",3]
+```
+- 数组的shift方法:``.shift()`` 函数用来“抛出”一个数组第一个数的值。
+```javascript
+var myArray = [["John", 23], ["dog", 3]];
+
+var removedFromMyArray = myArray.shift();//["John", 23]
+```
+- 数组的unshift方法:``.unshift()`` 函数在数组的头部添加元素。
+```javascript
+var myArray = [["John", 23], ["dog", 3]];
+
+myArray.unshift(["mike",23]);//[["mike",23], ["John", 23], ["dog", 3]]
+```
+## 函数 function 
+- 自定义函数
+```javascript
+function myFunction() {
+    console.log("Hi World");
+}
+
+myFunction();
+```
+- 传入参数的函数
+```javascript
+function myFunction(a,b) {
+    console.log(a - b);
+}
+
+myFunction(10, 5);
+```
+
+- 函数的作用域
+> 在 JavaScript 中， ``作用域`` 涉及到变量的作用范围。在函数外定义的变量具有 全局 作用域。这意味着，具有全局作用域的变量可以在代码的任何地方被调用。
+
+> 这些没有使用**var**关键字定义的变量，会被自动创建在全局作用域中，形成全局变量。当在代码其他地方无意间定义了一个变量，刚好变量名与全局变量相同，这时会产生意想不到的后果。因此你应该总是使用var关键字来声明你的变量。
 
