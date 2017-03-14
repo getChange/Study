@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "this is reptile",
   "main": "index.js",
-  "author": "624508914@qq.com",
+  "author": "xiaohei",
   "license": "MIT",
   "scripts": {
     "start": "node --no-warnings index.js"
