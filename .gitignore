@@ -1,3 +1,7 @@
-.idea
+
 node_modules
+.idea
+npm-debug.log
+comment
+!README.txt
 
