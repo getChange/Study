@@ -1,0 +1,223 @@
+# NodeJS
+## NodeJS基础
+#### 什么是NodeJS
+    > JS是脚本语言，脚本语言都需要一个解析器才能运行。对于写在HTML页面里的JS，浏览器充当了解析器的角色。而对于需要独立运行的JS，NodeJS就是一个解析器。
+
+    > 每一种解析器都是一个运行环境，不但允许JS定义各种数据结构，进行各种计算，还允许JS使用运行环境提供的内置对象和方法做一些事情。例如运行在浏览器中的JS的用途是操作DOM，浏览器就提供了document之类的内置对象。而运行在NodeJS中的JS的用途是操作磁盘文件或搭建HTTP服务器，NodeJS就相应提供了fs、http等内置对象。
+#### NodeJS用处    
+    > NodeJS的目的是为了实现高性能Web服务器，事件机制和异步IO模型的优越性.
+
+#### NodeJS安装
+    > [nodejs.org](https://nodejs.org/zh-cn/)  
+#### NodeJS运行
+- 打开终端，键入node进入命令交互模式，可以输入一条代码语句后立即执行并显示结果，例如：
+
+```
+$ node
+> console.log('Hello World!');
+Hello World!
+```
+
+- 如果要运行一大段代码的话，可以先写一个JS文件再运行。例如有以下hello.js。
+```
+function hello() {
+    console.log('Hello World!');
+}
+hello();
+```
+
+- 写好后在终端下键入node hello.js运行，结果如下：
+
+```
+$ node hello.js
+Hello World!
+```
+
+- 权限问题
+
+    > 在Linux系统下，使用NodeJS监听80或443端口提供HTTP(S)服务时需要root权限，有两种方式可以做到。
+
+    > 一种方式是使用sudo命令运行NodeJS。例如通过以下命令运行的server.js中有权限使用80和443端口。一般推荐这种方式，可以保证仅为有需要的JS脚本提供root权限。
+
+    ```
+    $ sudo node server.js
+    ```
+
+    > 另一种方式是使用chmod +s命令让NodeJS总是以root权限运行，具体做法如下。因为这种方式让任何JS脚本都有了root权限，不太安全，因此在需要很考虑安全的系统下不推荐使用。
+
+    ```
+    $ sudo chown root /usr/local/bin/node
+    $ sudo chmod +s /usr/local/bin/node    
+    ``` 
+#### 模块
+- 编写每个模块时,都会有``require``、``exports``、``module``三个预先定义好的变量可供使用.
+
+##### require
+- ``require``函数用于当前模块加载和使用别的模块,传入一个模块名,返回一个模块导出的对象.模块名可以使用绝对路径或者相对路径
+```javascript
+var foo1 = require('./foo');
+var foo2 = require('./foo.js');
+var foo3 = require('/home/user/foo');
+var foo4 = require('/home/user/foo.js');
+
+// foo1至foo4中保存的是同一个模块的导出对象。
+```  
+- 可以加载使用一个json文件
+```javascript
+var data = require('./data.json');
+```  
+##### exports
+- ``exports``对象是当前模块的导出对象.用于导出模块公有方法和属性.别的模块通过``require``函数使用当前模块时得到的就是当前模块的``exports``对象
+```javascript
+exports.hello = function () {
+    console.log('Hello World!');
+};
+```
+##### module
+- 通过``module``对象可以访问到当前模块的信息,最多的用途是替换当前模块的导出对象.
+```javascript
+module.exports = function() {
+    console.log("Hello World");
+}
+//模块默认导出对象被替换为一个函数
+```
+##### 模块初始化
+- 一个模块中的JS代码仅在模块第一次被使用时执行,并在执行过程中初始化模块的导出对象.之后缓存起来的导出对象被重复利用.
+##### 主模块
+- 通过命令行参数传递给NodeJS以启动程序的模块被称为主模块.主模块负责调度组成整个程序的其它模块完成工作.
+```javascript
+node main.js;//main.js 主模块
+```
+##### 完整案例
+- 例如有以下目录。
+```
+- /home/user/hello/
+    - util/
+        counter.js
+    main.js
+```    
+- 其中counter.js内容如下：
+```javascript
+var i = 0;
+
+function count() {
+    return ++i;
+}
+
+exports.count = count;
+```
+- 该模块内部定义了一个私有变量i，并在exports对象导出了一个公有方法count。
+
+- 主模块main.js内容如下：
+```javascript
+var counter1 = require('./util/counter');
+var counter2 = require('./util/counter');
+
+console.log(counter1.count());
+console.log(counter2.count());
+console.log(counter2.count());
+```
+- 运行该程序的结果如下：
+```javascript
+$ node main.js
+1
+2
+3
+```
+- 可以看到，counter.js并没有因为被require了两次而初始化两次。
+#### 小结
+- NodeJS是一个JS脚本解析器，任何操作系统下安装NodeJS本质上做的事情都是把NodeJS执行程序复制到一个目录，然后保证这个目录在系统PATH环境变量下，以便终端下可以使用``node``命令。
+
+- 终端下直接输入node命令可进入命令交互模式，很适合用来测试一些JS代码片段，比如正则表达式。
+
+- NodeJS使用CMD模块系统，主模块作为程序入口点，所有模块在执行过程中只初始化一次。
+
+- 除非JS模块不能满足需求，否则不要轻易使用二进制模块，否则你的用户会叫苦连天。
+
+## 代码的组织和部署
+##### 模块路径解析规则
+- require请求路径的三种方式
+    - ``/``或者盘符(``C:``)开头的绝对路径
+    - ``./``的相对路径
+    - 依照以下规则解析路径,直到找到模块位置
+    
+    ```javascript
+     1.内置模块
+        如果传递给require函数的是NodeJS内置模块名称,不做路径解析,直接返回内部模块的导出对象,如require('fs');
+     2.node_modules目录
+        NodeJS定义了一个特殊的node_modules目录用于存放模块. 例如某个模块的绝对路径是/home/user/hello.js，在该模块中使用require('foo/bar')方式加载模块时，则NodeJS依次尝试使用以下路径。
+        
+        /home/user/node_modules/foo/bar
+        /home/node_modules/foo/bar
+        /node_modules/foo/bar   
+     3.NODE_PATH环境变量
+        与PATH环境变量相似,NodeJS允许通过NODE_PATH环境变量来指定额外的模块搜索路径。NODE_PATH环境变量中包含一个到多个目录路径，路径之间在Linux下使用：分割，在Windows下使用；来分割。
+
+        例如定义了以下NODE_PATH环境变量：
+
+        NODE_PATH=/home/user/lib:/home/lib
+
+        当使用require('foo/bar')的方式加载模块时，则NodeJS依次尝试以下路径。
+
+        /home/user/lib/foo/bar
+        /home/lib/foo/bar
+
+    ```
+##### 包(package)
+- 多个子模块组成的大模块称作包,把所有子目录放在同一个目录里.
+```
+cat目录结构如下:
+- /home/user/lib/
+    - cat/
+        head.js
+        body.js
+        main.js
+```
+- 其中``cat``目录定义了一个包,包含三个子模块.main.js作为入口模块,
+```javascript
+var head = require('./head');
+var body = require('./body');
+
+exports.creat = function(name) {
+    return {
+        name : name,
+        head : head.creat(),
+        body : body.creat()
+    };
+}
+```
+
+- index.js
+    - 当模块的文件名是``index.js``,加载模块时可以使用模块所在目录的路径代替模块文件路径
+    ```javascript
+        var cat = require('/home/user/lib/cat');
+        var cat = require('/home/user/lib/cat/index');
+        //两种请求的书写方式是等价的
+    ```
+- package.json
+    - 指定入口模板的路径
+    [package.json的示例](../nodeCrawler/package.json)    
+
+###### 命令行程序
+- Linux:JS文件当做shell脚本运行
+    - 1.在shell脚本中,通过``#!``注释来指定当前脚本使用的解析器;在``node-echo.js``文件顶部添加一行注释,表明当前脚本使用NodeJS解析.
+    ```javascript
+    #!/usr/bin/env node
+    //NodeJS会忽略掉位于JS模块首行的``#!``注释
+    ```
+    - 2.赋予``node-echo.js``文件执行权限
+    ```javascript
+    $ chmod +x/home/user/bin/node-echo.js
+    ```
+    - 3.最后，在PATH环境变量中指定的某个目录下，例如在`/usr/local/bin`下边创建一个软链文件，文件名与使用的终端命令同名，命令如下：
+    ```javascript
+    $ sudo ln -s /home/user/bin/node-echo.js /usr/local/bin/node-echo
+    //在任何目录下使用node-echo命令
+    ```
+
+- Windows   
+
+##### 工程目录
+
+#####  NPM
+- 把安装包升级到最新版本`npm update (package)`
