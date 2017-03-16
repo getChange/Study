@@ -221,3 +221,80 @@ exports.creat = function(name) {
 
 #####  NPM
 - 把安装包升级到最新版本`npm update (package)`
+
+## 文件操作
+
+### 小文件拷贝
+- fs.readFileSync从源路径读取文件内容
+- fs.writeFileSync将文件内容写入目标路径
+```javascript
+var fs = require('fs');
+
+function copy(src, dst) {
+    fs.writeFileSync(dst, fs.readFileSync(src));
+}
+
+function main(argv) {
+    copy(argv[0], argv[1]);
+}
+
+main(process.argv.slice(2));
+```
+- `progress`是一个全局变量,通过`progress.argv`获取命令行参数.
+
+### 大文件拷贝
+- 对于大文件 我们只能读一点写一点,直到拷贝完成
+```javascript
+const fs = require("fs");
+
+function copy(src,dst){
+    fs.createReadStream(src).pipe(fs.createWriteStream(dst));
+}
+
+function main(argv) {
+    copy(argv[0],argv[1])
+}
+
+main(process.argv.slice(2));
+```
+
+### API
+
+#### Buffer(数据块)
+- JS语言只有字符串数据类型,没有二进制数据类型.
+- Buffer(全局构造函数)对二进制数据进行操作.
+- Buffer的两种方式:1.读取文件得到Buffer的实例;2.直接构造
+- Buffer:
+    - `.length`属性
+    - `[index]`方式读取指定位置的字节
+    - 使用指定编码将二进制数据转化为字符串(字符串转化为指定编码下的二进制数据)
+    - `[index]`方式直接修改某个位置的字节
+    > `Buffer`与字符串有一个重要区别。字符串是只读的，并且对字符串的任何修改得到的都是一个新字符串，原字符串保持不变。至于`Buffer`，更像是可以做指针操作的C语言数组。例如，可以用`[index]`方式直接修改某个位置的字节。
+
+    - `.slice`方法不返回新的Buffer,返回指向原`Buffer`中间的某个位置的指针;`.slice`方法返回的`Buffer`的修改会作用于原`Buffer`。
+    
+#### Stream(数据流)
+
+#### File System(文件系统)
+
+#### Path(路径)
+
+### 遍历目录
+
+#### 递归算法
+
+#### 遍历算法
+
+#### 同步遍历
+
+#### 异步遍历
+
+### 文本编码
+
+#### BOM的移除
+
+#### GBK转UTF-8
+
+#### 单字节编码
+
+## 网络操作
