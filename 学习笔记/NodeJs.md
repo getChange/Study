@@ -252,7 +252,7 @@ function copy(src,dst){
 }
 
 function main(argv) {
-    copy(argv[0],argv[1])
+    copy(argv[0],argv[1]);
 }
 
 main(process.argv.slice(2));
@@ -264,10 +264,23 @@ main(process.argv.slice(2));
 - JS语言只有字符串数据类型,没有二进制数据类型.
 - Buffer(全局构造函数)对二进制数据进行操作.
 - Buffer的两种方式:1.读取文件得到Buffer的实例;2.直接构造
+```javascript
+var bin = new Buffer([ 0x68,0x65,0x6c,0x6c,0x6f]);
+```
 - Buffer:
-    - `.length`属性
+    - `.length`属性 -- 可以得到字节长度
     - `[index]`方式读取指定位置的字节
+```javascript
+    bin[0]; //=>0x68
+```
     - 使用指定编码将二进制数据转化为字符串(字符串转化为指定编码下的二进制数据)
+```javascript
+    //二进制转化为字符串
+    var str = bin.toString('utf-8');//=>'hello'
+    
+    //字符串转化为二进制
+    var bin = new Buffer('hello', 'utf-8'); // => <Buffer 68 65 6c 6c 6f>
+```
     - `[index]`方式直接修改某个位置的字节
     > `Buffer`与字符串有一个重要区别。字符串是只读的，并且对字符串的任何修改得到的都是一个新字符串，原字符串保持不变。至于`Buffer`，更像是可以做指针操作的C语言数组。例如，可以用`[index]`方式直接修改某个位置的字节。
 
