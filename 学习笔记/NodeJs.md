@@ -261,6 +261,7 @@ main(process.argv.slice(2));
 ### API
 
 #### Buffer(数据块)
+- 将JS数据处理能力从字符串扩展到任意二进制数据.
 - JS语言只有字符串数据类型,没有二进制数据类型.
 - Buffer(全局构造函数)对二进制数据进行操作.
 - Buffer的两种方式:1.读取文件得到Buffer的实例;2.直接构造
@@ -270,25 +271,129 @@ var bin = new Buffer([ 0x68,0x65,0x6c,0x6c,0x6f]);
 - Buffer:
     - `.length`属性 -- 可以得到字节长度
     - `[index]`方式读取指定位置的字节
-```javascript
-    bin[0]; //=>0x68
-```
+    ```javascript
+        bin[0]; //=>0x68
+    ```
     - 使用指定编码将二进制数据转化为字符串(字符串转化为指定编码下的二进制数据)
-```javascript
-    //二进制转化为字符串
-    var str = bin.toString('utf-8');//=>'hello'
-    
-    //字符串转化为二进制
-    var bin = new Buffer('hello', 'utf-8'); // => <Buffer 68 65 6c 6c 6f>
-```
+    ```javascript
+        //二进制转化为字符串
+        var str = bin.toString('utf-8');//=>'hello'
+        
+        //字符串转化为二进制
+        var bin = new Buffer('hello', 'utf-8'); // => <Buffer 68 65 6c 6c 6f>
+    ```
     - `[index]`方式直接修改某个位置的字节
     > `Buffer`与字符串有一个重要区别。字符串是只读的，并且对字符串的任何修改得到的都是一个新字符串，原字符串保持不变。至于`Buffer`，更像是可以做指针操作的C语言数组。例如，可以用`[index]`方式直接修改某个位置的字节。
 
+    ```javascript
+    bin[0] = 0x48
+    ```   
+
     - `.slice`方法不返回新的Buffer,返回指向原`Buffer`中间的某个位置的指针;`.slice`方法返回的`Buffer`的修改会作用于原`Buffer`。
+
+    ```javascript
+    var bin = new Buffer([0x68, 0x65, 0x6c, 0x6c, 0x6f]);
+    var sub = bin.slice(2);
+
+    sub[0] = 0x65;
+
+    console.log(bin); //=> <Buffer 68 65 65 6c 6f>
+    ```    
+
+    - 拷贝Buffer,创建一个新的Buffer,.copy()方法复制
     
 #### Stream(数据流)
+- 处理无法一次处理完毕,达到边读取边处理;
+
+```javascript
+var rs = fs.createReadStream(pathname);
+
+rs.on('data', function (chunk) {
+    doSomething(chunk);
+});
+
+rs.on('end', function () {
+    cleanUp();
+});
+//data不断触发,daSomething函数是否处理得过
+```
+
+> `Stream`基于事件机制工作,所有`Stream`的实例都继承于NodeJS提供的[EventEmitter](https://nodejs.org/api/events.html);
+
+```javascript
+var rs = fs.creatReadStream(src);
+
+rs.on('data',function (chunk) {
+    rs.pause();
+    doSomething(chunk,function() {
+        rs.resume();
+    });
+});
+
+rs.on('end',function () {
+    cleanUp();
+});
+```
+- 只写数据流
+```javascript
+//没有考虑读取速度与写入速度的问题
+var rs = fs.createReadStream(src);
+var ws = fs.createReadStream(dst);
+
+rs.on('data',function (chunk) {
+    ws.write(chunk);
+})
+
+rs.on('end',function() {
+    ws.end();
+})
+
+//考虑了读取速度与写入速度的问题
+var rs = fs.createReadStream(src);
+var ws = fs.createReadStream(dst);
+
+rs.on('data',function (chunk) {
+    if(ws.write(chunk) === false){
+        rs.pause();
+    }
+});
+
+rs.on('end',function() {
+    ws.end();
+});
+
+ws.on('end',function() {
+    rs.resume();
+});
+```
 
 #### File System(文件系统)
+- 文件属性读写
+    - fs.stat,fs.chmod,fs.chown
+- 文件内容读写
+    - fs.readFile,fs.readdir,fs.writeFile,fs.mkdir
+- 底层文件操作
+    - fs.open,fs.read,fs.write,fs.close
+- 异步IO模型举例
+```javascript
+fs.readFile(pathname,function(err,data) {
+    if(err) {
+        // Deal with error. 
+    } else {
+        // Deal with data
+    }
+});
+```
+- 同步API(方法名末尾+Sync)
+```javascript
+//fs.readFileSync
+try{
+    var data = fs.readFileSync(pathname);
+    //Deal with data
+} catch (err) {
+    //Deal with error
+}
+```
 
 #### Path(路径)
 

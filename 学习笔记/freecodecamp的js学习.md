@@ -200,3 +200,28 @@ test(false); // returns "It was false"
     - <
     - <=
     - &&
+
+- 对象的书写方法
+  - 普通的对象书写 
+  ```
+    var obj = {
+      'name':"luffy"
+    }
+  ```    
+  - 通过`对象.属性名`获取对象
+  ```
+    var obj = {
+      'name':'luffy'
+    }
+
+    var haizeiwang = obj.name //luffy
+  ```
+  - 当访问的属性名有空格
+  ```
+    var myObj = {
+      "Space Name": "Kirk",
+      "More Space": "Spock"
+    };
+    myObj["Space Name"]; // Kirk
+    myObj['More Space']; // Spock
+  ```
