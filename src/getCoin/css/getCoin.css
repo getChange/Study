@@ -1,0 +1,103 @@
+body {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.getCoin-wrap {
+    border-radius: 0.4rem;
+    overflow: hidden;
+    width: 20.66rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -18rem 0 0 -10.33rem;
+    background-color: #fff;
+}
+
+/*头部文字*/
+.getCoin-wrap .getCoin-title {
+    background: url("../images/beijing@3x.png") no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    text-align: center;
+    position: relative;
+}
+
+.getCoin-wrap .getCoin-title .getCoin-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 1rem;
+    height: 1rem;
+}
+
+.getCoin-wrap .getCoin-title p {
+    font-size: 1.3rem;
+    color: #333;
+    padding-top: 2rem;
+}
+
+.getCoin-wrap .getCoin-title p:nth-child(3) {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    font-size: 1.06rem;
+}
+
+/*中间充值部分*/
+.getCoin-body {
+    padding: 0 1rem;
+}
+
+.getCoin-body .getCoin-recharge{
+    padding: 1rem 0;
+    border-bottom: 1px solid #dadada;
+    position: relative;
+}
+
+.getCoin-body .getCoin-recharge:nth-last-child(1){
+    border-bottom: none;
+}
+
+.getCoin-body .getCoin-recharge .getCoin-count{
+    padding-left: 1rem;
+    display: inline-block;
+    font-size: 1.03rem;
+    color: #333;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.getCoin-body .getCoin-recharge p:nth-child(2){
+    font-size: 0.93rem;
+    color: #fe5b2f;
+}
+
+.getCoin-body .getCoin-recharge .getCoin-btn{
+    float: right;
+}
+
+.getCoin-body .getCoin-recharge .getCoin-btn a{
+    display: block;
+    font-size: 1.03rem;
+    color: #333;
+    border: 1px solid #333;
+    border-radius: 0.3rem;
+    width: 5rem;
+    height: 2.33rem;
+    text-align: center;
+    line-height: 2.33rem;
+}
+
+.getCoin-body .getCoin-recharge .getCoin-btn a:hover{
+    border: 1px solid #fbc60e;
+    color: #fbc60e;
+}
+
+/*底部文字样式*/
+.getCoin-footer{
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+    color: #999;
+    font-size: 0.93rem;
+}
