@@ -396,6 +396,23 @@ try{
 ```
 
 #### Path(路径)
+- path.normalize
+> 将传入的路径转换为标准路径;解析路径中的`.`与`..`,去掉多余的`/`
+```javascript
+var cache = {};
+
+function store(key,value) {
+    cache[path.normalize(key)] = value;
+}
+
+store('foo/bar',1);
+store('foo//baz//../bar',2);
+console.log(cache);// => {'foo/bar':2}
+```
+> **注意:** 保证任何系统下都是用`/`作为标准路径分隔符,需要用`replace(/\\/g,'/')`再替换一下标准路径 
+
+- path.join
+> 将传入的多个路径拼接为标准路径.
 
 ### 遍历目录
 

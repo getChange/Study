@@ -191,37 +191,130 @@ test(true);  // returns "It was true"
 test(false); // returns "It was false"
 ```
 - ``if``语句中的比较判断
-    - ==
-    - ===
-    - !==
-    - !=
-    - >
-    - >=
-    - <
-    - <=
-    - &&
+    - `==`
+    - `===`
+    - `!==`
+    - `!=`
+    - `>`
+    - `>=`
+    - `<`
+    - `<=`
+    - `&&`
+### `switch`语句
+- 非常多的选项需要选择，可以使用switch语句。根据不同的参数值会匹配上不同的case分支，语句会从第一个匹配的case分支开始执行，直到碰到break就结束。
+```javascript
+switch (num) {
+  case value1:
+    statement1;
+    break;
+  case value2:
+    statement2;
+    break;
+...
+  case valueN:
+    statementN;
+    break;
+}
+```
+### 对象的书写方法
+- 普通的对象书写 
+```javascript
+  var obj = {
+    'name':"luffy"
+  }
+```    
+- 通过`对象.属性名`获取对象
+```javascript
+  var obj = {
+    'name':'luffy'
+  }
 
-- 对象的书写方法
-  - 普通的对象书写 
-  ```
-    var obj = {
-      'name':"luffy"
-    }
-  ```    
-  - 通过`对象.属性名`获取对象
-  ```
-    var obj = {
-      'name':'luffy'
-    }
+  var haizeiwang = obj.name //luffy
+```
+- 当访问的属性名有空格
+```javascript
+  var myObj = {
+    "Space Name": "Kirk",
+    "More Space": "Spock"
+  };
+  myObj["Space Name"]; // Kirk
+  myObj['More Space']; // Spock
+```
+- 中括号操作符--用变量来访问一个属性。遍历对象的属性列表或查表时，这种方式极为有用。
+```javascript
+  var someProp = "propName";
+  var myObj = {
+    propName: "Some Value"
+  }
+  myObj[someProp]; // "Some Value"
 
-    var haizeiwang = obj.name //luffy
-  ```
-  - 当访问的属性名有空格
-  ```
-    var myObj = {
-      "Space Name": "Kirk",
-      "More Space": "Spock"
-    };
-    myObj["Space Name"]; // Kirk
-    myObj['More Space']; // Spock
-  ```
+
+  var someProp = "propName";
+  var myObj = {
+    propName: "Some Value"
+  }
+  myObj[someProp]; // "Some Value"
+```
+- 点操作符或中括号操作符来更新对象的属性(可以修改或者添加)
+```javascript
+  var ourDog = {
+    "name": "Camper",
+    "legs": 4,
+    "tails": 1,
+    "friends": ["everything!"]
+  };
+
+  ourDog.name = "Happy Camper";
+
+  ourDog["name"] = "Happy Camper";
+```
+- 删除对象的属性
+```javascript
+  delete ourDog.bark;
+```
+- 使用键值对代替`switch`或`if/else`语句
+```javascript
+  var alpha = {
+    1:"Z",
+    2:"Y",
+    3:"X",
+    4:"W",
+    ...
+    24:"C",
+    25:"B",
+    26:"A"
+  };
+  alpha[2]; // "Y"
+  alpha[24]; // "C"
+
+  var value = 2;
+  alpha[value]; // "Y"
+```
+### 对象检测方法
+- `.hasOwnProperty(propname)`方法来检查对象是否有该属性
+```javascript
+var myObj = {
+  top: "hat",
+  bottom: "pants"
+};
+myObj.hasOwnProperty("top");    // true
+myObj.hasOwnProperty("middle"); // false
+```
+
+### JSON对象
+- `JavaScript Object Notation` 简称 `JSON`，它使用`JavaScript`对象的格式来存储数据。JSON是灵活的，因为它允许 `数据结构` 是 `字符串`，`数字`，`布尔值`，`字符串`，和 `对象` 的任意组合。
+- 数组中有多个 `JSON` 对象的时候，对象与对象之间要用逗号隔开。
+```javascript
+var ourMusic = [
+  {
+    "artist": "Daft Punk",
+    "title": "Homework",
+    "release_year": 1997,
+    "formats": [ 
+      "CD", 
+      "Cassette", 
+      "LP" ],
+    "gold": true
+  }
+];
+```
