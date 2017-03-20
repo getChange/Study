@@ -318,3 +318,94 @@ var ourMusic = [
   }
 ];
 ```
+- `JSON.parse(text[, reviver])`解析JSON字符串, 可以选择改变前面解析后的值及其属性，然后返回解析的值。
+
+  > `text`要被解析成JavaSctipt值的字符串
+  
+  >  `reviver`(可选)如果是一个函数，则规定了原始值如何被解析改造，在被返回之前。
+
+  - 返回值: Object对应给定的JSON文本。
+```javascript
+JSON.parse('{}');              // {}
+JSON.parse('true');            // true
+JSON.parse('"foo"');           // "foo"
+JSON.parse('[1, 5, "false"]'); // [1, 5, "false"]
+JSON.parse('null');            // null
+```  
+- `JSON.stringify(value[, replacer [, space]])`返回指定值的 JSON 字符串，可以自定义只包含某些特定的属性或替换属性值。
+
+  > `value`:将要序列化成 JSON 字符串的值。
+  > `replacer`: (可选)
+  
+    - 如果该参数是一个函数，则在序列化过程中，被序列化的值的每个属性都会经过该函数的转换和处理；
+    - 如果该参数是一个数组，则只有包含在这个数组中的属性名才会被序列化到最终的 JSON 字符串中；
+    - 如果该参数为null或者未提供，则对象所有的属性都会被序列化；
+
+  > space (可选):指定缩进用的空白字符串，用于美化输出（pretty-print）；
+    
+    - 如果参数是个数字，它代表有多少的空格；上限为10。改值若小于1，则意味着没有空格；
+    - 如果该参数为字符串(字符串的前十个字母)，该字符串将被作为空格；
+    - 如果该参数没有提供（或者为null）将没有空格。 
+  - 返回值: 一个表示给定值的JSON字符串。  
+```javascript
+JSON.stringify({});                        // '{}'
+JSON.stringify(true);                      // 'true'
+JSON.stringify("foo");                     // '"foo"'
+JSON.stringify([1, "false", false]);       // '[1,"false",false]'
+JSON.stringify({ x: 5 });                  // '{"x":5}'
+
+JSON.stringify({x: 5, y: 6});              
+// "{"x":5,"y":6}"
+
+JSON.stringify([new Number(1), new String("false"), new Boolean(false)]); 
+// '[1,"false",false]'
+
+JSON.stringify({x: undefined, y: Object, z: Symbol("")}); 
+// '{}'
+
+JSON.stringify([undefined, Object, Symbol("")]);          
+// '[null,null,null]' 
+
+JSON.stringify({[Symbol("foo")]: "foo"});                 
+// '{}'
+
+JSON.stringify({[Symbol.for("foo")]: "foo"}, [Symbol.for("foo")]);
+// '{}'
+
+JSON.stringify(
+    {[Symbol.for("foo")]: "foo"}, 
+    function (k, v) {
+        if (typeof k === "symbol"){
+            return "a symbol";
+        }
+    }
+);
+
+
+// undefined 
+
+// 不可枚举的属性默认会被忽略：
+JSON.stringify( 
+    Object.create(
+        null, 
+        { 
+            x: { value: 'x', enumerable: false }, 
+            y: { value: 'y', enumerable: true } 
+        }
+    )
+);
+
+// "{"y":"y"}"
+``` 
+### `for`循环
+```javascript
+for ([初始化]; [条件判断]; [计数器]){
+  //循环体
+}
+
+//初始化语句只会在执行循环开始之前执行一次。它通常用于定义和设置你的循环变量。
+
+//条件判断语句会在每一轮循环的开始执行，只要条件判断为 true 就会继续执行循环。当条件为 false的时候，循环将停止执行。这意味着，如果条件在一开始就为 false，这个循环将不会执行。
+
+//计数器是在每一轮循环结束时执行，通常用于递增或递减。
+```        
