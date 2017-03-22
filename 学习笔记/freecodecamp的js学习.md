@@ -460,3 +460,45 @@ var Car = function() {
 ```javascript
 var myCar = new Car();
 ```
+- `myCar`现在成为Car的一个实例(instance),它被构造函数描述成
+```javascript
+{
+  wheels : 4 ,
+  engines : 1,
+  seats : 1
+}
+```
+
+- **要使用关键字`new`调用构造函数**。Javascript才知道这是要去构造一个新 对象 ，并且把构造函数中的 this 指向这个新对象。
+- 创意一个实例之后,它可以像普通对象一样被使用,创建,修改,访问他的属性
+
+### 对象私有化
+- 对象拥有自己的特征，称为 `属性`，对象还有自己的函数，称为 `方法` 。
+- `私有属性` 和 `私有方法` ，它们两个在对象外部是不可访问的。
+### `map`方法迭代数组 
+- `map`方法会迭代数组中的每一个元素,并根据毁掉函数来处理每一个元素,最后返回一个新的数组(不会改变原始数组)。
+```javascript
+var timesFour = oldArray.map(function(val){
+  return val * 4;
+});
+```
+
+### `reduce`方法迭代数组
+- 数组方法 `reduce` 用来迭代一个数组，并且把它累积到一个值中。
+
+  - 使用 `reduce` 方法时，你要传入一个回调函数，这个回调函数的参数是一个 `累加器` （比如例子中的 previousVal) 和`当前值` (currentVal）。
+
+  - `reduce` 方法有一个可选的第二参数，它可以被用来设置累加器的初始值。如果没有在这定义初始值，那么初始值将变成数组中的第一项，而 currentVal 将从数组的第二项开始。
+```javascript
+//reduce 数组中的所有值相减：
+var val = array.reduce(fucntion(previousVal,currentVal){
+  return previousVal - currentVal;
+},0)
+```  
+
+### `filter`方法迭代数组
+- `filter` 方法用来迭代一个数组，并且按给出的条件过滤出符合的元素。
+
+  - `filter` 方法传入一个回调函数，这个回调函数会携带一个参数，参数为当前迭代的项（我们叫它 `val` ）。
+
+  - 回调函数返回 `true` 的项会保留在数组中，返回 `false` 的项会被过滤出数组。
