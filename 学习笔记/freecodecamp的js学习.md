@@ -57,43 +57,7 @@ Alan said, "Peter is learning JavaScript".
 ## 最后一位字符串
 - 得到一个字符串的最后一个字符，用[字符串的长度减去一]
 
-## 数组的方法
-- 选取一个数组 ``array[index]`` index为索引值 从零开始
-```javascript
-var array=[1,2,3,4,5];
 
-array[0]; //1;
-
-var manyArray = [[1,2],[3,4,5],[7,8],9,10];
-
-manyArray[0];//[1,2]
-manyArray[0][0];//1
-```
-- 数组的push方法:``.push()`` 接受把一个或多个参数，并把它“推”入到数组的末尾。
-```javascript
-var arr = [1,2,3];
-arr.push(4);
-// 现在arr的值为 [1,2,3,4]
-```
-- 数组的pop方法:``.pop()`` 函数用来“抛出”一个数组末尾的值。
-> 数组中任何类型的条目（数值，字符串，甚至是数组）可以被“抛出来” 。
-```javascript
-var myArray = [["John", 23], ["dog", 3]];
-
-var removedFromMyArray = myArray.pop();//["dog",3]
-```
-- 数组的shift方法:``.shift()`` 函数用来“抛出”一个数组第一个数的值。
-```javascript
-var myArray = [["John", 23], ["dog", 3]];
-
-var removedFromMyArray = myArray.shift();//["John", 23]
-```
-- 数组的unshift方法:``.unshift()`` 函数在数组的头部添加元素。
-```javascript
-var myArray = [["John", 23], ["dog", 3]];
-
-myArray.unshift(["mike",23]);//[["mike",23], ["John", 23], ["dog", 3]]
-```
 ## 函数 function 
 ### 自定义函数
 ```javascript
@@ -475,30 +439,5 @@ var myCar = new Car();
 ### 对象私有化
 - 对象拥有自己的特征，称为 `属性`，对象还有自己的函数，称为 `方法` 。
 - `私有属性` 和 `私有方法` ，它们两个在对象外部是不可访问的。
-### `map`方法迭代数组 
-- `map`方法会迭代数组中的每一个元素,并根据毁掉函数来处理每一个元素,最后返回一个新的数组(不会改变原始数组)。
-```javascript
-var timesFour = oldArray.map(function(val){
-  return val * 4;
-});
-```
 
-### `reduce`方法迭代数组
-- 数组方法 `reduce` 用来迭代一个数组，并且把它累积到一个值中。
 
-  - 使用 `reduce` 方法时，你要传入一个回调函数，这个回调函数的参数是一个 `累加器` （比如例子中的 previousVal) 和`当前值` (currentVal）。
-
-  - `reduce` 方法有一个可选的第二参数，它可以被用来设置累加器的初始值。如果没有在这定义初始值，那么初始值将变成数组中的第一项，而 currentVal 将从数组的第二项开始。
-```javascript
-//reduce 数组中的所有值相减：
-var val = array.reduce(fucntion(previousVal,currentVal){
-  return previousVal - currentVal;
-},0)
-```  
-
-### `filter`方法迭代数组
-- `filter` 方法用来迭代一个数组，并且按给出的条件过滤出符合的元素。
-
-  - `filter` 方法传入一个回调函数，这个回调函数会携带一个参数，参数为当前迭代的项（我们叫它 `val` ）。
-
-  - 回调函数返回 `true` 的项会保留在数组中，返回 `false` 的项会被过滤出数组。
