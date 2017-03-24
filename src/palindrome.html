@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>palindrome</title>
+</head>
+<body>
+<script>
+    function palindrome(str) {
+        var newStr = str.replace(/\W|_/g, '').toLowerCase();
+        var newStrLength = newStr.length;
+        for (var i = 0, halfLen = newStrLength / 2; i < halfLen; i++) {
+            //对比当前位置的字符串与对应倒数位置的字符串是否相等
+            if (newStr[i] !== newStr[newStrLength-1-i]) {
+                return false;
+            }
+        }
+        // Good luck!
+        return true;
+    }
+
+    palindrome("0_0 (: /-\ :) 0-0");
+
+</script>
+</body>
+</html>

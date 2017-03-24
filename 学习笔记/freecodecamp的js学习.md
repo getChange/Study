@@ -440,4 +440,78 @@ var myCar = new Car();
 - 对象拥有自己的特征，称为 `属性`，对象还有自己的函数，称为 `方法` 。
 - `私有属性` 和 `私有方法` ，它们两个在对象外部是不可访问的。
 
+### javascript实现阶乘
+```
+1. 0的阶乘是1
+2. n! = n * (n-1) * (n-2) * (n-3) * ... * 3 * 2 * 1
+```
 
+```javascript
+//函数的阶乘factorial()
+factorial(0) = 1;
+factorial(n) = n * factorial(n-1);
+```
+- 实现方法一
+```javascript
+function factorial(num) {
+    if (num < 0) {
+        return -1;
+    } else if (num === 0 || num === 1) {
+        return 1;
+    } else {
+        for (var i = num - 1; i >= 1; i--) {
+            num *= i;
+        }
+    }
+    return num;
+}
+```
+- 实现方法二
+```javascript
+function factorial(num) {
+    var result = num;
+    if (num < 0) {
+        return -1;
+    } else if (num === 0 || num === 1) {
+        return 1;
+    } else {
+        while (num > 1) {
+            num--;
+            result *= num;
+        }
+    }
+    return result;
+}
+```
+- 实现方法三
+```javascript
+function factorial(num) {
+    if (num < 0) {
+        return -1;
+    } else if (num === 0 || num === 1) {
+        return 1;
+    } else {
+        return (num * factorial(num - 1));
+    }
+}
+```
+
+### JavaScript算法:回文处理
+- 回文处理:对应位置上的字符串与倒数相对应位置的字符串相同
+- 重点使用的方法:`.replace()` `.toLowerCase()`
+- `.replace()`使用正则表达式来忽略文中的字母的大小写,标点符号,空白
+
+  - 正则表达式
+
+    - `/[^A-Za-z0–9]/g`或`/[\W_]/g`(删除所有非字母数字字符,匹配一个非单字字符)
+
+  - String.prototype.toLowerCase()
+  - String.prototype.replace()
+  - String.prototype.split()
+  - Array.prototype.reverse()
+  - Array.prototype.join()
+  - String.length
+  - for
+  
+### JavaScript算法:找到字符串中最长的单词的长度
+-    
