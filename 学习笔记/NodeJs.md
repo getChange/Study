@@ -396,7 +396,7 @@ try{
 ```
 
 #### Path(路径)
-- path.normalize
+- `path.normalize`
 > 将传入的路径转换为标准路径;解析路径中的`.`与`..`,去掉多余的`/`
 ```javascript
 var cache = {};
@@ -411,8 +411,16 @@ console.log(cache);// => {'foo/bar':2}
 ```
 > **注意:** 保证任何系统下都是用`/`作为标准路径分隔符,需要用`replace(/\\/g,'/')`再替换一下标准路径 
 
-- path.join
-> 将传入的多个路径拼接为标准路径.
+- `path.join`
+> 将传入的多个路径拼接为标准路径.避免手工拼接路径字符串的繁琐,在不同系统下正确使用相应路径分隔符
+```javascript
+path.join('foo/','baz/','../bar'); //'foo/bar'
+```
+- `path.extname`
+> 根据不同文件扩展名做不同操作
+```javascript
+path.extname('foo/bar.js'); // ".js"
+```
 
 ### 遍历目录
 

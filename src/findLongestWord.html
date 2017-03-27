@@ -8,18 +8,15 @@
 <script>
     function findLongestWord(str) {
         var arr = str.split(" ");
+        var strLen = 0;
         for (var i = 0; i < arr.length; i++) {
-            console.log(arr[i].length);
-            console.log(arr[i+1].length);
-            if (arr[i].length > arr[i + 1].length) {
-                return arr[i].length;
-            } else {
-                return arr[i + 1].length;
+            //
+            if (arr[i].length > strLen) {
+                strLen = arr[i].length;
             }
         }
-        return str.length;
+        return strLen;
     }
-
     findLongestWord("The quick brown fox jumped over the lazy dog");
 </script>
 </body>

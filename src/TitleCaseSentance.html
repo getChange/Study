@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function titleCase(str) {
+        var newStr = str.split(" ");
+        var newString = [];
+        for (var i = 0; i < newStr.length; i++) {
+            var title = newStr[i].toLowerCase();
+            newString.push(title[0].toUpperCase() + title.slice(1));
+        }
+        var newTitle =newString.join(" ");
+        return newTitle;
+
+    }
+
+    titleCase("I'm sHoRt AnD sToUt");
+</script>
+</body>
+</html>
