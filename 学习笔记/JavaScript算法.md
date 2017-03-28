@@ -148,7 +148,7 @@ function largestOfFour(arr) {
     for (var n = 0; n < arr.length; n++) {
         var item = arr[n];
         var largestNumber = 0;
-        for (var m = 0; m < item.length; sb++) {
+        for (var m = 0; m < item.length; m++) {
             if (item[m] > largestNumber) {
                 largestNumber = item[m];
             }
@@ -190,3 +190,16 @@ function end(str,target) {
     - `searchValue`: 一个字符串表示被查找的值。
     - `fromIndex` 表示调用该方法的字符串中开始查找的位置。可以是任意整数。默认值为 `0`。如果 `fromIndex < 0` 则查找整个字符串（如同传进了 `0`）。如果 `fromIndex >= str.length`，则该方法返回 `-1`，除非被查找的字符串是一个空字符串，此时返回 `str.length`。
 > 3.`lastIndexOf()`方法
+- 返回一个指定的字符串值最后出现的位置，在一个字符串中的指定位置从后向前搜索。
+- 语法: `str.lastIndexOf(searchValue,fromIndex)`
+    - `searchValue`必需,规定需检索的字符串值.
+    - `fromIndex`可选,规定在字符串中开始检索的位置。它的合法取值是 `0` 到 `stringObject.length - 1`;
+### JavaScript算法:truncate string
+- 使用方法:`.slice(m,n)`将字符串从`m`位置进行截取,截取长度是`n`;
+- 解题思路:
+    - 1．`str.length > num && num > 3`
+    - 2．`str.length > num && num <= 3`
+    - 3．`str.length < num` 
+
+### JavaScript算法:`chunky monkey`
+- 使用方法:`arr.push()`和`arr.slice()`       
