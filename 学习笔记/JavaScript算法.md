@@ -23,7 +23,7 @@ function factorial(num) {
     }
     return num;
 }
-```
+``` 
 - 实现方法二
 ```javascript
 function factorial(num) {
@@ -144,16 +144,49 @@ largestOfFour([[13, 27, 18, 26], [4, 5, 1, 3], [32, 35, 37, 39], [1000, 1001, 85
 - 另一种解法      
 ```javascript
 function largestOfFour(arr) {
-  var results = [];
-  for (var n = 0; n < arr.length; n++) {
-    var largestNumber = 0;
-    for (var sb = 0; sb < arr[n].length; sb++) {
-      if (arr[n][sb] > largestNumber) {
-        largestNumber = arr[n][sb];
-      }
-    }
-    results[n] = largestNumber;
+    var results = [];
+    for (var n = 0; n < arr.length; n++) {
+        var item = arr[n];
+        var largestNumber = 0;
+        for (var m = 0; m < item.length; sb++) {
+            if (item[m] > largestNumber) {
+                largestNumber = item[m];
+            }
+        }
+        results[n] = largestNumber;
   }
   return results;
 }
 ```
+
+### JavaScript算法:检查一个字符串`(str)`是否以指定的字符串`(target)`结尾
+- 解题思路:
+    - 1.运用 `String.prototype.substr()` ，来识别str结尾的字符
+    - 2.声明变量 `endingPart`是`str`字符的最后字符，最后字符的长度等于 `target` 的长度
+    - 3.如果 `target === endingPart` 返回`true`,否则返回`false`
+- 知识点
+    - 1.`str.substr()`方法返回一个字符串中从指定位置开始到指定字符数的字符。
+
+    ```javascript
+        str.substr(start[,length])
+    ``` 
+
+    - `start`开始提取字符的位置.为负看做`strLength + start`,`strLength`是字符串的长度.   
+- 错误点
+    - 1.`substr()`获取的开始提取位置,既然是最后几位是否与`target`相同
+    - 2.`-target.length`表示以target的长度为指定位置进行获取
+- 其他几种方法
+> 1.`slice()`方法
+```javascript
+function end(str,target) { 
+    var endingPart = str.slice(-target.length); 
+    return target === endingPart; 
+}
+```
+> 2.`indexOf()`方法(此方法区分大小写)
+- 返回指定值的第一次出现的调用  String 对象中的索引，开始在fromIndex进行搜索。如果未找到该值，则返回-1。
+- 语法: ``str.indexOf(searchValue[, fromIndex])``
+- 参数:
+    - `searchValue`: 一个字符串表示被查找的值。
+    - `fromIndex` 表示调用该方法的字符串中开始查找的位置。可以是任意整数。默认值为 `0`。如果 `fromIndex < 0` 则查找整个字符串（如同传进了 `0`）。如果 `fromIndex >= str.length`，则该方法返回 `-1`，除非被查找的字符串是一个空字符串，此时返回 `str.length`。
+> 3.`lastIndexOf()`方法
