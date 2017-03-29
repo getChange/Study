@@ -425,16 +425,89 @@ path.extname('foo/bar.js'); // ".js"
 ### 遍历目录
 
 #### 递归算法
+- 计算`n!`的阶乘
+```javascript
+function factorial(n) {
+    if (n === 1) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
+```
 
 #### 遍历算法
+- 使用深度优先+先序遍历算法
+    - 深度优先:达到一个节点后,首先接着遍历子节点而不是邻居节点
+    - 先序遍历:首次达到了某节点就算遍历完成,而不是最后一次返回某节点才算数
 
 #### 同步遍历
+```javascript
+function travel(dir, callback) {
+    fs.readdirSync(dir).forEach(function (file) {
+        var pathname = path.join(dir, file);
+
+        if (fs.statSync(pathname).isDirectory()) {
+            travel(pathname, callback);
+        } else {
+            callback(pathname);
+        }
+    });
+}
+```
+- 目录结构如下:
+```
+- /home/user/
+    - foo/
+        x.js
+    - bar/
+        y.js
+    z.css
+```
+- 输出结果:
+```javascript
+travel('/home/user', function (pathname) {
+    console.log(pathname);
+});
+
+------------------------
+/home/user/foo/x.js
+/home/user/bar/y.js
+/home/user/z.css
+```
 
 #### 异步遍历
+- 采用异步API目录遍历函数
+```javascript
+function travel(dir, callback, finish) {
+    fs.readdir(dir, function (err, files) {
+        (function next(i) {
+            if (i < files.length) {
+                var pathname = path.join(dir, files[i]);
+
+                fs.stat(pathname, function (err, stats) {
+                    if (stats.isDirectory()) {
+                        travel(pathname, callback, function () {
+                            next(i + 1);
+                        });
+                    } else {
+                        callback(pathname, function () {
+                            next(i + 1);
+                        });
+                    }
+                });
+            } else {
+                finish && finish();
+            }
+        }(0));
+    });
+}
+```
 
 ### 文本编码
 
 #### BOM的移除
+ 
 
 #### GBK转UTF-8
 
