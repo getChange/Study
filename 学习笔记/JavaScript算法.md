@@ -205,3 +205,6 @@ function end(str,target) {
 - 使用方法:`arr.push()`和`arr.slice()`     
 - `arr.slice(i , i + size)`将数组裁剪到我们需要的长度;
 - 使用`for`循环将数组逐一循环,**i += size**并不是通常所见的`i++`  
+
+### JavaScript算法:`Slasher Flick`
+- 使用方法:`Array.slice()`以及`Array.splice()`
