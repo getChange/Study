@@ -104,3 +104,9 @@ $(function() {
 
 ## Target Even(Odd) Numbered Elements Using jQuery
 - :odd(:even) 选择元素为奇数(偶数)的元素
+
+## 事件委托代理
+- `.on()`
+
+## Ajax方法
+- `$.getJSON("url",function(){})`

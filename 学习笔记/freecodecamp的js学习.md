@@ -375,6 +375,27 @@ for ([初始化]; [条件判断]; [计数器]){
 ```  
 ### `while`循环   
 
+### `forEach`遍历
+- `forEach()`方法对数组的每个元素执行一次提供的函数.
+```javascript
+let a = ['a', 'b', 'c'];
+a.forEach(function(element){
+  console.log(element);
+});
+
+// a
+// b
+// c
+```
+- 语法
+```javascript
+array.forEach(callback(currentValue, index, array){
+    //do something
+}, this)
+
+array.forEach(callback[, thisArg])
+```
+
 ### `Math.random()`随机数
 - 生成介于两个数之间的随机数
 ```javascript
@@ -439,3 +460,16 @@ var myCar = new Car();
 ### 对象私有化
 - 对象拥有自己的特征，称为 `属性`，对象还有自己的函数，称为 `方法` 。
 - `私有属性` 和 `私有方法` ，它们两个在对象外部是不可访问的。
+
+### `navigator`获取当前所在位置`geolocation`
+- 经度`longitude` 
+- 纬度`latitude`
+- 获取当前所在位置的经纬度
+```javascript
+let geo = navigator.geolocation;
+if(geo) {
+  geo.getCurrentPosition(function(position) {
+    $("#data").html("latitude: " + position.coords.latitude +"<br>longitude: " + position.coords.longitude);
+  })
+}
+```
