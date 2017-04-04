@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定DOM元素</title>
+</head>
+<body>
+<div id="app">
+    <p>hello {{world}}</p>
+    <p v-text="'hello ' + world"></p>
+    <!--<p>{{'hello ${world}`}}</p>-->
+    <!--<p v-text="`hello ${world}`"></p>-->
+    <button @click="world='ziksang'">改变wrold值</button>
+</div>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            world: 'world'
+        }
+    })
+</script>
+</body>
+</html>
