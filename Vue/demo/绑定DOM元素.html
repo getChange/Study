@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绑定DOM元素</title>
+</head>
+<body>
+<div id="app">
+	<span v-bind:title="message">
+		鼠标悬停查看动态绑定
+	</span>
+</div>
+<script src="../node_modules/vue/dist/vue.js"></script>      
+<script>
+	var app = new Vue({
+		el: "#app",
+		data: {
+			message: "页面加载于" + new Date()
+		}
+	})
+</script>
+</body>
+</html>
