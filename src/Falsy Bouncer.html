@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Falsy Bouncer</title>
+</head>
+<body>
+<script>
+    function bouncer(arr) {
+        var newArr = [];
+        for(var i=0;i<arr.length;i++){
+            var item = arr[i];
+            var x = new Boolean(item);
+            if(x == true){
+                newArr.push(item);
+            }
+        }
+        // Don't show a false ID to this bouncer.
+        return newArr;
+    }
+
+    bouncer([7, "ate", "", false, 9]);
+</script>
+</body>
+</html>

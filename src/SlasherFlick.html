@@ -7,12 +7,11 @@
 <body>
 <script>
     function slasher(arr, howMany) {
-        console.log(arr.splice(1, 1));
         // it doesn't always pay to be first
-        return arr;
+        return arr.splice(howMany);
     }
 
-    slasher([1, 2, 3], 2);
+    slasher(["burgers", "fries", "shake"], 1);
 </script>
 </body>
 </html>

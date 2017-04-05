@@ -208,3 +208,42 @@ function end(str,target) {
 
 ### JavaScript算法:`Slasher Flick`
 - 使用方法:`Array.slice()`以及`Array.splice()`
+
+### JavaScript算法:`Mutations`
+- 使用方法: `.toLowerCase()`和`.indexOf()`
+- 解题思路:
+    - 不管数组怎么样都返回true
+- 正确思路:
+```javascript
+function mutation(arr) {
+  var newArr = arr[1].toLowerCase();
+  var oldArr = arr[0].toLowerCase();
+  for (var i = 0; i < newArr.length; i++) {
+      if(oldArr.indexOf(newArr[i]) == -1){
+          return false;
+      }
+  }
+  return true;
+}
+
+mutation(["hello", "hey"]);
+```
+- 错误分析:
+    - 1.不需要进行`.split()`的转换
+    - 2.条件判断有问题
+
+### JavaScript算法:`Falsy Bouncer`    
+- 使用方法:`Boolean Object`和`.push()`
+- `Boolean`的使用:
+```javascript
+let x = new Boolean(value);
+// Boolean {[[PrimitiveValue]]: false}
+// Boolean {[[PrimitiveValue]]: true}
+x === false; //false
+x == false; //true
+typeof(x); //"object"
+```
+
+### JavaScript算法:`seek and destroy`
+- 使用方法:`arguments object`和`array.filter()`
+- 
