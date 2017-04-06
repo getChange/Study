@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue介绍</title>
+</head>
+<body>
+<!--条件判断-->
+<div id="app">
+    <p v-if="seen">bababa</p>
+</div>
+<!--处理循环-->
+<div id="app2">
+    <ol>
+        <li v-for="todo in todos">
+            {{todo.text}}
+        </li>
+    </ol>
+</div>
+<!--处理用户输入-->
+<div id="app3">
+    <p>{{message}}</p>
+    <button @click="reverseMessage">反转消息</button>
+</div>
+<!--表单输入与应用状态-->
+<div id="app4">
+    <p>{{message}}</p>
+    <input v-model="message">
+</div>
+<!--组件化-->
+<div id="app5">
+    <ol>
+        <!-- 创建一个todo-item组件的实例 -->
+        <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+    </ol>
+</div>
+
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            seen: true
+        }
+    });
+    var app2 = new Vue({
+        el:"#app2",
+        data:{
+            todos:[
+                {text: "学习JavaScript"},
+                {text: "学习Vue"},
+                {text: "学习项目"}
+            ]
+        }
+    })
+    var app3= new Vue({
+        el:"#app3",
+        data:{
+            message:"hello"
+        },
+        methods:{
+            reverseMessage: function () {
+                this.message = this.message.split('').reverse().join("")
+            }
+        }
+    })
+    var app4 = new Vue({
+        el:"#app4",
+        data:{
+            message:"Hello"
+        }
+    })
+    //定义名为todo-item的新组件
+    Vue.component('todo-item', {
+        props:['todo'],
+        template: '<li>{{todo.text}}</li>'
+    })
+
+    var app5 = new Vue({
+        el:"#app5",
+        data:{
+            groceryList:[
+                {text:"蔬菜"},
+                {text:"水果"},
+                {text:"粮食"}
+            ]
+        }
+    })
+</script>
+</body>
+</html>
