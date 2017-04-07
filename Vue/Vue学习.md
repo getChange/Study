@@ -49,7 +49,7 @@ vm.$watch('a', function (newVal, oldVal) {
 - 不要在实例属性或者毁掉函数中使用箭头函数.箭头函数会绑定父上下文,`this`不会是`Vue`实例,
 而是`this.myMethod`未定义.
 
-### 实例生命周期
+## 实例生命周期
 - 示例
 ```javascript
 var vm = new Vue({
@@ -63,3 +63,68 @@ var vm = new Vue({
 })
 // -> "a is: 1"
 ```
+- 钩子:`mounted` `update` `destroyed` ... 钩子的`this`指向调用它的Vue实例
+
+# 模板语法
+- 基于HTML模板语法
+## 插值
+### 文本 
+- `Mustache`语法(双大括号):解释为纯文本
+```html
+<span>Message:{{msg}}</span>  
+```
+- `Mustache`标签将会被替代为对应数据对象上`msg`属性的值.
+- `v-once`执行一次性的插值,当数值改变,插值出内容不会更新.
+```html
+<span v-once>This will never change: {{ msg }}</span>
+```
+
+### 纯HTML
+- 输出HTML,使用`v-html`指令,插入的内容会被当做HTML--数据绑定会被忽略
+```html
+<div v-html="rawHtml"></div>
+```
+- **注意**你的站点上动态渲染的任意 HTML 可能会非常危险，因为它很容易导致 XSS 攻击。请只对可信内容使用 HTML 插值，绝不要对用户提供的内容插值。
+
+### 属性
+- `Mustache`不能在HTML属性中使用,应使用`v-bind`:
+```html
+<div v-bind:id="dynamicId"></div>
+```
+- 对布尔值属性有效--为false该属性被移除
+```html
+<button v-bind:disabled="someDynamicCondition">Button</button>
+```
+
+### 使用JavaScript表达式
+- 会生效的表达式
+```html
+{{ number + 1 }}
+{{ ok ? 'YES' : 'NO' }}
+{{ message.split('').reverse().join('') }}
+<div v-bind:id="'list-' + id"></div>
+```
+- 使用JavaScript表达式,每个绑定都只能包含单个表达式
+- 不会生效的例子
+```html
+<!-- 这是语句，不是表达式 -->
+{{ var a = 1 }}
+<!-- 流控制也不会生效，请使用三元表达式 -->
+{{ if (ok) { return message } }}
+```
+
+## 指令
+- 带有`v-`前缀的特殊属性,指令属性的值预期是单一JavaScript表达式.当其表达式的值改变时相应的将某些行为应用到DOM上
+
+### 参数
+- 只能接收一个参数,指令后以冒号指明
+- `v-bind`被用来响应的更新HTML属性
+```html
+<a v-bind:href="url"></a>
+```
+- `v-on`用于监听DOM事件
+```html
+<a v-on:click="doSomething">
+```
+
+### 修饰符
