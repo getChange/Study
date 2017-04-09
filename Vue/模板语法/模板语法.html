@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模板语法</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--一.插值-->
+    <!--1.Mustache 语法 文本插值-->
+    <div>Message:{{msg}}</div>
+    <!--2.v-once指令-->
+    <div v-once>This will never change:{{msg}}</div>
+    <!--3.html属性中使用v-bind,不使用Mustache-->
+    <div v-bind:id="dynamicId">这是一个id指令</div>
+    <!--4.布尔值属性-->
+    <button v-bind:disable="someBoolean">设置</button>
+    <!--5.javscript表达式-->
+    <div>{{number + 1}}</div>
+    <div>{{ok?"YES":"NO"}}</div>
+    <div>{{message.split("").reverse().join("")}}</div>
+    <div v-bind:id="'list-' + id"></div>
+    <!--二.指令-->
+    <!--1.参数-->
+    <p v-if="seen">Now you see me</p>
+    <a v-bind:href="url">点击</a>
+    <a v-on:click="doSomething">点击</a>
+    <!--2.修饰符-->
+    <form v-on:submit.prevent="onSubmit">表单提交</form>
+    <!--3.过滤器:mustache插值和v-bind表达式-->
+    <!--mustache-->
+    <div>{{message | capitalize}}</div>
+    <!--v-bind-->
+    <!--<div v-bind:id="rawId | formatId"></div>-->
+    <!--4.缩写-->
+    <!--v-bind-->
+    <!--完整-->
+    <a v-bind:href="url">点击</a>
+    <!--缩写-->
+    <a :href="url"></a>
+    <!--v-on-->
+    <!--完整-->
+    <a v-on:click="doSomething">点击</a>
+    <!--缩写-->
+    <a @:click="doSomething"></a>
+</div>
+
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            msg: "Hello World!",
+            dynamicId: "3",
+            someBoolean: "false",
+            number: 3,
+            ok: false,
+            message: "this is a message",
+            id: 3,
+            seen: true,
+            url: "www.baidu.com",
+            doSomething: function () {
+                window.location.href = "www.baidu.com"
+            },
+            onSubmit: "提交"
+        },
+        filters: {
+            capitalize: function (val) {
+                if (!val) {
+                    return "";
+                }
+                value = val.toString();
+                return value.charAt(0).toUpperCase() + value.slice(1);
+            }
+        }
+    })
+</script>
+</body>
+</html>

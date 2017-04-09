@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算缓存 vs Methods</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p> Reversed message : "{{ reverseMessage() }}"</p>
+    <p> Time Now : "{{ dateTime() }}"</p>
+    <p> Time Now : "{{ dateTime() }}"</p>
+</div>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            message: "HelloWorld"
+        },
+//        computed: {
+//            dateTime: function () {
+//                return Date.now();
+//            }
+//        },
+        methods: {
+            reverseMessage: function () {
+                return this.message.split("").reverse().join("");
+            },
+            dateTime: function () {
+                return Date.now();
+            }
+        }
+    })
+</script>
+</body>
+</html>
