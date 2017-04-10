@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内联样式</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--普通写法-->
+    <div v-bind:style="{color:activeColor,fontSize:fontSize+'px'}">{{message}}</div>
+    <!--对象写法-->
+    <div v-bind:style="styleObject">{{message}}</div>
+</div>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            message: "Hello World!",
+            activeColor: 'red',
+            fontSize: 30,
+            styleObject: {
+                color: "green",
+                fontSize: 20
+            }
+        }
+    })
+</script>
+</body>
+</html>

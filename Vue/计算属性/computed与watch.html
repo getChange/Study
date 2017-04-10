@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>{{fullName}}</p>
+</div>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            firstName: "Foo",
+            lastName: "Bar"
+        },
+//        watch: {
+//            firstName: function (val) {
+//                this.fullName = val + " " + this.lastName;
+//            },
+//            lastName: function (val) {
+//                this.fullName = val + " " + this.firstName;
+//            }
+//        }
+        computed:{
+            fullName: function () {
+                return this.fullName = this.firstName + " " + this.lastName;
+            }
+        }
+    })
+</script>
+</body>
+</html>

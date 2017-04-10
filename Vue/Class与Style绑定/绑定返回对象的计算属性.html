@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定返回对象的计算属性</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div v-bind:class="classObject"></div>
+</div>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            isActive: true,
+            error: null
+        },
+        computed: {
+            classObject: function () {
+                return {
+                    active: this.isActive && !this.error,
+                    'text-danger': this.error && !this.error.type === 'fatal'
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

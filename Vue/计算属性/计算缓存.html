@@ -17,11 +17,11 @@
         data: {
             message: "HelloWorld"
         },
-//        computed: {
-//            dateTime: function () {
-//                return Date.now();
-//            }
-//        },
+        computed: {
+            dateTime: function () {
+                return Date.now();
+            }
+        },
         methods: {
             reverseMessage: function () {
                 return this.message.split("").reverse().join("");
