@@ -1,0 +1,176 @@
+body,
+ul,
+li,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+p {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: 'PingFang SC', -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+}
+img {
+  width: 100%;
+}
+input,
+button,
+select,
+textarea {
+  outline-style: none;
+  border: none;
+}
+@media (-webkit-min-device-pixel-ratio: 2) {
+  .border-bottom::after {
+    border-bottom-width: 1px;
+  }
+  .border:after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: -100%;
+    bottom: -100%;
+    left: 0;
+    border: 0 solid #e1e1e1;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    pointer-events: none;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    width: 200%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+a {
+  text-decoration: none;
+}
+.clearfix:after {
+  content: " ";
+  height: 0;
+  line-height: 0;
+  clear: both;
+  display: block;
+  visibility: hidden;
+}
+.load {
+  text-align: center;
+  padding: 2.33333333rem 0;
+  font-size: 0.93333333rem;
+  color: #999;
+  text-decoration: none;
+  background-color: #f3f3f3;
+  margin-bottom: 3.66666667rem;
+}
+.load .line1 {
+  width: 2.53333333rem;
+  border-bottom: 1px solid #999;
+  float: left;
+  padding-top: 0.6rem;
+  margin-left: 7.4rem;
+}
+.load .line2 {
+  width: 2.53333333rem;
+  border-bottom: 1px solid #999;
+  float: right;
+  padding-top: 0.6rem;
+  margin-right: 7.4rem;
+}
+@media only screen and (min-width: 320px) {
+  html {
+    font-size: 12.8px;
+  }
+}
+@media only screen and (min-width: 360px) {
+  html {
+    font-size: 14.4px;
+  }
+}
+@media only screen and (min-width: 375px) {
+  html {
+    font-size: 15px;
+  }
+}
+@media only screen and (min-width: 400px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media only screen and (min-width: 414px) {
+  html {
+    font-size: 16.56px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  html {
+    font-size: 30.72px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  html {
+    font-size: 40.96px;
+  }
+}
+.bind .phone {
+  padding: 1.8rem 1.86666667rem;
+}
+.bind .phone .verifyPhone {
+  position: relative;
+}
+.bind .phone .verifyPhone #btn {
+  position: absolute;
+  top: 0.86666667rem;
+  right: 0;
+  text-align: center;
+  border: 0.1rem solid #fbc60e;
+  border-radius: 0.33333333rem;
+  background-color: #fff;
+  height: 2.33333333rem;
+  width: 5.66666667rem;
+  color: #facf5c;
+  font-size: 0.9rem;
+  padding: 0;
+}
+.bind .phone .verifyPhone .text input {
+  width: 100%;
+  height: 4.13333333rem;
+  border-bottom: 1px solid #dfdfdf;
+  color: #dfdfdf;
+  font-size: 1.16666667rem;
+  border-radius: 0;
+}
+.bind .phone .verifyNum input {
+  width: 100%;
+  height: 4.13333333rem;
+  border-bottom: 1px solid #dfdfdf;
+  color: #dfdfdf;
+  font-size: 1.16666667rem;
+  border-radius: 0;
+}
+.bind .phone .set input {
+  width: 100%;
+  height: 4.13333333rem;
+  border-bottom: 1px solid #dfdfdf;
+  color: #dfdfdf;
+  font-size: 1.16666667rem;
+  border-radius: 0;
+}
+.bind .phone .register {
+  text-align: center;
+  line-height: 3rem;
+  margin-top: 2.6rem;
+  width: 100%;
+  height: 3rem;
+  background-color: #fddc2f;
+  border-radius: 0.33333333rem;
+}
+.bind .phone .register span {
+  font-size: 1rem;
+  color: #61340b;
+}

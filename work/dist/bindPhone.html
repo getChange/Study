@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>绑定手机</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/bindPhone.css">
+</head>
+<body>
+<div class="bind">
+    <!--输入手机及验证码-->
+    <div class="phone">
+        <!--获取验证码-->
+        <div class="verifyPhone">
+            <div class="text">
+                <input type="text" value="请输入手机号码">
+            </div>
+            <input type="button" value="获取验证码" id="btn">
+            <!--<button id="btn">获取验证码</button>-->
+        </div>
+        <!---->
+        <div class="verifyNum">
+            <input type="text" value="输入验证码">
+        </div>
+        <!--设置登录密码-->
+        <div class="set">
+            <input type="text" value="设置登录密码(不小于6位)">
+        </div>
+        <!--验证手机登录-->
+        <div class="register">
+            <span>验证手机号</span>
+        </div>
+    </div>
+</div>
+
+<script src="./js/sendMessage.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+
+.record {
+    padding: 0 1rem;
+}
+
+.record .box{
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    padding-top: 0.8rem;
+    padding-bottom: 0.5rem;
+}
+
+.record .box:last-child{
+    border-bottom: none;
+}
+
+.record .box .words{
+    padding-left: 0.5rem;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+.record .box .words p{
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.record .box .words .time{
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.record .box .budget{
+    padding-right: 0.5rem;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+.record .box .budget span{
+    display: block;
+    font-size: 0.9rem;
+    color: #333;
+    text-align: right;
+}
+

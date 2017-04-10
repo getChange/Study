@@ -1,0 +1,224 @@
+body,
+ul,
+li,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+p {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: 'PingFang SC', -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+}
+img {
+  width: 100%;
+}
+input,
+button,
+select,
+textarea {
+  outline-style: none;
+  border: none;
+}
+@media (-webkit-min-device-pixel-ratio: 2) {
+  .border-bottom::after {
+    border-bottom-width: 1px;
+  }
+  .border:after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: -100%;
+    bottom: -100%;
+    left: 0;
+    border: 0 solid #e1e1e1;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    pointer-events: none;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    width: 200%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+a {
+  text-decoration: none;
+}
+.clearfix:after {
+  content: " ";
+  height: 0;
+  line-height: 0;
+  clear: both;
+  display: block;
+  visibility: hidden;
+}
+.load {
+  text-align: center;
+  padding: 2.33333333rem 0;
+  font-size: 0.93333333rem;
+  color: #999;
+  text-decoration: none;
+  background-color: #f3f3f3;
+  margin-bottom: 3.66666667rem;
+}
+.load .line1 {
+  width: 2.53333333rem;
+  border-bottom: 1px solid #999;
+  float: left;
+  padding-top: 0.6rem;
+  margin-left: 7.4rem;
+}
+.load .line2 {
+  width: 2.53333333rem;
+  border-bottom: 1px solid #999;
+  float: right;
+  padding-top: 0.6rem;
+  margin-right: 7.4rem;
+}
+@media only screen and (min-width: 320px) {
+  html {
+    font-size: 12.8px;
+  }
+}
+@media only screen and (min-width: 360px) {
+  html {
+    font-size: 14.4px;
+  }
+}
+@media only screen and (min-width: 375px) {
+  html {
+    font-size: 15px;
+  }
+}
+@media only screen and (min-width: 400px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media only screen and (min-width: 414px) {
+  html {
+    font-size: 16.56px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  html {
+    font-size: 30.72px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  html {
+    font-size: 40.96px;
+  }
+}
+body {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.banner {
+  width: 22.66666667rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -13rem 0 0 -11.33333333rem;
+  background-color: #fff;
+  border-radius: 0.46666667rem;
+  overflow: hidden;
+}
+.banner .content .close {
+  font-size: 2rem;
+  float: right;
+  margin-top: 0.16666667rem;
+  margin-right: 0.73333333rem;
+}
+.banner .content .guessContent {
+  padding: 2rem;
+  padding-bottom: 1.26666667rem;
+  border-bottom: 1px dashed #999;
+  position: relative;
+}
+.banner .content .guessContent .circular1 {
+  width: 0.93333333rem;
+  height: 0.93333333rem;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  bottom: -0.46666667rem;
+  left: -0.46666667rem;
+}
+.banner .content .guessContent .circular2 {
+  width: 0.93333333rem;
+  height: 0.93333333rem;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  bottom: -0.46666667rem;
+  right: -0.46666667rem;
+}
+.banner .content .guessContent .title {
+  font-size: 1.2rem;
+}
+.banner .content .guessContent .box {
+  margin-top: 0.93333333rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  font-size: 0.93333333rem;
+  line-height: 0.93333333rem;
+  color: #666;
+}
+.banner .content .guessContent .box p {
+  float: left;
+}
+.banner .content .guessContent .box span {
+  margin-left: 0.2rem;
+  display: block;
+}
+.banner .content .guessContent .box .left {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+}
+.banner .content .guessContent .box .left .options {
+  margin-bottom: 0.53333333rem;
+}
+.banner .content .guessContent .box .right {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+}
+.banner .content .betButton .betNum {
+  margin-top: 2rem;
+  padding: 0 3.66666667rem;
+}
+.banner .content .betButton .betNum input {
+  width: 15.33333333rem;
+  height: 3.66666667rem;
+  text-align: center;
+  background-color: #ebebeb;
+  font-size: 1.2rem;
+  color: #999;
+}
+.banner .content .betButton .words {
+  text-align: center;
+  height: 2.13333333rem;
+  line-height: 2.13333333rem;
+}
+.banner .content .betButton .words a {
+  text-decoration: none;
+  font-size: 0.93333333rem;
+  color: #ae3c36;
+}
+.banner .content .betButton .bet {
+  background-color: #fee73a;
+  height: 3.66666667rem;
+  line-height: 3.66666667rem;
+  text-align: center;
+  color: #000;
+  font-size: 0.93333333rem;
+}

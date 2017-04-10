@@ -1,0 +1,134 @@
+//导入文件
+@import "base.less";
+@import "adapter.less";
+
+body {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.banner {
+  width: 680/30rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -390/30rem 0 0 -340/30rem;
+  background-color: #fff;
+  border-radius: 14/30rem;
+  overflow: hidden;
+  //竞猜内容
+  .content {
+    //关闭按钮
+    .close {
+      font-size: 60/30rem;
+      float: right;
+      margin-top: 5/30rem;
+      margin-right: 22/30rem;
+    }
+
+    //竞猜内容
+    .guessContent {
+      padding: 60/30rem;
+      padding-bottom: 38/30rem;
+      border-bottom: 1px dashed #999;
+      position: relative;
+
+      //圆形
+      .circular1 {
+        width: 28/30rem;
+        height: 28/30rem;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.8);
+        position: absolute;
+        bottom: -14/30rem;
+        left: -14/30rem;
+      }
+
+      .circular2 {
+        width: 28/30rem;
+        height: 28/30rem;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.8);
+        position: absolute;
+        bottom: -14/30rem;
+        right: -14/30rem;
+      }
+
+      //竞猜标题
+      .title {
+        font-size: 36/30rem;
+      }
+      //下部盒子的竞猜选项
+      .box {
+        margin-top: 28/30rem;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        font-size: 28/30rem;
+        line-height: 28/30rem;
+        color: #666;
+        p {
+          float: left;
+        }
+
+        span {
+          margin-left: 6/30rem;
+          display: block;
+        }
+
+        .left {
+          -webkit-box-flex: 1;
+          -webkit-flex: 1;
+          flex: 1;
+          .options {
+            margin-bottom: 16/30rem;
+          }
+        }
+        .right {
+          -webkit-box-flex: 1;
+          -webkit-flex: 1;
+          flex: 1;
+        }
+      }
+    }
+
+    //下部按钮
+    .betButton {
+      //投注数量
+      .betNum {
+        margin-top: 60/30rem;
+        padding: 0 110/30rem;
+        //输入框
+        input {
+          width: 460/30rem;
+          height: 110/30rem;
+          text-align: center;
+          background-color: #ebebeb;
+          font-size: 36/30rem;
+          color: #999;
+        }
+      }
+      //提示文字
+      .words {
+        text-align: center;
+        height: 64/30rem;
+        line-height: 64/30rem;
+
+        a {
+          text-decoration: none;
+          font-size: 28/30rem;
+          color: #ae3c36;
+        }
+      }
+      //确认投注
+      .bet {
+        background-color: #fee73a;
+        height: 110/30rem;
+        line-height: 110/30rem;
+        text-align: center;
+        color: #000;
+        font-size: 28/30rem;
+
+      }
+    }
+  }
+}

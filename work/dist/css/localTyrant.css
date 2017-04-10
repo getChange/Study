@@ -1,0 +1,438 @@
+
+.latelyGuess {
+    background-color: #f3f3f3;
+}
+
+.latelyGuess .introduce {
+    margin-top: 0.53333333rem;
+    background-color: #fff;
+    border-bottom: 1px solid #f3f3f3;
+    padding: 0 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.latelyGuess .introduce .title {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    padding-top: 0.66666667rem;
+    padding-bottom: 0.66666667rem;
+}
+
+.latelyGuess .introduce .title span:nth-child(1) {
+    -webkit-box-flex: 2;
+    -webkit-flex: 2;
+    flex: 2;
+    font-size: 1.16666667rem;
+    color: #333;
+}
+
+.latelyGuess .introduce .info {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.latelyGuess .introduce .info .time {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: left;
+}
+
+.latelyGuess .introduce .info .person {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: right;
+}
+
+.latelyGuess .guessInfo {
+    padding-top: 0.9rem;
+    background-color: #fff;
+    padding-left: 1.66666667rem;
+    padding-right: 1rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+.latelyGuess .guessInfo .teamName {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: left;
+}
+
+.latelyGuess .guessInfo .win {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #666;
+    position: relative;
+    padding-bottom: 1.26666667rem;
+}
+
+.latelyGuess .guessInfo .win .icon {
+    width: 1.53333333rem;
+    height: 0.9rem;
+    text-align: center;
+    line-height: 0.9rem;
+    font-size: 0.53333333rem;
+    color: #fff;
+    background-color: #000;
+    position: absolute;
+    top: 0.33333333rem;
+    left: -1.66666667rem;
+}
+
+.latelyGuess .guessInfo .win .odds {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: center;
+}
+
+.latelyGuess .guessInfo .win .odds span:nth-child(2) {
+    font-size: 1.06666667rem;
+    color: #333;
+}
+
+.latelyGuess .guessInfo .win .bet {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: right;
+}
+
+.latelyGuess .guessInfo .win .bet button {
+    width: 4.66666667rem;
+    height: 1.6rem;
+    border-radius: 2.33333333rem;
+    font-size: 0.86666667rem;
+    color: #fedc2f;
+    background-color: #0e0e0e;
+}
+
+.latelyGuess .guessInfo .win .bet .progress {
+    background-color: #6d5e88;
+    color: #fff;
+}
+
+.latelyGuess .guessInfo .win .bet .end {
+    background-color: #afafaf;
+    color: #fff;
+}
+
+.latelyGuess .guessInfo .lose {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.latelyGuess .guessInfo .lose .odds {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: center;
+}
+
+.latelyGuess .guessInfo .lose .odds span:nth-child(2) {
+    font-size: 1.06666667rem;
+    color: #333;
+}
+
+.latelyGuess .guessInfo .lose .bet {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: right;
+}
+
+.latelyGuess .guessInfo .lose .bet button {
+    width: 4.66666667rem;
+    height: 1.6rem;
+    border-radius: 2.33333333rem;
+    font-size: 0.86666667rem;
+    color: #fedc2f;
+    background-color: #0e0e0e;
+}
+
+.latelyGuess .guessInfo .lose .bet .progress {
+    background-color: #6d5e88;
+    color: #fff;
+}
+
+.latelyGuess .guessInfo .lose .bet .end {
+    background-color: #afafaf;
+    color: #fff;
+}
+
+.latelyGuess .guessInfo .draw {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.latelyGuess .guessInfo .draw .odds {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: center;
+}
+
+.latelyGuess .guessInfo .draw .odds span:nth-child(2) {
+    font-size: 1.06666667rem;
+    color: #333;
+}
+
+.latelyGuess .guessInfo .draw .bet {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: right;
+}
+
+.latelyGuess .guessInfo .draw .bet button {
+    width: 4.66666667rem;
+    height: 1.6rem;
+    border-radius: 2.33333333rem;
+    font-size: 0.86666667rem;
+    color: #fedc2f;
+    background-color: #0e0e0e;
+}
+
+.latelyGuess .guessInfo .draw .bet .progress {
+    background-color: #6d5e88;
+    color: #fff;
+}
+
+.latelyGuess .guessInfo .draw .bet .end {
+    background-color: #afafaf;
+    color: #fff;
+}
+
+.latelyGuess .explain {
+    padding: 1rem;
+    border-top: 1px solid #dadada;
+    background-color: #fff;
+    font-size: 0.93333333rem;
+    color: #999999;
+    line-height: 1.4rem;
+}
+
+.latelyGuess .picture {
+    overflow: hidden;
+}
+
+.latelyGuess .rank {
+    background-color: #fff;
+    margin-top: 0.53333333rem;
+    margin-bottom: 0.86666667rem;
+    font-size: 1rem;
+    color: #999;
+}
+
+.latelyGuess .rank .title {
+    height: 2.66666667rem;
+    border-bottom: 1px solid #dadada;
+    padding: 0 1rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.latelyGuess .rank .title span {
+    line-height: 2.66666667rem;
+    margin-left: 1.33333333rem;
+    position: relative;
+}
+
+.latelyGuess .rank .title span div{
+    display: none;
+    position: absolute;
+    left: 50%;
+    bottom: .2rem;
+    width: 1.5rem;
+    height: 3px;
+    border-radius: 0.2rem;
+    background-color: #fedc2f;
+    margin-left: -0.75rem;
+}
+
+.latelyGuess .rank .title span.current div{
+    display: block;
+}
+
+.latelyGuess .rank .title span:nth-child(1) {
+    margin-left: 0;
+}
+
+.latelyGuess .rank .record {
+    display: none;
+    padding: 0 1rem;
+    padding-top: 0.86666667rem;
+    position: relative;
+}
+
+.latelyGuess .rank .record .imgBox{
+    width: 12rem;
+    height: 13rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: 2rem 0 0 -6.5rem;
+    text-align: center;
+}
+
+.latelyGuess .rank .record ul {
+    margin-bottom: 0.86666667rem;
+
+}
+
+.latelyGuess .rank .record li {
+    float: left;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    font-size: 0.8rem;
+    height: 3rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.latelyGuess .rank .record .photo1 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    width: 2.66666667rem;
+    height: 2.66666667rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #f0f0f0;
+
+}
+
+.latelyGuess .rank .record .name1 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    width: 9rem;
+    padding-left: 0.5rem;
+}
+
+.latelyGuess .rank .record .name1 p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.latelyGuess .rank .record .time1 {
+    text-align: center;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    width: 4rem;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.latelyGuess .rank .record .money1 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    width: 5rem;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+}
+
+.latelyGuess .rank .record .num {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    padding-right: 0.66666667rem;
+    font-style: italic;
+    color: #666;
+}
+
+.latelyGuess .rank .record .num1 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    padding-right: 0.66666667rem;
+    font-size: 0.86666667rem;
+    color: #666;
+}
+
+.latelyGuess .rank .record .photo2 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    width: 2.66666667rem;
+    height: 2.66666667rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #f0f0f0;
+
+}
+
+.latelyGuess .rank .record .name2 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    width: 11rem;
+    padding-left: 0.5rem;
+}
+
+.latelyGuess .rank .record .name2 p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.latelyGuess .rank .record .money2 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    width: 6rem;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+}
+
+.latelyGuess .rank .current {
+    color: #333;
+    display: block;
+}
+
+.latelyGuess .rank .selected {
+    display: block;
+}

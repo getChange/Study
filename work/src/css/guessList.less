@@ -1,0 +1,446 @@
+//导入文件
+@import "base.less";
+@import "adapter.less";
+
+body {
+  background-color: #f3f3f3;
+}
+
+.guessList {
+  //比赛信息
+  .gameInfo {
+    padding: 0 98/30rem;
+    padding-top: 55/30rem;
+    padding-bottom: 100/30rem;
+    background-color: #000;
+    font-size: 28/30rem;
+    color: #ffffff;
+    //战队信息
+    .info {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      text-align: center;
+      span {
+        padding-top: 15/30rem;
+        display: block;
+      }
+
+      .team1 {
+        -webkit-box-flex: 1;
+        flex: 1;
+        img {
+          width: 80/30rem;
+          border-radius: 50%;
+        }
+      }
+
+      .score {
+        font-size: 60/30rem;
+        flex: 2;
+        -webkit-box-flex: 2;
+
+        span {
+          padding-top: 28/30rem;
+          font-size: 28/30rem;
+        }
+      }
+
+      .team2 {
+        -webkit-box-flex: 1;
+        flex: 1;
+        img {
+          width: 80/30rem;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  //简略信息
+  .introduce {
+    margin-top: 16/30rem;
+    height: 120/30rem;
+    background-color: #fff;
+    border-bottom: 1px solid #f3f3f3;
+    padding: 0 30/30rem;
+    padding-bottom: 20/30rem;
+    //标题
+    .title {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      padding-top: 20/30rem;
+      padding-bottom: 20/30rem;
+      span:nth-child(1) {
+        flex: 2;
+        -webkit-box-flex: 2;
+        font-size: 35/30rem;
+        color: #333;
+      }
+      img {
+        -webkit-box-flex: 1;
+        flex: 1;
+        width: 11/30rem;
+        float: right;
+        padding-top: 5/30rem;
+      }
+    }
+    //人数及时间
+    .info {
+
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      font-size: 28/30rem;
+      color: #999;
+      .time {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        text-align: left;
+      }
+      .person {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        text-align: right;
+      }
+    }
+  }
+  //第一次竞猜信息
+
+  .guessInfo {
+    padding-top: 40/30rem;
+    padding-bottom: 32/30rem;
+    background-color: #fff;
+    padding-left: 50/30rem;
+    padding-right: 30/30rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+
+
+    //队名
+    .teamName {
+      font-size: 32/30rem;
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      flex: 1;
+      text-align: left;
+    }
+    //胜利
+    .win {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      flex: 1;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      font-size: 24/30rem;
+      color: #666;
+      position: relative;
+      padding-bottom: 38/30rem;
+
+      //win图标
+      .icon {
+        width: 46/30rem;
+        height: 27/30rem;
+        text-align: center;
+        line-height: 27/30rem;
+        font-size: 16/30rem;
+        color: #fff;
+        background-color: #000;
+        position: absolute;
+        top: 10/30rem;
+        left: -50/30rem;
+      }
+
+      //赔率
+      .odds {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        text-align: center;
+        span:nth-child(2) {
+          font-size: 32/30rem;
+          color: #333;
+        }
+      }
+
+      //投注
+      .bet {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        text-align: right;
+        button {
+          width: 140/30rem;
+          height: 48/30rem;
+          border-radius: 70/30rem;
+          font-size: 26/30rem;
+          color: #fedc2f;
+          background-color: #0e0e0e;
+        }
+
+        .progress {
+          background-color: #6d5e88;
+          color: #fff;
+        }
+        .end {
+          background-color: #afafaf;
+          color: #fff;
+        }
+      }
+    }
+
+    //失败
+    .lose {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      flex: 1;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      align-items: center;
+      font-size: 24/30rem;
+      color: #666;
+      padding-bottom: 38/30rem;
+
+      //赔率
+      .odds {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        text-align: center;
+        span:nth-child(2) {
+          font-size: 32/30rem;
+          color: #333;
+        }
+      }
+
+      //投注
+      .bet {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        text-align: right;
+        button {
+          width: 140/30rem;
+          height: 48/30rem;
+          border-radius: 70/30rem;
+          font-size: 26/30rem;
+          color: #fedc2f;
+          background-color: #0e0e0e;
+        }
+      }
+    }
+
+    //平局
+    .draw {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      flex: 1;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      font-size: 24/30rem;
+      color: #666;
+
+      //赔率
+      .odds {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        text-align: center;
+        span:nth-child(2) {
+          font-size: 32/30rem;
+          color: #333;
+        }
+      }
+
+      //投注
+      .bet {
+
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        text-align: right;
+        button {
+          width: 140/30rem;
+          height: 48/30rem;
+          border-radius: 70/30rem;
+          font-size: 26/30rem;
+          color: #fedc2f;
+          background-color: #0e0e0e;
+        }
+      }
+    }
+  }
+  //第二次竞猜信息
+  .guessInfo2 {
+    padding-top: 40/30rem;
+    padding-bottom: 32/30rem;
+    background-color: #fff;
+    padding-left: 50/30rem;
+    padding-right: 30/30rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+
+
+    //队名
+    .teamName {
+      font-size: 32/30rem;
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      flex: 1;
+      text-align: left;
+    }
+
+    //胜利
+    .win {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      flex: 1;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      padding-bottom: 38/30rem;
+      font-size: 24/30rem;
+      color: #666;
+      position: relative;
+
+      //win图标
+      .icon {
+        width: 46/30rem;
+        height: 27/30rem;
+        text-align: center;
+        line-height: 27/30rem;
+        font-size: 16/30rem;
+        color: #fff;
+        background-color: #000;
+        position: absolute;
+        top: 10/30rem;
+        left: -50/30rem;
+      }
+
+      //赔率
+      .odds {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        text-align: center;
+        span:nth-child(2) {
+          font-size: 32/30rem;
+          color: #333;
+        }
+      }
+
+      //投注
+      .bet {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        text-align: right;
+        button {
+          width: 140/30rem;
+          height: 48/30rem;
+          border-radius: 70/30rem;
+          font-size: 26/30rem;
+          color: #fedc2f;
+          background-color: #0e0e0e;
+        }
+      }
+    }
+
+    //失败
+    .lose {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      flex: 1;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      font-size: 24/30rem;
+      color: #666;
+
+      //赔率
+      .odds {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        text-align: center;
+        span:nth-child(2) {
+          font-size: 32/30rem;
+          color: #333;
+        }
+      }
+
+      //投注
+      .bet {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        text-align: right;
+        button {
+          width: 140/30rem;
+          height: 48/30rem;
+          border-radius: 70/30rem;
+          font-size: 26/30rem;
+          color: #fedc2f;
+          background-color: #0e0e0e;
+        }
+      }
+    }
+  }
+  //底部信息
+
+  footer {
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+    background-color: #f3f3f3;
+    .message {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      padding-top: 42/30rem;
+      padding-bottom: 36/30rem;
+      a {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        font-size: 26/30rem;
+        color: #666;
+        text-decoration: none;
+      }
+      a:nth-child(1) {
+        padding-right: 40/30rem;
+        text-align: right;
+        border-right: 1px solid #666;
+      }
+      a:nth-child(2) {
+        padding-left: 40/30rem;
+      }
+    }
+  }
+}

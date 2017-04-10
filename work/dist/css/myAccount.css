@@ -1,0 +1,29 @@
+
+.myAccount {
+    background-color: #f3f3f3;
+}
+
+.myAccount .myMoney {
+    background-color: #000;
+    height: 2.73333333rem;
+    font-size: 1.06666667rem;
+    color: #dadada;
+    text-align: center;
+    line-height: 2.73333333rem;
+}
+
+.myAccount .getMoney {
+    padding-top: 1rem;
+    background-color: #fff;
+    text-align: center;
+}
+
+.myAccount button {
+    margin: 1rem 0;
+    width: 20.33333333rem;
+    height: 2.66666667rem;
+    text-align: center;
+    background-color: #fedc2f;
+    border-radius: 0.33333333rem;
+    font-size: 1rem;
+}

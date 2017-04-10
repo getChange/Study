@@ -1,0 +1,23 @@
+
+.contact .content {
+  width: 9rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -10rem 0 0 -4.5rem;
+  border-radius: 0.46666667rem;
+}
+.contact .footWords {
+  position: absolute;
+  bottom: 3.06666667rem;
+  text-align: center;
+  width: 100%;
+  font-size: 1rem;
+  color: #666;
+}
+.contact .footWords p:nth-child(1) {
+  padding-bottom: 1.8rem;
+}
+.contact .footWords p:nth-child(2) {
+  padding-bottom: 0.66666667rem;
+}

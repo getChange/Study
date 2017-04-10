@@ -1,0 +1,159 @@
+//导入文件
+@import "base.less";
+@import "adapter.less";
+@import "footer.less";
+
+.personal {
+  background-color: #f4f4f4;
+  position: relative;
+  //我的头像
+  .myPhoto {
+    background-color: #fff;
+
+    .nick {
+      padding-top: 75/30rem;
+      .photo {
+        margin: 0 auto;
+        width: 164/30rem;
+        height: 164/30rem;
+        border-radius: 50%;
+        background-color: red;
+        overflow: hidden;
+      }
+      span {
+        display: block;
+        text-align: center;
+        padding-top: 36/30rem;
+        padding-bottom: 50/30rem;
+        font-size: 30/30rem;
+        color: #333;
+      }
+    }
+  }
+
+  //竞猜信息
+  .myMessage {
+    margin-top: 15/30rem;
+    padding: 0 46/30rem;
+    background-color: #fff;
+
+    a{
+      display: block;
+    }
+    //余额
+    .balance {
+      height: 120/30rem;
+      border-bottom: 1px solid #e9e9e9;
+      span {
+        line-height: 120/30rem;
+        padding-left: 20/30rem;
+        font-size: 30/30rem;
+        color: #333333;
+      }
+      span:nth-child(2) {
+        padding-left: 0;
+      }
+
+      a {
+        display: block;
+        float: right;
+        margin-top: 30/30rem;
+        border-radius: 12/30rem;
+        background-color: #fee641;
+        height: 60/30rem;
+        width: 120/30rem;
+        color: #643c0c;
+        font-size: 28/30rem;
+        text-align: center;
+        line-height: 60/30rem;
+      }
+    }
+    //竞猜记录
+    .guess {
+      height: 120/30rem;
+      border-bottom: 1px solid #e9e9e9;
+      span {
+        line-height: 120/30rem;
+        padding-left: 20/30rem;
+        font-size: 30/30rem;
+        color: #333333;
+      }
+      img {
+        width: 11/30rem;
+        float: right;
+        padding-top: 45/30rem;
+      }
+    }
+    //竞币记录
+    .money {
+      height: 120/30rem;
+      border-bottom: 1px solid #e9e9e9;
+      span {
+        line-height: 120/30rem;
+        padding-left: 20/30rem;
+        font-size: 30/30rem;
+        color: #333333;
+      }
+      img {
+        width: 11/30rem;
+        float: right;
+        padding-top: 45/30rem;
+      }
+    }
+    //绑定手机
+    .bindPhone {
+      height: 120/30rem;
+      border-bottom: 1px solid #e9e9e9;
+      span {
+        line-height: 120/30rem;
+        padding-left: 20/30rem;
+        font-size: 30/30rem;
+        color: #333333;
+      }
+      input {
+        padding: 10/30rem;
+        font-size: 30/30rem;
+        color: #333;
+      }
+      a {
+        text-align: right;
+        font-size: 30/30rem;
+        color: #c45455;
+        float: right;
+        padding-top: 40/30rem;
+      }
+    }
+    //竞猜规则
+    .rule {
+      height: 120/30rem;
+      border-bottom: 1px solid #e9e9e9;
+      span {
+        line-height: 120/30rem;
+        padding-left: 20/30rem;
+        font-size: 30/30rem;
+        color: #333333;
+      }
+      img {
+        width: 11/30rem;
+        float: right;
+        padding-top: 45/30rem;
+      }
+    }
+    //联系我们
+    .contact {
+      height: 120/30rem;
+      margin-bottom: 110/30rem;
+      span {
+        line-height: 120/30rem;
+        padding-left: 20/30rem;
+        font-size: 30/30rem;
+        color: #333333;
+      }
+      img {
+        width: 11/30rem;
+        float: right;
+        padding-top: 45/30rem;
+      }
+    }
+  }
+}
