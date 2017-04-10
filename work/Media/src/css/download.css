@@ -1,0 +1,34 @@
+.download-app{
+    text-align: center;
+}
+
+.download-app .app-logo img{
+    height: 7.3rem;
+    width: 7.3rem;
+    margin-top: 6.16rem;
+}
+
+.download-app .app-name img{
+    width:5.5rem;
+    margin-top: 1.53rem;
+}
+
+.download-app .app-description{
+    font-size: 1.13rem;
+    color: #999;
+    margin-top: 3.33rem;
+}
+
+.download-app a{
+    display: block;
+}
+
+.download-app .download-Android img{
+    width:9rem;
+    margin-top: 2.13rem;
+}
+
+.download-app .download-ios img{
+    width:9rem;
+    margin-top: 0.67rem;
+}
