@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>template中的v-if</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <template v-if="ok">
+        <h1>Title</h1>
+        <p> P1 </p>
+        <p> P2 </p>
+    </template>
+    <div v-if="Math.random() > 0.5">
+        Now you see me
+    </div>
+    <div v-else>
+        Now you don't
+    </div>
+</div>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            ok:false
+        }
+    })
+</script>
+</body>
+</html>
