@@ -27,6 +27,10 @@
         }
     })
 
+    vm1.items = vm1.items.filter(function (item) {
+      return item.message.match(/Foo/)
+    })
+
     var vm2 = new Vue({
         el: "#app2",
         data: {

@@ -19,6 +19,12 @@
         {{index}}.{{key}}:{{value}}
     </li>
 </ul>
+<!--v-for整数迭代-->
+<div id="appNum">
+    <div>
+        <span v-for="n in 10">{{n}}</span>
+    </div>
+</div>
 <script>
     var app = new Vue({
         el: "#app",
@@ -27,6 +33,13 @@
                 first: "Hello",
                 second: "World"
             }
+        }
+    })
+
+    var appNum = new Vue({
+        el:"#appNum",
+        data:{
+
         }
     })
 </script>
