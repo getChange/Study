@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本用法</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<ul id="app1">
+    <li v-for="item in items">
+        {{item.message}}
+    </li>
+</ul>
+<ul id="app2">
+    <li v-for="(item,index) in items">
+        {{parentMessage}} - {{index}} - {{item.message}}
+    </li>
+</ul>
+<script>
+    var vm1 = new Vue({
+        el: "#app1",
+        data: {
+            items: [
+                {message: "luffy"},
+                {message: "monkey"}
+            ]
+        }
+    })
+
+    var vm2 = new Vue({
+        el: "#app2",
+        data: {
+            parentMessage: "Parent",
+            items: [
+                {message: "son1"},
+                {message: "son2"}
+            ]
+        }
+    })
+</script>
+</body>
+</html>
