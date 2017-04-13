@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on事件监听</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app1">
+    <button v-on:click="count += 1">button</button>
+    <p>按钮被点击{{count}}次</p>
+</div>
+<div id="app2">
+    <!--`greet`定义方法名-->
+    <button v-on:click="greet">Greet</button>
+</div>
+<script>
+    var vm = new Vue({
+        el: "#app1",
+        data: {
+            count: 0
+        }
+    })
+</script>
+</body>
+</html>

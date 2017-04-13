@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>显示过滤/排序结果</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<ul id="app">
+    <!--过滤-->
+    <li v-for="n in evenNumbers(numbers)">{{n}}</li>
+    <div>-----------------</div>
+    <!--排序-->
+    <li v-for="n in sortNumbers(numbers)">{{n}}</li>
+</ul>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            numbers: [6, 8, 1, 3, 5, 4, 2, 7]
+        },
+        methods: {
+            evenNumbers: function () {
+                return this.numbers.filter(function (number) {
+                    return number % 2 == 0;
+                })
+            },
+            sortNumbers: function () {
+                return this.numbers.sort(function (a, b) {
+                    return a - b;
+                })
+            }
+        }
+    })
+</script>
+</body>
+</html>
