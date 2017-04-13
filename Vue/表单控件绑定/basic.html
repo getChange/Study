@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基础用法</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--文本-->
+    <input type="text" v-model="message" placeholder="edit me">
+    <p>Message is:{{message}}</p>
+    <!--多行文本-->
+    <span>Multiline message is :</span>
+    <p style="white-space: pre">{{msg}}</p>
+    <br>
+    <textarea v-model="msg" placeholder="add multiple lines"></textarea>
+</div>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            message: "",
+            msg:""
+        }
+    })
+</script>
+</body>
+</html>
