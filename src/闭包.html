@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包</title>
+</head>
+<body>
+
+<script>
+    var a = [];
+    for (let i = 0; i < 5; i++) {
+        a.push(function () {
+            console.log(i);
+        });
+    }
+    a[0]();
+    for (let i = 0; i < 5; i++) {
+        a[i]()
+    }
+</script>
+</body>
+</html>
