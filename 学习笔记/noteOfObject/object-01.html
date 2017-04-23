@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>object-01</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>javaScript复习</h1>
+<h2>JavaScript基本组成类型</h2>
+<ul>
+<li>javascript有机部分组成</li>
+</ul>
+<blockquote>
+<p>ECMAScript/DOM/BOM</p>
+</blockquote>
+<h2>数据类型</h2>
+<ul>
+<li>基本数据类型</li>
+</ul>
+<p>number string boolean null undefined</p>
+<ul>
+<li>复杂数据类型</li>
+</ul>
+<p>object</p>
+<h4>ECMAScript内置对象(Object类型)</h4>
+<ul>
+<li>Array Math Date Object String Number Boolean Function Error RegExp</li>
+</ul>
+<h4>如何判断数据类型</h4>
+<ul>
+<li>typeof()  </li>
+</ul>
+<p><em>{typeof(null)无法判断} ,typeof判断object类型数据可能存在误判</em></p>
+<ul>
+<li>
+<p>typeof可以判断Function类型的对象</p>
+</li>
+<li>
+<p>instanceof()</p>
+</li>
+</ul>
+<h2>基本类型与引用类型的赋值</h2>
+<h4>基本类型</h4>
+<ul>
+<li>赋值时copy具体的值</li>
+</ul>
+<h4>引用类型</h4>
+<ul>
+<li>赋的是具体的值</li>
+</ul>
+<h2>运算符</h2>
+<h4>算术运算符 + %</h4>
+<ul>
+<li>
+<p>算术运算 字符串连接 把数据转换成number类型</p>
+</li>
+<li>
+<p>取余数 (a=++a %3 可以限制取值范围)</p>
+</li>
+</ul>
+<h4>逻辑运算符 &amp;&amp; || !</h4>
+<ul>
+<li>
+<p>&amp;&amp; 从左往右依次把数据转换成boolean类型,如果是false,
+则返回对应数据;如果一直没有找到,则返回最后一个数据</p>
+</li>
+<li>
+<p>|| 从左往右依次把数据转换成boolean类型,如果是true,
+则返回对应数据;如果一直没有找到,则返回最后一个数据</p>
+</li>
+<li>
+<p>! 把数据类型转换为boolean类型,然后取反</p>
+</li>
+</ul>
+<h4>相等运算符</h4>
+<ul>
+<li>
+<p>===类型与值必须全部相等</p>
+</li>
+<li>
+<p>==会先进行数据类型转换 在进行比较</p>
+</li>
+</ul>
+<h4>三元运算符</h4>
+<ul>
+<li>?前面的表达式结果为true,执行冒号前面的表达式;
+否则执行后面的表达式</li>
+</ul>
+<h2>布尔类型转换</h2>
+<h4>如何把数据转换为布尔类型?</h4>
+<ul>
+<li>!!Boolean</li>
+</ul>
+<h4>那些数据在转换为boolean类型时为false?</h4>
+<ul>
+<li>
+<p>0 undefined null NaN &quot;&quot;</p>
+</li>
+<li>
+<p>所有对象转换后为boolean类型, 都为true</p>
+</li>
+</ul>
+<h2>语句</h2>
+<h4>分值语句</h4>
+<ul>
+<li>if else/switch case</li>
+</ul>
+<h4>循环语句</h4>
+<ul>
+<li>for/while/do while/for in</li>
+</ul>
+<h4>break和continue的作用</h4>
+<h2>函数</h2>
+<h4>创建方式</h4>
+<ul>
+<li>
+<p>函数声明式</p>
+</li>
+<li>
+<p>函数表达式</p>
+</li>
+<li>
+<p>Function</p>
+</li>
+</ul>
+<h4>　参数</h4>
+<ul>
+<li>
+<p>对函数中重复执行代码中的不同部分的抽象提取</p>
+</li>
+<li>
+<p>形参是用来接收实参传递过来的值</p>
+</li>
+<li>
+<p>练习: 写一个函数,函数接受一个参数并打印,
+如果参数的值是null或undefined,则不打印.</p>
+</li>
+</ul>
+<h4>返回值</h4>
+<ul>
+<li>
+<p>如果没有return语句,则为undefined.</p>
+</li>
+<li>
+<p>arguments是一个可以在函数中使用的关键字,代表实参的对象
+通过它(通过下标的方式)可以获取所有的实参;</p>
+</li>
+<li>
+<p>arguments还有一个length属性, 用来获取实参个数</p>
+</li>
+</ul>
+<p><em>需要注意:arguments不是数组,他是一个对象,
+像这种拥有length属性,以下表储存数据的对象,
+称之为伪数组</em>
+<em>arguments类似于这个样子:
+{0:&quot;实参1&quot;,1:&quot;实参2&quot;,length:2}</em>
+- 利用arguments的length属性,可以模拟其他语言的重载</p>
+<ul>
+<li>可以用来计算任意数据的和</li>
+</ul>
+<h4>this</h4>
+<ul>
+<li>谁调用就指向谁</li>
+</ul>
+<h4>错误抛出</h4>
+<ul>
+<li>throw 自定义抛出错误</li>
+</ul>
+<h2>debugger与断点</h2>
+<h1>+号</h1>
+<ul>
+<li>如果两边含有字符串或者对象，那么转换为string之后再相加</li>
+<li>除此之外，两数相加，转换为number之后再相加</li>
+</ul>
+<h1>-号</h1>
+<ul>
+<li>把两边数据转换为number之后再相减</li>
+</ul>
+<h1>==运算符比较规则</h1>
+<blockquote>
+<p>约定：非空数据类型表示null和undefined两种数据类型。</p>
+</blockquote>
+<ul>
+<li>任何数据和NaN相比结果都为false</li>
+<li>null等于undefined</li>
+<li>null和非空类型相比结果为false</li>
+<li>undefined和非空类型相比结果为false</li>
+<li>数字和非空类型比较，先转换为数字再比较</li>
+<li>布尔和非空类型比较，先转换为数字再比较</li>
+<li>对象与对象比较内存地址</li>
+<li>对象与字符串，对象先转换为字符串再比较</li>
+</ul>
+<p>类型 | 类型 | 规律
+---|---|---
+NaN | 任意类型 | false
+null | undefined | true
+null | 非空类型 | false
+undefined | 非空类型 | false
+数字 | 非空类型 | 转换为数字再比较
+布尔 | 非空类型 | 转换为数字再比较
+对象 | 对象 | 内存地址比较
+对象 | 字符串 | 转换为字符串再比较</p>
+<hr />
+<h1>面向对象</h1>
+<h2>简单介绍</h2>
+<h3>1.什么是面向对象</h3>
+<h3>2.面向对象与面向过程的异同</h3>
+<ul>
+<li>面向对象封装了面向过程</li>
+</ul>
+<h3>3.为什么要面向对象</h3>
+<h2>学习内容</h2>
+<h3>1.如何自己创建对象</h3>
+<h3>2.js对面向对象编程思想提供的支持</h3>
+<h3>3.掌握内置对象的运行原理</h3>
+<h2>new Object</h2>
+<ul>
+<li>
+<p>创建对象(js对象面向对象编程提供的支持 给对象的下面添加一些属性)</p>
+</li>
+<li>
+<p>更加简洁的方式:字面量</p>
+</li>
+</ul>
+<h2>工厂模式</h2>
+<blockquote>
+<p>把创建对象封装起来的模式叫做工厂模式.</p>
+</blockquote>
+<h2>函数封装</h2>
+<ul>
+<li>
+<p>自己创建构造函数(构造函数只是一个称呼,和普通函数无差异)</p>
+</li>
+<li>
+<p>如果一个普通函数专门是用来配合new关键字创建对象的,那么这个函数就可以称之为构造函数</p>
+</li>
+<li>
+<p>如果一个函数想当作构造函数使用,那么有一个潜规则,就是函数名的首字母要大写</p>
+<pre><code>function Dog(name,color){
+
+    this.name=name;
+
+    this.color=color;
+
+    this.say=function say (){
+
+        console.log(&quot;wang&quot;);
+
+    }
+
+}
+
+var jinmao= new Dog(&quot;金毛&quot;,&quot;黄色&quot;);
+
+
+var samo= new Dog();
+
+
+// 获取狗的工厂函数
+
+function Fn(fn1,fn2,...){
+
+    this.fn1=fn1;
+
+    this.fn2=fn2;
+
+    ......
+
+}
+</code></pre>
+
+</li>
+</ul>
+<h3>new构造函数 创建对象的过程(js自动完成)</h3>
+<ul>
+<li>
+<p>1.new关键字会自动先创建一个空对象</p>
+</li>
+<li>
+<p>2.然后会调用构造函数,在调用是让构造函数内部的this指向新创建出来的新对象</p>
+</li>
+<li>
+<p>3.new关键字会自动返回新对象的地址</p>
+</li>
+</ul>
+<h3>工厂函数 构造函数的区别</h3>
+<ul>
+<li>
+<p>1.工厂函数把通过构造函数创建的对象的过程,进行了封装(工程函数依赖于构造函数)</p>
+</li>
+<li>
+<p>2.构造函数配合new关键字创建对象</p>
+</li>
+<li>
+<p>3.工厂函数和构造函数其实都是普通函数,只不过因为他们的作用不同,从而产生了不同的称呼</p>
+</li>
+</ul>
+<h2>js的面向对象</h2>
+<h4>面向过程的概念:想到哪写到哪,凡是亲力亲为,自己单干;</h4>
+<h4>面向对象的概念:</h4>
+<ul>
+<li>
+<p>1.利用对象解决问题,本质上就是面向过程的封装;</p>
+</li>
+<li>
+<p>2.面向对象的好处是代码的重复利用,和函数很相似;</p>
+</li>
+<li>
+<p>3.面向对象可以认为是比函数封装更高一层的封装.</p>
+</li>
+</ul>
+<h4>js面向对象编程思想提供的支持</h4>
+<ul>
+<li>可以编写构造函数,然后利用构造函数构建出来各种对象,利用这些对象帮助解决问题;</li>
+</ul>
+<h4>利用js创建一些人对象</h4>
+<pre><code>    function Person(name,age,sex){
+
+        this.name=name;
+
+        this.age=age;
+
+        this.sex=sex;
+
+    }
+
+    //工厂函数
+
+
+    function getPerson(name,age,sex){
+
+        return new Person(name,age,sex)
+
+    }
+
+    var xiena=new Person('xiena',18,'nv')
+</code></pre>
+
+<h2>类的概念</h2>
+<ul>
+<li>
+<p>1.类是对一些具有相同特征与特性对象的抽象描述</p>
+<pre><code>function Person(name,age,sex){
+
+    this.name=name;
+
+    this.age=age;
+
+    this.sex=sex;
+}
+
+
+//工厂函数
+
+
+function getPerson(name,age,sex){
+
+    return new Person(name,age,sex)
+
+}
+
+
+var xiena=new Person('xiena',18,'nv')
+</code></pre>
+
+</li>
+<li>
+<p>2.构造函数中,把某种具有相同特征与特性对象的进行了一个抽象描述,</p>
+</li>
+</ul>
+<p>所以把js的构造函数看作是类.</p>
+<ul>
+<li>3.类可以认为是一个模版,通过它可以创建出具有相同特征的对象.</li>
+</ul>
+<h3>实例</h3>
+<ul>
+<li>
+<p>通过构造函数创建出来的对象,就叫做实例</p>
+</li>
+<li>
+<p>实力和对象的关系:没有可比性,都是对一个东西的称呼和描述,只不过角度不同.</p>
+</li>
+</ul>
+<h2>构造函数存在的问题</h2>
+<ul>
+<li>会存在某些方法相同浪费内存</li>
+</ul>
+<h4>解决方案:原型</h4>
+<ul>
+<li>
+<p>原型:js提供的能够让实例共享某些数据的解决方案</p>
+</li>
+<li>
+<p>使用:每一个构造函数在诞生的时候,都会自带一个叫做prototype的属性,这是属性存在着一个对象地址,而实例可以无条件使用</p>
+</li>
+<li>
+<p>实例可以无条件使用构造函数.prototype里面的东西</p>
+</li>
+<li>
+<p>prototype里面存储的东西,是为了让实例共享,达到节省内存的目的</p>
+</li>
+</ul>
+<h4><strong>proto</strong>介绍</h4>
+<ul>
+<li>
+<p>1.每一个对象都有一个<strong>proto</strong>属性(存在的意义就是为了查找)</p>
+</li>
+<li>
+<p>2.通过构造函数创造的实例对象,都有一个<strong>proto</strong>属性</p>
+</li>
+<li>
+<p>3.这个属性的值与构造函数prototype属性的值一致</p>
+</li>
+<li>
+<p>4.都存储着同一个对象的地址</p>
+</li>
+</ul>
+<h4><strong>proto</strong>详解</h4>
+<ul>
+<li>1.相当于是一个记录宝藏存放位置的属性</li>
+<li>2.所有对象都有这个属性</li>
+<li>3.每当我们访问一个对象的属性或者方法,那么就会首先在自身寻找,找不到就会顺着
+<strong>proto</strong>寻找</li>
+<li>4.宝藏没有再继续顺着<strong>proto</strong>寻找下一个宝藏</li>
+<li>5.直到终点</li>
+</ul>
+<h4>显示原型</h4>
+<ul>
+<li>prototype(为了让实例找到他):只有放在函数上才会凸显出它的属性</li>
+</ul>
+<h4>隐式原型</h4>
+<ul>
+<li><strong>proto</strong>:任何对象都有这个属性</li>
+</ul>
+<h4>原型属性的称呼</h4>
+<ul>
+<li>在js中,有两个属性都会指向原型对象</li>
+<li>1.显示原型 prototype</li>
+<li>2.隐式原型 <strong>proto</strong></li>
+</ul>
+<h4>对象的属性查找规则</h4>
+<h2>只有原型上的东西,实力例才能共享</h2>
+<h2>通过构造函数创建实例的过程</h2>
+<ul>
+<li>
+<p>1.new关键字会创建一个新对象(就是在内存中开辟一个区域)</p>
+</li>
+<li>
+<p>2.给新对象添加<strong>proto</strong>属性,新对象.<strong>proto</strong>=构造函数.prtotype</p>
+</li>
+<li>
+<p>3.执行构造函数,执行时构造函数内的this指向新对象</p>
+</li>
+<li>
+<p>4.返回新对象的地址</p>
+</li>
+</ul>
+<h4>可以通过构造函数的prototype找到原型对象</h4>
+<h4>可以通过原型对象的constructor找到构造函数</h4>
+<h4>可以通过实例的<strong>proto</strong>找到原型对象</h4>
+<h2>注:只有函数才拥有prototype属性;函数也是对象,所以它既有prototype属性,又有<strong>proto</strong>属性(只有这一个特例)</h2>
+<h2>在js中,什么是对象</h2>
+<ul>
+<li>
+<p>键值对的集合,在js中所有键值对的集合都是对象</p>
+<pre><code>var str=&quot;ad&quot;;
+
+
+str.toString;
+
+
+上述代码执行时做了如下事情:
+
+{
+
+    var strObj=new String(str);
+
+    strObj.toString();
+
+    strObj=null;
+
+}
+</code></pre>
+
+</li>
+</ul>
+<h2>继承</h2>
+<blockquote>
+<p>一个对象可以使用令一个对象的东西,就叫做继承(一个对象可以使用一个本不属于自己的东西).</p>
+</blockquote>
+<ul>
+<li>
+<p>在js中,原型就是继承,也就是说所有实例都继承自原型对象</p>
+</li>
+<li>
+<p>那么对于实例的<strong>proto</strong>属性,可以称之为实例的原型对象</p>
+</li>
+<li>
+<p>集成的本质就是代码的复用</p>
+</li>
+<li>
+<p>js中原型就是代码的复用,所以可以说原型就是js对继承这个特性的实现</p>
+</li>
+</ul>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

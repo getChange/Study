@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>object-09</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>jQuery框架</h1>
+<h2>一. 基本框架</h2>
+<pre><code>    // 为了全局变量污染，把代码写到自调函数中
+    (function ( w ) {
+
+        // 为了用户使用方便，提供一个工厂函数
+        function jQuery( selector ) {
+            return new init( selector );
+        }
+
+        // 原型简写&amp;原型默认拥有的属性与方法
+        jQuery.fn = jQuery.prototype = {
+            constructor: jQuery,
+            jQ1: 111,
+            jQ2: 222
+        };
+
+        // 构造函数
+        var init = jQuery.prototype.init = function () {
+
+        };
+
+        // 为了第三方扩展(即jQ插件)
+        init.prototype = jQuery.prototype;
+
+        // 对外暴漏
+        w.jQuery = w.$ = jQuery;
+
+    }( window ));
+
+    var shili = $();
+    $.fn.value = 100;
+    console.log(shili);
+    console.log(shili.constructor);
+    console.log(shili.init);
+    console.log(shili.value);
+    console.log(shili.jQ1);
+    console.log(shili.jQ2);
+</code></pre>
+
+<ul>
+<li>
+<p>1、jQuery的代码全局写在一个自调函数中，</p>
+</li>
+<li>
+<p>2、平常使用的$实际上jQ对外暴漏的一个工厂函数，而构造函数在jQ的内部叫init，并且这个构造函数还被添加到了jQ的原型中。</p>
+</li>
+<li>
+<p>3、jQ为了让第三方能够对其功能进行扩展，所以把工厂函数的原型与构造函数的原型保持了一致。</p>
+<ul>
+<li>1、对外暴漏的是工厂函数</li>
+<li>2、内部的构造函数叫init，被添加到了原型中</li>
+<li>3、为了插件机制，让构造函数的原型为工厂函数的原型，这样只就外暴漏工厂函数，即可对原型进行扩展。</li>
+</ul>
+</li>
+</ul>
+<h2>二. 创建实例</h2>
+<pre><code>    // 得到的是init的实例
+    console.log($());
+    console.log($('abc'));
+    console.log($().jQ1);
+</code></pre>
+
+<h2>三. extend</h2>
+<ul>
+<li>
+<p>1.在原型中添加extend</p>
+<pre><code>// 为了全局变量污染，把代码写到自调函数中
+(function ( w ) {
+
+    // 为了用户使用方便，提供一个工厂函数
+    function jQuery( selector ) {
+        return new init( selector );
+    }
+
+    // 原型简写&amp;原型默认拥有的属性与方法
+    jQuery.fn = jQuery.prototype = {
+        constructor: jQuery,
+        jQ1: 111,
+        jQ2: 222
+    };
+
+    jQuery.extend = jQuery.fn.extend = function ( obj ) {
+        for ( var key in obj ) {
+            this[key] = obj[key];
+        }
+    };
+
+    // 构造函数
+    var init = jQuery.prototype.init = function () {
+
+    };
+
+    // 为了第三方扩展(即jQ插件)
+    init.prototype = jQuery.prototype;
+
+    // 对外暴漏
+    w.jQuery = w.$ = jQuery;
+
+}( window ));
+</code></pre>
+
+</li>
+<li>
+<p>2.1 加到了jQ的原型中，jQ的实例可以使用</p>
+<pre><code>$.fn.extend({
+    abac: 100,
+    fdsadf: 200
+});
+</code></pre>
+
+</li>
+<li>
+<p>2.2 加到了jQ自身，即静态方法，只有jQ自己才能使用</p>
+<pre><code>$.extend({
+   $value: 888
+});
+</code></pre>
+
+</li>
+<li>
+<p>2.3 实例可以使用原型中的实例属性</p>
+<pre><code>console.log($().fdsadf);
+</code></pre>
+
+</li>
+<li>
+<p>2.4 实例不可以使用静态属性</p>
+<pre><code>console.log($().$value);
+</code></pre>
+
+</li>
+<li>
+<p>2.5 jQ自己可以使用静态属性</p>
+<pre><code>console.log($.$value);
+</code></pre>
+
+</li>
+</ul>
+<h2>三. 支持选择器</h2>
+<pre><code>    // 为了全局变量污染，把代码写到自调函数中
+    (function ( w ) {
+
+        // 为了用户使用方便，提供一个工厂函数
+        function jQuery( selector ) {
+            return new init( selector );
+        }
+
+        // 原型简写&amp;原型默认拥有的属性与方法
+        jQuery.fn = jQuery.prototype = {
+            constructor: jQuery,
+            jQ1: 111,
+            jQ2: 222
+        };
+
+        jQuery.extend = jQuery.fn.extend = function ( obj ) {
+            for ( var key in obj ) {
+                this[key] = obj[key];
+            }
+        };
+
+        // 构造函数
+        var init = jQuery.prototype.init = function ( selector ) {
+
+            // 根据selector获取元素
+            var nodes = document.querySelectorAll( selector );
+
+            // 把获取到的元素依次添加到实例中
+            [].push.apply( this, nodes );
+        };
+
+        // 为了第三方扩展(即jQ插件)
+        init.prototype = jQuery.fn;
+
+        // 对外暴漏
+        w.jQuery = w.$ = jQuery;
+
+    }( window ));
+</code></pre>
+
+<ul>
+<li>
+<p>验证:</p>
+<pre><code>console.log($('span'));
+console.log($('div').jQ1);
+</code></pre>
+
+</li>
+</ul>
+<h2>四. 支持HTML片段</h2>
+<pre><code>    // 为了全局变量污染，把代码写到自调函数中
+    (function ( w ) {
+
+        // 为了用户使用方便，提供一个工厂函数
+        function jQuery( selector ) {
+            return new init( selector );
+        }
+
+        // 原型简写&amp;原型默认拥有的属性与方法
+        jQuery.fn = jQuery.prototype = {
+            constructor: jQuery,
+            jQ1: 111,
+            jQ2: 222
+        };
+
+        jQuery.extend = jQuery.fn.extend = function ( obj ) {
+            for ( var key in obj ) {
+                this[key] = obj[key];
+            }
+        };
+
+        // 给jQuery添加静态方法
+        jQuery.extend({
+
+            // 判断一个字符串是不是html片段
+            /*
+             * 判断selector是不是html片段：
+             * html片段的特点是：&lt;开头，&gt;结尾，中间夹杂着内容。
+             * 1、判断selector的第一个字符是不是&lt;
+             * 2、判断selector的结尾是不是&gt;
+             * 3、判断selector的length不能小于3
+             * */
+            isHTML: function ( html ) {
+                if ( html[0] === '&lt;' &amp;&amp; html.charAt(html.length - 1) === '&gt;' &amp;&amp; html.length &gt;= 3 ) {
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        // 构造函数
+        var init = jQuery.prototype.init = function ( selector ) {
+
+            // 如果selector是html片段
+            if ( jQuery.isHTML( selector ) ) {
+                /*
+                * 1、先根据html片段创建dom对象
+                *   1.1、先创建一个临时的div
+                *   1.2、设置临时div的innerTHML为html片段，这样div中就自动把html片段转换为了DOM元素
+                *   1.3、然后把div的子节点分别添加都实例身上
+                * 2、然后把创建好的dom对象依次添加到实例中
+                * */
+                var tempDiv = document.createElement('div');
+                tempDiv.innerHTML = selector;
+                [].push.apply( this, tempDiv.childNodes );
+            }
+            // 否则就认为selector是选择器
+            else {
+                // 根据selector获取元素
+                var nodes = document.querySelectorAll( selector );
+                // 把获取到的元素依次添加到实例中
+                [].push.apply( this, nodes );
+            }
+
+        };
+
+        // 为了第三方扩展(即jQ插件)
+        init.prototype = jQuery.fn;
+
+        // 对外暴漏
+        w.jQuery = w.$ = jQuery;
+
+    }( window ));
+</code></pre>
+
+<ul>
+<li>
+<p>验证:测试得到的span是不是DOM元素</p>
+<pre><code>var span = $('&lt;span&gt;我是span1&lt;/span&gt;&lt;span&gt;我是span2&lt;/span&gt;')[1];
+document.body.appendChild(span);    
+</code></pre>
+
+</li>
+</ul>
+<h2>五. 支持DOM元素</h2>
+<pre><code>    // 为了全局变量污染，把代码写到自调函数中
+    (function ( w ) {
+
+        // 为了用户使用方便，提供一个工厂函数
+        function jQuery( selector ) {
+            return new init( selector );
+        }
+
+        // 原型简写&amp;原型默认拥有的属性与方法
+        jQuery.fn = jQuery.prototype = {
+            constructor: jQuery,
+            jQ1: 111,
+            jQ2: 222
+        };
+
+        jQuery.extend = jQuery.fn.extend = function ( obj ) {
+            for ( var key in obj ) {
+                this[key] = obj[key];
+            }
+        };
+
+        // 给jQuery添加静态方法
+        jQuery.extend({
+
+            /*
+             * 判断selector是不是html片段：
+             * html片段的特点是：&lt;开头，&gt;结尾，中间夹杂着内容。
+             * 1、判断selector的第一个字符是不是&lt;
+             * 2、判断selector的结尾是不是&gt;
+             * 3、判断selector的length不能小于3
+             * */
+            isHTML: function ( html ) {
+                return html[0] === '&lt;' &amp;&amp; html.charAt(html.length - 1) === '&gt;' &amp;&amp; html.length &gt;= 3;
+            },
+
+            /*
+            * 判断selector是不是DOM：
+            * DOM的特点是，都拥有nodeType属性
+            * */
+            isDOM: function ( dom ) {
+                return !!dom &amp;&amp; !!dom.nodeType;
+            }
+        });
+
+        // 构造函数
+        var init = jQuery.prototype.init = function ( selector ) {
+
+            // 如果selector是字符串，那么不是html片段就是选择器
+            if ( typeof selector === 'string' ) {
+                // 如果selector是html片段
+                if ( jQuery.isHTML( selector ) ) {
+                    /*
+                     * 1、先根据html片段创建dom对象
+                     *   1.1、先创建一个临时的div
+                     *   1.2、设置临时div的innerTHML为html片段，这样div中就自动把html片段转换为了DOM元素
+                     *   1.3、然后把div的子节点分别添加都实例身上
+                     * 2、然后把创建好的dom对象依次添加到实例中
+                     * */
+                    var tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = selector;
+                    [].push.apply( this, tempDiv.childNodes );
+                }
+                // 否则就认为selector是选择器
+                else {
+                    // 根据selector获取元素
+                    var nodes = document.querySelectorAll( selector );
+                    // 把获取到的元素依次添加到实例中
+                    [].push.apply( this, nodes );
+                }
+            }
+
+            // 如果selector是DOM元素，那么把它直接添加实例中
+            if ( jQuery.isDOM( selector ) ) {
+                [].push.call( this, selector );
+            }
+        };
+
+        // 为了第三方扩展(即jQ插件)
+        init.prototype = jQuery.fn;
+
+        // 对外暴漏
+        w.jQuery = w.$ = jQuery;
+
+    }( window ));
+</code></pre>
+
+<ul>
+<li>
+<p>验证:给$传入DOM</p>
+<pre><code>var div = document.getElementById('div');
+console.log($(div));
+</code></pre>
+
+</li>
+</ul>
+<h2>六. 支持数组和伪数组</h2>
+<pre><code>    // 为了全局变量污染，把代码写到自调函数中
+    (function ( w ) {
+
+        // 为了用户使用方便，提供一个工厂函数
+        function jQuery( selector ) {
+            return new init( selector );
+        }
+
+        // 原型简写&amp;原型默认拥有的属性与方法
+        jQuery.fn = jQuery.prototype = {
+            constructor: jQuery,
+            jQ1: 111,
+            jQ2: 222
+        };
+
+        jQuery.extend = jQuery.fn.extend = function ( obj ) {
+            for ( var key in obj ) {
+                this[key] = obj[key];
+            }
+        };
+
+        // 给jQuery添加静态方法
+        jQuery.extend({
+
+            /*
+             * 判断selector是不是html片段：
+             * html片段的特点是：&lt;开头，&gt;结尾，中间夹杂着内容。
+             * 1、判断selector的第一个字符是不是&lt;
+             * 2、判断selector的结尾是不是&gt;
+             * 3、判断selector的length不能小于3
+             * */
+            isHTML: function( html ) {
+                return html[0] === '&lt;' &amp;&amp; html.charAt(html.length - 1) === '&gt;' &amp;&amp; html.length &gt;= 3;
+            },
+
+            /*
+            * 判断selector是不是DOM：
+            * DOM的特点是，都拥有nodeType属性
+            * */
+            isDOM: function( dom ) {
+                return !!dom &amp;&amp; !!dom.nodeType;
+            },
+
+            // 判断对象是不是window
+            isWindow: function( window ) {
+                return !!window &amp;&amp; window.window === window;
+            },
+
+            /*
+             * 判断selector是不是数组或伪数组：
+             * 特点：都用length属性
+             * */
+            isLikeArray: function( likeArray ) {
+
+                // 如果是函数或者window，返回false
+                if ( typeof likeArray == 'function' || jQuery.isWindow( likeArray ) ) {
+                    return false;
+                }
+
+                // 如果有likeArray，并且likeArray有length属性，并且(length为0 或 likeArray有lenght - 1这个属性)
+                return !!likeArray &amp;&amp; typeof likeArray == 'object' &amp;&amp; 'length' in likeArray &amp;&amp;
+                        ( likeArray.length === 0 || ( likeArray.length - 1) in likeArray );
+            }
+        });
+
+        // 构造函数
+        var init = jQuery.prototype.init = function ( selector ) {
+
+            // 如果selector是字符串，那么不是html片段就是选择器
+            if ( typeof selector === 'string' ) {
+                // 如果selector是html片段
+                if ( jQuery.isHTML( selector ) ) {
+                    /*
+                     * 1、先根据html片段创建dom对象
+                     *   1.1、先创建一个临时的div
+                     *   1.2、设置临时div的innerTHML为html片段，这样div中就自动把html片段转换为了DOM元素
+                     *   1.3、然后把div的子节点分别添加都实例身上
+                     * 2、然后把创建好的dom对象依次添加到实例中
+                     * */
+                    var tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = selector;
+                    [].push.apply( this, tempDiv.childNodes );
+                }
+                // 否则就认为selector是选择器
+                else {
+                    // 根据selector获取元素
+                    var nodes = document.querySelectorAll( selector );
+                    // 把获取到的元素依次添加到实例中
+                    [].push.apply( this, nodes );
+                }
+            }
+
+            // 如果selector是DOM元素，那么把它直接添加实例中
+            if ( jQuery.isDOM( selector ) ) {
+                [].push.call( this, selector );
+            }
+
+            // 如果selector是数组或伪数组，那么把其中的每一项分别添加到实例中
+            if ( jQuery.isLikeArray( selector ) ) {
+                [].push.apply( this, selector );
+            }
+
+            // 剩余的不管了，统一添加到实例中
+            [].push.call( this, selector );
+        };
+
+        // 为了第三方扩展(即jQ插件)
+        init.prototype = jQuery.fn;
+
+        // 对外暴漏
+        w.jQuery = w.$ = jQuery;
+
+    }( window ));
+</code></pre>
+
+<ul>
+<li>
+<p>验证:</p>
+<pre><code>var spans = document.getElementsByTagName('span');
+var arr = [1,2,3];
+console.log($(spans));
+console.log($(arr));
+console.log($(function (){}));
+console.log($(window));
+console.log($(11));
+</code></pre>
+
+</li>
+</ul>
+<h2>七. 支持其他数据类型</h2>
+<pre><code>    // 为了全局变量污染，把代码写到自调函数中
+    (function ( w ) {
+
+        // 为了用户使用方便，提供一个工厂函数
+        function jQuery( selector ) {
+            return new init( selector );
+        }
+
+        // 原型简写&amp;原型默认拥有的属性与方法
+        jQuery.fn = jQuery.prototype = {
+            constructor: jQuery,
+            jQ1: 111,
+            jQ2: 222
+        };
+
+        jQuery.extend = jQuery.fn.extend = function ( obj ) {
+            for ( var key in obj ) {
+                this[key] = obj[key];
+            }
+        };
+
+        // 给jQuery添加静态方法
+        jQuery.extend({
+
+            /*
+             * 判断selector是不是html片段：
+             * html片段的特点是：&lt;开头，&gt;结尾，中间夹杂着内容。
+             * 1、判断selector的第一个字符是不是&lt;
+             * 2、判断selector的结尾是不是&gt;
+             * 3、判断selector的length不能小于3
+             * */
+            isHTML: function( html ) {
+                return html[0] === '&lt;' &amp;&amp; html.charAt(html.length - 1) === '&gt;' &amp;&amp; html.length &gt;= 3;
+            },
+
+            /*
+            * 判断selector是不是DOM：
+            * DOM的特点是，都拥有nodeType属性
+            * */
+            isDOM: function( dom ) {
+                return !!dom &amp;&amp; !!dom.nodeType;
+            },
+
+            // 判断对象是不是window
+            isWindow: function( window ) {
+                return !!window &amp;&amp; window.window === window;
+            },
+
+            /*
+             * 判断selector是不是数组或伪数组：
+             * 特点：都用length属性
+             * */
+            isLikeArray: function( likeArray ) {
+
+                // 如果是函数或者window，返回false
+                if ( typeof likeArray == 'function' || jQuery.isWindow( likeArray ) ) {
+                    return false;
+                }
+
+                // 如果有likeArray，并且likeArray有length属性，并且(length为0 或 likeArray有lenght - 1这个属性)
+                return !!likeArray &amp;&amp; typeof likeArray == 'object' &amp;&amp; 'length' in likeArray &amp;&amp;
+                        ( likeArray.length === 0 || ( likeArray.length - 1) in likeArray );
+            }
+        });
+
+        // 构造函数
+        var init = jQuery.prototype.init = function ( selector ) {
+
+            // undefined、null、''、NaN
+            if ( !selector ) {
+                return this;
+            }
+
+            // 如果selector是字符串，那么不是html片段就是选择器
+            if ( typeof selector === 'string' ) {
+                // 如果selector是html片段
+                if ( jQuery.isHTML( selector ) ) {
+                    /*
+                     * 1、先根据html片段创建dom对象
+                     *   1.1、先创建一个临时的div
+                     *   1.2、设置临时div的innerTHML为html片段，这样div中就自动把html片段转换为了DOM元素
+                     *   1.3、然后把div的子节点分别添加都实例身上
+                     * 2、然后把创建好的dom对象依次添加到实例中
+                     * */
+                    var tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = selector;
+                    [].push.apply( this, tempDiv.childNodes );
+                }
+                // 否则就认为selector是选择器
+                else {
+                    // 根据selector获取元素
+                    var nodes = document.querySelectorAll( selector );
+                    // 把获取到的元素依次添加到实例中
+                    [].push.apply( this, nodes );
+                }
+            }
+
+            // 如果selector是DOM元素，那么把它直接添加实例中
+            else if ( jQuery.isDOM( selector ) ) {
+                [].push.call( this, selector );
+            }
+
+            // 如果selector是数组或伪数组，那么把其中的每一项分别添加到实例中
+            else if ( jQuery.isLikeArray( selector ) ) {
+                [].push.apply( this, selector );
+            }
+
+            // 剩余的不管了，统一添加到实例中
+            else {
+                [].push.call( this, selector );
+            }
+        };
+
+        // 为了第三方扩展(即jQ插件)
+        init.prototype = jQuery.fn;
+
+        // 对外暴漏
+        w.jQuery = w.$ = jQuery;
+
+    }( window ));
+</code></pre>
+
+<ul>
+<li>
+<p>验证:</p>
+<pre><code>console.log($(''));
+console.log($());
+</code></pre>
+
+</li>
+</ul>
+<h2>八. 支持函数</h2>
+<pre><code>    // 为了全局变量污染，把代码写到自调函数中
+    (function ( w ) {
+
+        // 为了用户使用方便，提供一个工厂函数
+        function jQuery( selector ) {
+            return new init( selector );
+        }
+
+        // 原型简写&amp;原型默认拥有的属性与方法
+        jQuery.fn = jQuery.prototype = {
+            constructor: jQuery,
+            jQ1: 111,
+            jQ2: 222
+        };
+
+        jQuery.extend = jQuery.fn.extend = function ( obj ) {
+            for ( var key in obj ) {
+                this[key] = obj[key];
+            }
+        };
+
+        // 给jQuery添加静态方法
+        jQuery.extend({
+
+            /*
+             * 判断selector是不是html片段：
+             * html片段的特点是：&lt;开头，&gt;结尾，中间夹杂着内容。
+             * 1、判断selector的第一个字符是不是&lt;
+             * 2、判断selector的结尾是不是&gt;
+             * 3、判断selector的length不能小于3
+             * */
+            isHTML: function( html ) {
+                return html[0] === '&lt;' &amp;&amp; html.charAt(html.length - 1) === '&gt;' &amp;&amp; html.length &gt;= 3;
+            },
+
+            /*
+            * 判断selector是不是DOM：
+            * DOM的特点是，都拥有nodeType属性
+            * */
+            isDOM: function( dom ) {
+                return !!dom &amp;&amp; !!dom.nodeType;
+            },
+
+            // 判断对象是不是window
+            isWindow: function( window ) {
+                return !!window &amp;&amp; window.window === window;
+            },
+
+            /*
+             * 判断selector是不是数组或伪数组：
+             * 特点：都用length属性
+             * */
+            isLikeArray: function( likeArray ) {
+
+                // 如果是函数或者window，返回false
+                if ( typeof likeArray == 'function' || jQuery.isWindow( likeArray ) ) {
+                    return false;
+                }
+
+                // 如果有likeArray，并且likeArray有length属性，并且(length为0 或 likeArray有lenght - 1这个属性)
+                return !!likeArray &amp;&amp; typeof likeArray == 'object' &amp;&amp; 'length' in likeArray &amp;&amp;
+                        ( likeArray.length === 0 || ( likeArray.length - 1) in likeArray );
+            }
+        });
+
+        // 构造函数
+        var init = jQuery.prototype.init = function ( selector ) {
+
+            // undefined、null、''、NaN
+            if ( !selector ) {
+                return this;
+            }
+
+            // 如果是函数，则放到DOMContentLoaded事件中
+            if ( typeof selector === 'function' ) {
+                if ( document.addEventListener ) {
+                    document.addEventListener('DOMContentLoaded', selector);
+                }else {
+                    document.attachEvent('onreadystatechange', function () {
+                        if ( document.readyState == 'complete' ) {
+                            selector();
+                        }
+                    });
+                }
+                [].push.call(this, document);
+            }
+
+            // 如果selector是字符串，那么不是html片段就是选择器
+            else if ( typeof selector === 'string' ) {
+                // 如果selector是html片段
+                if ( jQuery.isHTML( selector ) ) {
+                    /*
+                     * 1、先根据html片段创建dom对象
+                     *   1.1、先创建一个临时的div
+                     *   1.2、设置临时div的innerTHML为html片段，这样div中就自动把html片段转换为了DOM元素
+                     *   1.3、然后把div的子节点分别添加都实例身上
+                     * 2、然后把创建好的dom对象依次添加到实例中
+                     * */
+                    var tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = selector;
+                    [].push.apply( this, tempDiv.childNodes );
+                }
+                // 否则就认为selector是选择器
+                else {
+                    // 根据selector获取元素
+                    var nodes = document.querySelectorAll( selector );
+                    // 把获取到的元素依次添加到实例中
+                    [].push.apply( this, nodes );
+                }
+            }
+
+            // 如果selector是DOM元素，那么把它直接添加实例中
+            else if ( jQuery.isDOM( selector ) ) {
+                [].push.call( this, selector );
+            }
+
+            // 如果selector是数组或伪数组，那么把其中的每一项分别添加到实例中
+            else if ( jQuery.isLikeArray( selector ) ) {
+                [].push.apply( this, selector );
+            }
+
+            // 剩余的不管了，统一添加到实例中
+            else {
+                [].push.call( this, selector );
+            }
+        };
+
+        // 为了第三方扩展(即jQ插件)
+        init.prototype = jQuery.fn;
+
+        // 对外暴漏
+        w.jQuery = w.$ = jQuery;
+
+    }( window ));
+</code></pre>
+
+<ul>
+<li>
+<p>验证:</p>
+<p>$(function () {
+        console.log(11);
+    });
+    console.log($(function () {
+        console.log(22);
+    })); </p>
+</li>
+</ul>
+<h2>九. 其余内容</h2>
+<h3>9.1 jQuery原生选择器</h3>
+<pre><code>    // JQ返回的实例是一个伪数组对象
+    console.log($()); // 返回一个空实例对象
+    console.log($('a')); // 返回一个length为0的实例对象
+    console.log($('span')); // 返回实例对象，length为3，以下标的方式存储了所有的span
+    console.log($('div')); // 返回实例对象，length为1，以下标的方式存储了所有的div
+
+    // 如果给$传入的是html片段，$会自动把他们转换成DOM对象，然后添加到实例中
+    console.log($('&lt;div&gt;&lt;a&gt;1&lt;/a&gt;&lt;a&gt;2&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;a&gt;11&lt;/a&gt;&lt;a&gt;22&lt;/a&gt;&lt;/div&gt;').appendTo('body'));
+    console.log($('&lt;span&gt;我是span1&lt;/span&gt;&lt;span&gt;我是span2&lt;/span&gt;'));
+
+    // 如果给$传入的是DOM元素，那么把这个DOM元素添加到实例中
+    console.log($(document.getElementById('div')));
+
+    // 如果给$传入的是数组，那么把数组中每一项值添加到实例中
+    var arr = [1,2,3,4];
+    console.log($(arr));
+
+    // 如果给$传入的是伪数组，那么把数组中每一项值添加到实例中
+    var spans = document.getElementsByTagName('span');
+    console.log($(spans));
+
+    // 如果给$传入的是伪数组，那么把数组中每一项值添加到实例中
+    var obj = { 0:111, 1:222, length:2 };
+    console.log($(obj));
+
+    // 对空的处理
+    console.log($());
+    console.log($(''));
+</code></pre>
+
+<ul>
+<li>
+<p>原生选择器方法:</p>
+<blockquote>
+<p>IE8开始支持这俩方法。</p>
+<ol>
+<li>querySlector</li>
+</ol>
+<p>返回的是一个DOM元素，如果没有获取到，返回null</p>
+<ol>
+<li>querySlectorAll</li>
+</ol>
+<p>返回的是一组DOM元素( 伪数组对象 )，如果没有获取到，返回一个空的伪数组对象。</p>
+</blockquote>
+</li>
+</ul>
+<h3>9.2 构造函数与实例</h3>
+<pre><code>    function Person() {
+
+    }
+    Person.MAX_AGE = 230;
+    Person.prototype.run = function () {
+        console.log('跑');
+    }
+</code></pre>
+
+<ul>
+<li>
+<p>实例</p>
+<pre><code>var xiaofang = new Person();
+</code></pre>
+
+</li>
+<li>
+<p>实例不能使用静态方法</p>
+<pre><code>console.log(xiaofang.MAX_AGE); 
+</code></pre>
+
+</li>
+<li>
+<p>构造函数不能使用自己原型里面的东西(Function除外)</p>
+<pre><code>Person.run(); 
+</code></pre>
+
+</li>
+</ul>
+<h3>9.3 创建DOM的两种方式</h3>
+<pre><code>    // 创建方式1
+    var div = document.createElement('div');
+    var span1 = document.createElement('span');
+    span1.innerHTML = 11;
+    var span2 = document.createElement('span');
+    span2.innerHTML = 22;
+    var span3 = document.createElement('span');
+    span3.innerHTML = 33;
+    div.appendChild(span1);
+    div.appendChild(span2);
+    div.appendChild(span3);
+
+    // 创建方式2
+    var tempDiv = document.createElement('div');
+    tempDiv.innerHTML = '&lt;div&gt;&lt;span&gt;11&lt;/span&gt;&lt;span&gt;22&lt;/span&gt;&lt;span&gt;33&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;22&lt;/span&gt;&lt;/div&gt;';
+    console.log(tempDiv.childNodes[0]);
+    console.log(tempDiv.childNodes[1]);
+</code></pre>
+
+<h3>9.4 获取字符串指定位置的字符</h3>
+<ul>
+<li>
+<p>charAt:字符串中的字符从左向右索引，<strong>第一个字符</strong>的索引值为 0，<strong>最后一个字符</strong>（假设该字符位于字符串 stringName 中）的索引值为 stringName.length - 1。 如果指定的 index 值超出了该范围，则返回一个空字符串。</p>
+</li>
+<li>
+<p>charAt语法:</p>
+<pre><code>str.charAt(index)//index:0 到 字符串长度-1 的一个整数。
+</code></pre>
+
+</li>
+</ul>
+<h3>9.5 isDOM</h3>
+<pre><code>   function isDOM( dom ) {
+        /*if ( dom &amp;&amp; dom.nodeType ) {
+            return true;
+        }
+        return false;*/
+
+        // 等价于上面的代码
+        return !!dom &amp;&amp; !!dom.nodeType;
+    }
+
+    console.log(isDOM());
+    console.log(isDOM(12));
+    console.log(isDOM(document.body)); 
+</code></pre>
+
+<h3>9.6 window的length属性</h3>
+<ul>
+<li>每个iframe里面，都有属于自己的window</li>
+<li>
+<p>每个window对象里面都有length属性，代表当前window中iframe的数量</p>
+<pre><code>console.log(window.length);
+
+//判断window
+console.log(window.parent == window);
+</code></pre>
+
+</li>
+</ul>
+<h3>9.7 jQuery判断window是不是伪数组</h3>
+<pre><code>    console.log($(window)); // 并没有把window通过下标平铺添加到实例中，而是直接把window自己添加到了实例中
+    console.log($(1)); // 把1添加到实例中
+    console.log($(true)); // 把true添加到实例中
+    console.log($('abc'));  // 当做选择器去找，没找到，length为1
+    console.log($([1,2,3]));
+</code></pre>
+
+<h3>9.8 DOMContentLoaded</h3>
+<h4>9.8.1 DOMContentLoaded介绍</h4>
+<ul>
+<li>
+<p>onload：页面所有资源加载完毕后触发。</p>
+</li>
+<li>
+<p>DOMContentLoaded: DOM树构建完毕后触发。</p>
+</li>
+<li>
+<p>区别:这个事件触发比onload要快。IE9和现代浏览器都支持该事件。</p>
+<pre><code>console.log(00000);
+window.addEventListener('load', function () {
+    console.log(1111);
+});
+document.addEventListener('DOMContentLoaded', function () {
+    console.log(222);
+});
+console.log(3333);
+
+/*
+* ready可以接收多个函数，这些函数统一在DOMContentLoaded事件触发时被执行
+* 1、既然可以接收多个函数，
+* */
+function ready( fn ) {
+    document.addEventListener('DOMContentLoaded', fn);
+}
+
+// 给ready传入函数
+ready(function () {
+    console.log('传给ready的函数1');
+});
+
+ready(function () {
+    console.log('传给ready的函数2');
+});
+</code></pre>
+
+</li>
+</ul>
+<h4>9.8.2 IE兼容性</h4>
+<ul>
+<li>
+<p>1.IE8不支持DOMContentLoaded事件，但是IE8所有的页面元素都支持onreadystatechange事件。这个事件比onload要快。</p>
+<pre><code>window.attachEvent('onload', function () {
+    console.log('onload');
+});
+document.attachEvent('onreadystatechange', function () {
+    // 当readyState为complete的时候，再做其他事情
+    if ( document.readyState == 'complete' ) {
+        console.log('onreadystatechange');
+    }
+});
+
+setTimeout(function () {
+    document.attachEvent('onload', function () {
+        if ( document.readyState == 'complete' ) {
+            console.log('setTimeout');
+        }
+    });
+}, 1000);
+</code></pre>
+
+</li>
+<li>
+<p>2.jQuery中，如果传入的函数，那么会等到DOMContentLoaded之后执行</p>
+</li>
+</ul>
+<h3>9.9 children与childNodes</h3>
+<ul>
+<li>
+<p>children </p>
+<blockquote>
+<p>获取子节点，但是不包含文本节点
+这个属性个用起来比较方法，因为大多数情况下，咱们都不需要获取文本节点</p>
+</blockquote>
+</li>
+<li>
+<p>childNodes </p>
+<blockquote>
+<p>获取所有的子节点</p>
+</blockquote>
+</li>
+</ul>
+<h3>9.10 jQuery中延迟传入函数</h3>
+<pre><code>    $(function () {
+        console.log('传入$的函数');
+    });
+    setTimeout(function () {
+        $(function () {
+            console.log('过一会传入$的函数');
+        });
+    }, 3000);
+</code></pre>
+
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
