@@ -1,0 +1,70 @@
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border: 0;
+}
+
+.all {
+    width: 500px;
+    height: 200px;
+    padding: 7px;
+    border: 1px solid #ccc;
+    margin: 100px auto;
+    position: relative;
+}
+
+.screen {
+    width: 500px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.screen li {
+    width: 500px;
+    height: 200px;
+    overflow: hidden;
+    float: left;
+}
+
+.screen ul {
+    position: absolute;
+    left: 0;
+    top: 0px;
+    width: 3000px;
+}
+
+.all ol {
+    position: absolute;
+    left: 50%;
+    margin-left: -80px;
+    bottom: 10px;
+}
+
+.all ol li {
+    float: left;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border: 1px solid #ccc;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.all ol li.current {
+    background: #999;
+}
+
+.all ul li div{
+    float: left;
+}
+
+.imgShow{
+    display: block;
+}
+
+.imgHide{
+    display: none;
+}
