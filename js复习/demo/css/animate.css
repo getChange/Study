@@ -1,0 +1,61 @@
+.latelyGuess .rank {
+    width: 520px;
+    height: 520px;
+    background-color: #fff;
+    margin: 150px auto;
+    position: relative;
+}
+
+.latelyGuess .rank .title {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.latelyGuess .rank .title span {
+    margin: 0 10px;
+    float: left;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid #000000;
+}
+
+
+.latelyGuess .rank .title span.current div{
+    display: block;
+}
+
+.latelyGuess .rank .record {
+    display: none;
+    padding: 0 1rem;
+    position: relative;
+}
+
+
+.latelyGuess .rank .record ul {
+
+}
+
+.latelyGuess .rank .record li {
+    float: left;
+}
+
+.latelyGuess .rank .current {
+    color: #333;
+    background-color: #333;
+    display: block;
+}
+
+.latelyGuess .rank .selected {
+    display: block;
+}
+
+.imgHide{
+    display: none;
+}
+
+.imgShow{
+    display: block;
+}
