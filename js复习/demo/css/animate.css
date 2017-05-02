@@ -19,7 +19,7 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    border: 1px solid #000000;
+    border: 1px solid #595757;
 }
 
 
@@ -28,6 +28,8 @@
 }
 
 .latelyGuess .rank .record {
+    width: 520px;
+    height: 520px;
     display: none;
     padding: 0 1rem;
     position: relative;
@@ -38,13 +40,13 @@
 
 }
 
-.latelyGuess .rank .record li {
+.latelyGuess .rank .record li img {
     float: left;
 }
 
 .latelyGuess .rank .current {
-    color: #333;
-    background-color: #333;
+    color: #595757;
+    background-color: #595757;
     display: block;
 }
 

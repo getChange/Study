@@ -4,8 +4,18 @@ $(function () {
         var idx = $(this).index();
         $(".rank .record").eq(idx).addClass("selected").siblings().removeClass("selected");
     });
-    $("ul img").click(function () {
-        console.log($(this))
-        $(this).addClass("imgHide").siblings().removeClass("imgHide");
+    var timer = null;
+    $("ul img:even").on("click", function (e) {
+        e.preventDefault();
+        var that = $(this);
+        that.css("display", "none").siblings().css("display", "block");
+        that.prop("disable", true);
+        (function (that) {
+            timer = setTimeout(function () {
+                console.log(that);
+                that.css("display", "block").siblings().css("display", "none");
+            }, 3000);
+        }(that));
+
     });
 });
