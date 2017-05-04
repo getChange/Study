@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <my-component></my-component>
+</div>
+<script>
+    //确保在初始化根实例之前注册组件
+    //组件在注册之后便可以在父实例的模块中以自定义元素`<my-component></my-component>`形式使用
+    Vue.component("my-component",{
+        template:'<div>A custom component!</div>'
+    })
+
+    var app = new Vue({
+        el:"#app",
+        data:{
+
+        }
+    })
+</script>
+</body>
+</html>
