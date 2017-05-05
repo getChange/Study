@@ -55,11 +55,19 @@
         return parseInt(x,10) === x;
     }
     //ES6 静态方法 `isInteger()`
-    Number.isInteger(25) // true
-    Number.isInteger(25.0) // true
-    Number.isInteger(25.1) // false
-    Number.isInteger("15") // false
-    Number.isInteger(true) // false
+//    Number.isInteger(25) // true
+//    Number.isInteger(25.0) // true
+//    Number.isInteger(25.1) // false
+//    Number.isInteger("15") // false
+//    Number.isInteger(true) // false
+
+
+    (function() {
+        console.log(1);
+        setTimeout(function(){console.log(2)}, 1000);
+        setTimeout(function(){console.log(3)}, 0);
+        console.log(4);
+    })();
 </script>
 </body>
 </html>
