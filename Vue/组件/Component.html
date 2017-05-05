@@ -9,18 +9,43 @@
 <div id="app">
     <my-component></my-component>
 </div>
+<div id="app2">
+    <simple-counter></simple-counter>
+    <simple-counter></simple-counter>
+    <simple-counter></simple-counter>
+    <child message="Hello!!!"></child>
+</div>
+
+
 <script>
     //确保在初始化根实例之前注册组件
     //组件在注册之后便可以在父实例的模块中以自定义元素`<my-component></my-component>`形式使用
-    Vue.component("my-component",{
-        template:'<div>A custom component!</div>'
+    Vue.component("my-component", {
+        template: '<div>A custom component!</div>'
+    })
+
+    Vue.component("child",{
+        props:['message'],
+        template:"<span>{{message}}</span>"
+    })
+    var data = {counter: 0}
+
+    Vue.component("simple-counter", {
+        template: '<button v-on:click="counter +=1">{{counter}}</button>',
+        data: function () {
+            return {
+                counter: 0
+            };
+        }
+    })
+
+    new Vue({
+        el: "#app2"
     })
 
     var app = new Vue({
-        el:"#app",
-        data:{
-
-        }
+        el: "#app",
+        data: {}
     })
 </script>
 </body>
