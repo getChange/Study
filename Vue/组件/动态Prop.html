@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态Props</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" placeholder="Message from parent" v-model="parentMsg">
+    <br>
+    <my-component v-bind:my-message="parentMsg"></my-component>
+</div>
+
+<script>
+    Vue.component("my-component", {
+        props: ['myMessage'],
+        template: "<p>{{myMessage}}</p>"
+    })
+    new Vue({
+        el: "#app",
+        data: {
+            parentMsg: "Message from parent"
+        }
+    })
+</script>
+</body>
+</html>
