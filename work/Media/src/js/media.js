@@ -8,7 +8,7 @@
  * 
  */
 ;
-(function () {
+(function() {
 
     var zyMedia = {};
 
@@ -62,29 +62,25 @@
 
 
     // Feature detect
-    (function (t) {
+    (function(t) {
         var ua = window.navigator.userAgent.toLowerCase();
         var v = document.createElement('video');
 
-        t.isiOS = /iphone|ipod|ipad/i.test(ua) && !window.MSStream;
-        t.isAndroid = /android/i.test(ua) && !window.MSStream;
         t.isBustedAndroid = /android 2\.[12]/i.test(ua);
         t.isChromium = /chromium/i.test(ua);
 
         t.hasTouch = 'ontouchstart' in window;
         t.supportsCanPlayType = typeof v.canPlayType !== 'undefined';
 
+        // Detect playsinline
+        t.isPlaysInline = matchMedia('(-webkit-video-playable-inline)').matches;
         // Vendor for no big Play button
         t.isVendorBigPlay = /iphone/i.test(ua) && !window.MSStream;
         // Vendor for no controls bar
         t.isVendorControls = /baidu/i.test(ua);
-        // Vendor and app for fullscreen button
-        t.isVendorFullscreen = /micromessenger|weibo/i.test(ua);
-        // Vendor for autoplay be disabled, iOS device and 昂达
-        t.isVendorAutoplay = /v819mini/i.test(ua) || t.isiOS;
         // Prefix of current working browser
 
-        t.nativeFullscreenPrefix = (function () {
+        t.nativeFullscreenPrefix = (function() {
             if (v.requestFullScreen) {
                 return '';
             } else if (v.webkitRequestFullScreen) {
@@ -121,7 +117,7 @@
 
     // Get style
     function _css(el, property) {
-        return parseInt(el.style[property] || getComputedStyle(el, null).getPropertyValue(property))
+        return parseInt(getComputedStyle(el, null).getPropertyValue(property))
     }
 
     // Has Class
@@ -267,13 +263,13 @@
 
         // For Android which doesn't implement the canPlayType function (always returns '')
         if (zyMedia.features.isBustedAndroid) {
-            media.canPlayType = function (type) {
+            media.canPlayType = function(type) {
                 return /video\/(mp4|m4v)/i.test(type) ? 'maybe' : ''
             };
         }
         // For Chromium to specify natively supported video codecs (i.e. WebM and Theora)
         if (zyMedia.features.isChromium) {
-            media.canPlayType = function (type) {
+            media.canPlayType = function(type) {
                 return /video\/(webm|ogv|ogg)/i.test(type) ? 'maybe' : ''
             };
         }
@@ -302,7 +298,7 @@
 
 
     // Constructor, MediaPlayer
-    zyMedia.MediaPlayer = function (media, option) {
+    zyMedia.MediaPlayer = function(media, option) {
         var t = this;
         var i;
 
@@ -336,8 +332,7 @@
             for (i in config) {
                 t.options[i] = config[i]
             }
-        } catch (exp) {
-        }
+        } catch (exp) {}
 
         // Autoplay be disabled
         if (t.options.autoplay) {
@@ -372,16 +367,16 @@
         isControlsVisible: true,
         isFullScreen: false,
 
-        setPlayerSize: function (width, height) {
+        setPlayerSize: function(width, height) {
             var t = this;
-            var _W = _css(t.container, 'width');
-            // The width is not more than container width
-            if (width > _W) {
-                t.width = _W
+
+            // Set t.width
+            if (width == undefined || width == '100%') {
+                t.width = _css(t.container, 'width')
             }
 
-            // Set height for video
-            if (t.enableAutoSize) {
+            // Set t.height
+            if (height == undefined || height == 'auto') {
                 var nativeWidth = t.media.videoWidth;
                 var nativeHeight = t.media.videoHeight;
                 // Uniform scale
@@ -390,15 +385,14 @@
                         t.options.aspectRation = nativeWidth / nativeHeight
                     }
                 }
-
-                t.height = parseInt(_W / t.options.aspectRation)
+                t.height = parseInt(t.width / t.options.aspectRation)
             }
 
-            t.container.style.width = t.width + 'px';
+            t.media.style.width = t.width + 'px';
             t.media.style.height = t.container.style.height = t.height + 'px'
         },
 
-        showControls: function () {
+        showControls: function() {
             var t = this;
 
             if (t.isControlsVisible)
@@ -413,7 +407,7 @@
             t.isControlsVisible = true;
         },
 
-        hideControls: function () {
+        hideControls: function() {
             var t = this;
 
             if (!t.isControlsVisible || t.options.alwaysShowControls)
@@ -428,16 +422,16 @@
             t.isControlsVisible = false
         },
 
-        setControlsTimer: function (timeout) {
+        setControlsTimer: function(timeout) {
             var t = this;
             clearTimeout(t.controlsTimer);
 
-            t.controlsTimer = setTimeout(function () {
+            t.controlsTimer = setTimeout(function() {
                 t.hideControls()
             }, timeout);
         },
 
-        updateTimeline: function (e) {
+        updateTimeline: function(e) {
             var t = this;
             var el = (e !== undefined) ? e.target : t.media;
             var percent = null;
@@ -462,12 +456,11 @@
                 t.loaded.style.width = _W * percent + 'px';
                 // Adjust when pause change from playing (魅族)
                 if (t.media.paused) {
-                    setTimeout(function () {
+                    setTimeout(function() {
                         t.loaded.style.width = _W * percent + 'px';
                         t.updateTimeline()
                     }, 300)
-                }
-                ;
+                };
             }
 
             if (t.media.currentTime !== undefined && t.media.duration) {
@@ -478,7 +471,7 @@
             }
         },
 
-        updateTime: function () {
+        updateTime: function() {
             var t = this;
             t.currentTime.innerHTML = timeFormat(t.media.currentTime, t.options);
 
@@ -488,12 +481,8 @@
             }
         },
 
-        enterFullScreen: function () {
+        enterFullScreen: function() {
             var t = this;
-            // Store size
-            t.normalHeight = _css(t.container, 'height');
-            t.normalWidth = _css(t.container, 'width');
-
             // Attempt to do true fullscreen
             if (zyMedia.features.nativeFullscreenPrefix != '-') {
                 t.container[zyMedia.features.nativeFullscreenPrefix + 'RequestFullScreen']()
@@ -512,7 +501,7 @@
             t.isFullScreen = true
         },
 
-        exitFullScreen: function () {
+        exitFullScreen: function() {
             var t = this;
             // Come out of native fullscreen
             if (isInFullScreenMode() || t.isFullScreen) {
@@ -523,14 +512,15 @@
                 }
             }
             _removeClass(document.documentElement, 'zy_fullscreen');
-            t.media.style.width = t.container.style.width = t.normalWidth + 'px';
-            t.media.style.height = t.container.style.height = t.normalHeight + 'px';
+            t.media.style.width = t.width + 'px';
+            t.container.style.width = '';
+            t.media.style.height = t.container.style.height = t.height + 'px';
             _removeClass(t.fullscreenBtn, 'zy_unfullscreen');
             t.isFullScreen = false
         },
 
         // Media container
-        buildContainer: function () {
+        buildContainer: function() {
             var t = this;
 
             t.container = t.media.parentNode;
@@ -543,6 +533,10 @@
             t.title = t.container.querySelector('.zy_title');
 
             t.media.setAttribute('preload', t.options.preload);
+            // iOS's playsinline, https://webkit.org/blog/6784/new-video-policies-for-ios/
+            if (t.isPlaysInline) {
+                t.media.setAttribute('playsinline', '')
+            }
             t.container.querySelector('.zy_wrap').appendChild(t.media);
             t.controls = t.container.querySelector('.zy_controls');
 
@@ -558,12 +552,12 @@
         },
 
         // Play/pause button
-        buildPlaypause: function () {
+        buildPlaypause: function() {
             var t = this;
             var play = document.createElement('div');
-            play.className = 'zy_playpause_btn zy_play';
+            play.className = 'zy_playpause_btn_play';
             t.controls.appendChild(play);
-            play.addEventListener('click', function () {
+            play.addEventListener('click', function() {
                 t.media.isUserClick = true;
 
                 if (t.media.paused) {
@@ -580,34 +574,32 @@
             function togglePlayPause(s) {
                 if (t.media.isUserClick || t.options.autoplay) {
                     if ('play' === s) {
-                        _removeClass(play, 'zy_play');
-                        _addClass(play, 'zy_pause')
+                        play.className = 'zy_playpause_btn_pause'
                     } else {
-                        _removeClass(play, 'zy_pause');
-                        _addClass(play, 'zy_play')
+                        play.className = 'zy_playpause_btn_play'
                     }
                 }
             };
 
-            t.media.addEventListener('play', function () {
+            t.media.addEventListener('play', function() {
                 togglePlayPause('play')
             });
 
-            t.media.addEventListener('playing', function () {
+            t.media.addEventListener('playing', function() {
                 togglePlayPause('play')
             });
 
-            t.media.addEventListener('pause', function () {
+            t.media.addEventListener('pause', function() {
                 togglePlayPause('pse')
             });
 
-            t.media.addEventListener('paused', function () {
+            t.media.addEventListener('paused', function() {
                 togglePlayPause('pse')
             });
         },
 
         // Timeline
-        buildTimeline: function () {
+        buildTimeline: function() {
             var t = this;
             var timeline = document.createElement('div');
             timeline.className = 'zy_timeline';
@@ -630,7 +622,7 @@
             var _W = _css(t.slider, 'width');
             var _W_HANDLE_HALF = _css(t.handle, 'width') / 2;
 
-            var pointerMove = function (e) {
+            var pointerMove = function(e) {
                 var _time = 0;
                 var x;
 
@@ -661,49 +653,49 @@
             };
             // Handle clicks
             if (zyMedia.features.hasTouch) {
-                t.slider.addEventListener('touchstart', function (e) {
+                t.slider.addEventListener('touchstart', function(e) {
                     isPointerDown = true;
                     pointerMove(e);
                     _X = t.slider.offsetLeft;
                     _W = _css(t.slider, 'width');
                     t.slider.addEventListener('touchmove', pointerMove);
-                    t.slider.addEventListener('touchend', function (e) {
+                    t.slider.addEventListener('touchend', function(e) {
                         isPointerDown = false;
                         t.slider.removeEventListener('touchmove', pointerMove)
                     });
                 });
             } else {
-                t.slider.addEventListener('mousedown', function (e) {
+                t.slider.addEventListener('mousedown', function(e) {
                     isPointerDown = true;
                     pointerMove(e);
                     _X = t.slider.offsetLeft;
                     _W = _css(t.slider, 'width');
                     t.slider.addEventListener('mousemove', pointerMove);
-                    t.slider.addEventListener('mouseup', function (e) {
+                    t.slider.addEventListener('mouseup', function(e) {
                         isPointerDown = false;
                         t.slider.addEventListener('mousemove', pointerMove)
                     });
                 });
             }
 
-            t.slider.addEventListener('mouseenter', function (e) {
+            t.slider.addEventListener('mouseenter', function(e) {
                 t.slider.addEventListener('mousemove', pointerMove);
             });
 
-            t.slider.addEventListener('mouseleave', function (e) {
+            t.slider.addEventListener('mouseleave', function(e) {
                 if (!isPointerDown) {
                     t.slider.removeEventListener('mousemove', pointerMove)
                 }
             });
 
             //4Hz ~ 66Hz, no longer than 250ms
-            t.media.addEventListener('timeupdate', function (e) {
+            t.media.addEventListener('timeupdate', function(e) {
                 t.updateTimeline(e)
             });
         },
 
         // Current and duration time 00:00/00:00
-        buildTime: function () {
+        buildTime: function() {
             var t = this;
 
             var time = document.createElement('div');
@@ -720,18 +712,18 @@
             t.durationDuration = time.children[1];
 
             //4Hz ~ 66Hz, no longer than 250ms
-            t.media.addEventListener('timeupdate', function () {
+            t.media.addEventListener('timeupdate', function() {
                 t.updateTime()
             });
         },
 
         // Fullscreen button
-        buildFullscreen: function () {
+        buildFullscreen: function() {
             var t = this;
             // Native events
             if (zyMedia.features.nativeFullscreenPrefix != '-') {
                 // Chrome doesn't alays fire this in an iframe
-                var func = function (e) {
+                var func = function(e) {
                     if (t.isFullScreen) {
                         if (!isInFullScreenMode()) {
                             t.exitFullScreen()
@@ -746,7 +738,7 @@
             t.fullscreenBtn.className = 'zy_fullscreen_btn';
             t.controls.appendChild(t.fullscreenBtn);
 
-            t.fullscreenBtn.addEventListener('click', function () {
+            t.fullscreenBtn.addEventListener('click', function() {
                 if ((zyMedia.features.nativeFullscreenPrefix != '-' && isInFullScreenMode()) || t.isFullScreen) {
                     t.exitFullScreen()
                 } else {
@@ -756,7 +748,7 @@
         },
 
         // bigPlay, loading and error info
-        buildDec: function () {
+        buildDec: function() {
             var t = this;
 
             var loading = document.createElement('div');
@@ -775,7 +767,7 @@
             if (!zyMedia.features.isVendorBigPlay) {
                 bigPlay.className = 'dec_play';
                 t.container.appendChild(bigPlay);
-                bigPlay.addEventListener('click', function () {
+                bigPlay.addEventListener('click', function() {
                     // For some device trigger 'play' event
                     t.media.isUserClick = true;
 
@@ -787,7 +779,7 @@
                 });
             }
 
-            t.media.addEventListener('play', function () {
+            t.media.addEventListener('play', function() {
                 // Only for user click
                 if (t.media.isUserClick) {
                     bigPlay.style.display = 'none';
@@ -796,29 +788,29 @@
                 }
             });
 
-            t.media.addEventListener('playing', function () {
+            t.media.addEventListener('playing', function() {
                 bigPlay.style.display = 'none';
                 loading.style.display = 'none';
                 t.buffering.style.display = 'none';
                 error.style.display = 'none';
             });
 
-            t.media.addEventListener('seeking', function () {
+            t.media.addEventListener('seeking', function() {
                 loading.style.display = '';
                 bigPlay.style.display = 'none';
                 t.buffering.style.display = '';
             });
 
-            t.media.addEventListener('seeked', function () {
+            t.media.addEventListener('seeked', function() {
                 loading.style.display = 'none';
                 t.buffering.style.display = 'none';
             });
 
-            t.media.addEventListener('pause', function () {
+            t.media.addEventListener('pause', function() {
                 bigPlay.style.display = ''
             });
 
-            t.media.addEventListener('waiting', function () {
+            t.media.addEventListener('waiting', function() {
                 loading.style.display = '';
                 bigPlay.style.display = 'none';
                 t.buffering.style.display = '';
@@ -828,7 +820,7 @@
             // some Android device can't fire 'canplay' or irregular working when use 'createEvent' to trigger 'canplay' (读者i800)
 
             // Error handling
-            t.media.addEventListener('error', function (e) {
+            t.media.addEventListener('error', function(e) {
                 loading.style.display = 'none';
                 bigPlay.style.display = '';
                 t.buffering.style.display = 'none';
@@ -841,12 +833,12 @@
             });
         },
 
-        init: function () {
+        init: function() {
             var t = this;
 
             // Build
             var batch = ['Container', 'Playpause', 'Timeline', 'Time'];
-            if (t.options.enableFullscreen && !zyMedia.features.isVendorFullscreen && t.isVideo) {
+            if (t.options.enableFullscreen && t.isVideo) {
                 batch.push('Fullscreen')
             }
 
@@ -857,14 +849,13 @@
             for (var i = 0; i < batch.length; i++) {
                 try {
                     t['build' + batch[i]]()
-                } catch (exp) {
-                }
+                } catch (exp) {}
             }
 
             // Controls fade
             if (t.isVideo) {
                 if (zyMedia.features.hasTouch) {
-                    t.media.addEventListener('click', function () {
+                    t.media.addEventListener('click', function() {
                         // Toggle controls
                         if (t.isControlsVisible) {
                             t.hideControls()
@@ -878,7 +869,7 @@
                     });
                 } else {
                     // Click to play/pause
-                    t.media.addEventListener('click', function () {
+                    t.media.addEventListener('click', function() {
                         if (t.media.paused) {
                             t.media.play()
                         } else {
@@ -887,7 +878,7 @@
                     });
 
                     // Show/hide controls
-                    t.container.addEventListener('mouseenter', function () {
+                    t.container.addEventListener('mouseenter', function() {
                         t.showControls();
 
                         if (!t.options.alwaysShowControls) {
@@ -895,7 +886,7 @@
                         }
                     });
 
-                    t.container.addEventListener('mousemove', function () {
+                    t.container.addEventListener('mousemove', function() {
                         t.showControls();
 
                         if (!t.options.alwaysShowControls) {
@@ -908,10 +899,10 @@
                     t.hideControls()
                 }
 
-                t.media.addEventListener('loadedmetadata', function (e) {
+                t.media.addEventListener('loadedmetadata', function(e) {
                     if (t.enableAutoSize) {
                         // For more properly videoWidth or videoHeight of HM 1SW(小米), QQ browser is 0
-                        setTimeout(function () {
+                        setTimeout(function() {
                             if (!isNaN(t.media.videoHeight)) {
                                 t.setPlayerSize()
                             }
@@ -921,7 +912,7 @@
 
             }
 
-            t.media.addEventListener('play', function () {
+            t.media.addEventListener('play', function() {
                 var p;
 
                 for (var i in zyMedia.players) {
@@ -930,19 +921,18 @@
                     if (p.id != t.id && t.options.pauseOtherPlayers && !p.paused && !p.ended) {
                         try {
                             p.media.pause()
-                        } catch (exp) {
-                        }
+                        } catch (exp) {}
                     }
                 }
             });
 
             // Pause all media when page's visibilityState is hidden
             if (t.options.enableVisibilityState && zyMedia.features.vChange) {
-                document.addEventListener(zyMedia.features.vChange, function () {
+                document.addEventListener(zyMedia.features.vChange, function() {
                     if (document[zyMedia.features.vState] == 'hidden') {
                         // 100ms time for switching between app's webviews
-                        setTimeout(function () {
-                            [].forEach.call(document.querySelectorAll('video, audio'), function (el) {
+                        setTimeout(function() {
+                            [].forEach.call(document.querySelectorAll('video, audio'), function(el) {
                                 el.pause()
                             })
                         }, 100)
@@ -954,13 +944,16 @@
             }
 
             // Adjust controls when orientation change, 500ms for Sumsung tablet
-            window.addEventListener('orientationchange', function () {
-                setTimeout(function () {
-                    t.setPlayerSize()
-                }, 500)
+            window.addEventListener('orientationchange', function() {
+                // Ignore orientation in fullscreen status
+                if(!isInFullScreenMode() && !t.isFullScreen){
+                    setTimeout(function() {
+                        t.setPlayerSize()
+                    }, 500)
+                }
             });
 
-            t.media.addEventListener('ended', function (e) {
+            t.media.addEventListener('ended', function(e) {
                 t.media.currentTime = 0;
 
                 if (t.options.autoLoop) {
@@ -968,7 +961,7 @@
                 } else {
                     // Fixing an Android stock browser bug, where "seeked" isn't fired correctly after ending the video and jumping to the beginning
                     if (t.isVideo) {
-                        setTimeout(function () {
+                        setTimeout(function() {
                             t.container.querySelector('.dec_loading').style.display = 'none'
                         }, 20)
                     }
@@ -979,7 +972,7 @@
                 t.updateTimeline(e)
             });
 
-            t.media.addEventListener('loadedmetadata', function (e) {
+            t.media.addEventListener('loadedmetadata', function(e) {
                 t.updateTime()
             });
 
@@ -997,9 +990,9 @@
 
 
     // String or node
-    window.zymedia = function (selector, options) {
+    window.zymedia = function(selector, options) {
         if (typeof selector === 'string') {
-            [].forEach.call(document.querySelectorAll(selector), function (el) {
+            [].forEach.call(document.querySelectorAll(selector), function(el) {
                 new zyMedia.MediaPlayer(el, options)
             });
         } else {

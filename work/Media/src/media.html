@@ -9,39 +9,6 @@
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/media.css">
     <link rel="stylesheet" href="./css/mediaWord.css">
-    <script>
-        var MP = {
-            platform: {
-                iphone: 0,
-                android: 1            },
-            DOWNLOAD_ADDRESS: 'https://itunes.apple.com/cn/app/id847334708?mt=8',
-            MP_EMOTAGS_VOICE:2,
-            MP_EMOTAGS_TEXT: 1,
-            currentPlatform:  0,
-            isLogin: 0        };
-        MP.supperUniversalLink = supperUniversalLinkFn();
-        function supperUniversalLinkFn() {
-            var osversion = navigator.userAgent.match(/iPhone OS (\d*)/);
-            if (osversion && osversion[1] >= 9) {
-                return true;
-            }
-            return false;
-        }
-        MP.callApp = function(scheme) {
-            if(!MP.supperUniversalLink) {
-                var currentUrl = document.location.href;
-                if(document.referrer.indexOf(currentUrl) < 0){
-                    var iframe = document.createElement('iframe');
-                    iframe.style.display = 'none';
-                    iframe.src = scheme;
-                    document.body.appendChild(iframe);
-                }
-            }
-        }
-
-        function redirect(a,b) {if(a&&!b)location.href = a;if(a&&b)window.open(a)}
-        MP.redirect = redirect;
-    </script>
 </head>
 <body>
 <div class="box">
@@ -53,10 +20,6 @@
         <input type="hidden" name="url"
                value="https://i.snssdk.com/video/urls/v/1/toutiao/mp4/2956488b94ca459c9678286bd500ce32?r=9450359030770192&amp;s=3044697634">
     </div>
-    <script type="text/javascript">
-        MP.callApp('jnvideoapp://video?type=1&dataId=f23cd72ce3761667&gameId=1');
-    </script>
-    <button class="meipai-player">点击</button>
     <!--视频标题-->
     <div class="video-title">
         <div class="title">S6镜头下之美:发现隐秘的电竞的魅力</div>
@@ -265,24 +228,5 @@
 <script src="./js/media.js"></script>
 <script src="./js/jquery-3.1.1.js"></script>
 <script src="./js/getUrl.js"></script>
-<script>
-    $(function() {
-        $(".meipai-player").on('click', function() {
-            if(MP.supperUniversalLink) {
-                var $this = $(this);
-                //MP.redirectToHref($this);
-                setTimeout(function() {
-                    MP.redirect("http://a.app.qq.com/o/simple.jsp?pkgname=com.meitu.meipaimv&g_f=995036");
-                });
-                return false;
-            } else {
-                setTimeout(function() {
-                    location.href = 'https://itunes.apple.com/cn/app/id847334708?ls=1&mt=8';
-                }, 200);
-            }
-        });
-
-    });
-</script>
 </body>
 </html>

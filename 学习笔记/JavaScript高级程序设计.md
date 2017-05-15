@@ -175,4 +175,57 @@ console.log( num1 == num2); //false
 ```
 - 4。数值转换:非数值转换为数值 => Number()/parseInt()/parseFloat();   
 
-## 第六章 面向对象
+## 第六章 面向对象的程序设计
+### 6.1 理解对象
+
+#### 6.1.1 属性类型
+
+#### 6.1.2 定义多个属性
+
+### 6.2 创建对象 工厂模式(封装特定接口创建对象) => 构造函数魔术
+- `Object`构造函数或对象字面量都可以用来创建单个对象。缺点:使用同一个接口创建很多对象,会产生大量的重复代码。
+
+#### 6.2.1 工厂模式
+- 抽象的创建具体对象的过程，用函数来封装以特定接口创建对象的细节
+```javascript
+function createPerson(name,age,job) {
+    var o = new Object();
+    o.name = name;
+    o.age = age;
+    o.job = job;
+    o.say = function() {
+        console.log("hello");
+    };
+    return o;
+} 
+
+var person1 = createPerson("Jhon",29,"Web Engineer");
+```
+- 函数`createPerson()`能根据接受的参数来构建一个包含所有必要信息的`Person`对象
+- **缺点**：没办法解决对象识别的问题（怎样知道一个对象的类型）
+
+#### 6.2.2 构造函数模式
+- 创建自定义构造函数，定义自定义对象类型的属性和方法。
+```javascript
+//构造函数重写工厂函数
+function Person(name,age,job) {
+    this.name = name;
+    this.age = age;
+    this.job = job;
+    this.say = function() {
+        console.log(this.name);
+    };
+}
+
+var person1 = new Person("Jhon",29,"Web Engineer");
+```
+- 与工厂函数的不同之处：
+    - 没有显示地创建对象；
+    - 直接将属性和方法赋给了`this`对象；
+    - 没有`return`语句；
+- 构造函数始终都应该以一个大写字母开头，非构造函数则应该以一个小写字母开头；
+- 要创建`Person`的新实例，必须使用`new`操作符
+    - 1.创建一个新对象；
+    - 2.将构造函数的作用域赋给新对象（因此`this`指向了这个新对象）；
+    - 3.执行构造函数中的代码（为这个新对象添加属性）；
+    - 4.返回新对象    
