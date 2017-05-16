@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function destroyer(arr) {
+        var args = Array.prototype.slice.call(arguments);
+        var newArr = [];
+        args.filter(function (val) {
+            for (var i = 1; i < args.length; i++) {
+                console.log(val);
+                if(args[0].indexOf(args[i])<-1){
+                    newArr.push(args[i]);
+                }
+            }
+        });
+
+
+    }
+
+    destroyer([3, 5, 1, 2, 2], 2, 3, 5);
+</script>
+</body>
+</html>

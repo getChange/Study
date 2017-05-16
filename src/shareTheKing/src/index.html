@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html class=" js-no-overflow-scrolling">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="max-age=0"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>滴滴一下，王者驾到</title>
+    <link rel="stylesheet" type="text/css" href="./css/H5FullscreenPage.css">
+    <link rel="stylesheet" type="text/css" href="./css/page-animation.css">
+    <link rel="stylesheet" type="text/css" href="./css/imagesStyle.css">
+    <link rel="stylesheet" type="text/css" href="./css/zy.media.css">
+    <style type="text/css">
+        html, body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body class="H5FullscreenPage">
+<!--loading page-->
+<div class="loader">
+    <div class="loader-content">
+        <img src="./images/loading.gif" alt="Loader" class="loader-loader"/>
+    </div>
+</div>
+<div class="H5FullscreenPage-wrap">
+    <div class="item item1">
+        <div class="part part1 fadeIn" data-delay="1000">
+            <img src="./images/1-1.png" alt="">
+        </div>
+        <div class="part part2 fadeIn" data-delay="2000">
+            <img src="./images/basic-1.png" alt="">
+            <img src="./images/basic-2.png" alt="">
+        </div>
+    </div>
+    <div class="item item2">
+        <div class="part part1 slideRight" data-delay="1000">
+            <img src="./images/2-1.png" alt="">
+        </div>
+        <div class="part part2 slideLeft" data-delay="2000">
+            <img src="./images/basic-1.png" alt="">
+            <img src="./images/basic-2.png" alt="">
+        </div>
+    </div>
+    <div class="item item3">
+        <div class="part part1 slideUp" data-delay="1000">
+            <img src="./images/3-1.png" alt="">
+        </div>
+        <div class="part part2 slideDown" data-delay="2000">
+            <img src="./images/basic-1.png" alt="">
+            <img src="./images/basic-2.png" alt="">
+        </div>
+    </div>
+    <div class="item item4">
+        <div class="part part1">
+            <div class="mediaVideo">
+                <video src="./media/test.mp4" controls></video>
+            </div>
+        </div>
+        <div class="part part2 slideDown" data-delay="2000">
+            <img src="./images/basic-1.png" alt="">
+            <img src="./images/4-1.png" alt="">
+            <img src="./images/4-2.png" alt="">
+        </div>
+    </div>
+</div>
+<div id="MoblileR" class="mob-con">
+    <div class="mob-cen">
+        <i></i>
+        <div>为了更好的体验，请将手机/平板竖过来</div>
+    </div>
+</div>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="http://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+<script type="text/javascript" src="./js/H5FullscreenPage.js"></script>
+<script type="text/javascript">
+    //强制加载首屏等待
+    window.onload = function () {
+        setTimeout(function () {
+            var loader = document.getElementsByClassName("loader")[0];
+            loader.className = "loader fadeout";//使用渐隐的方法淡出loading page
+            setTimeout(function () {
+                loader.style.display = "none"
+            }, 1000)
+        }, 500)//强制显示loading page
+    }
+
+    //修改分享内容
+    var ua = window.navigator.userAgent.toLowerCase();
+    if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+        document.title = '滴滴王者荣耀终于来了，滴滴一下，大神驾到，我看谁还说我是最坑队友！！';
+    }
+
+    //fullpage默认配置以及视频播放器
+    $(function () {
+        H5FullscreenPage.init({
+            'type': 5,
+            'pageShow': function (dom) {
+
+            }, 'pageHide': function (dom) {
+                //console.log(dom);
+            },
+            'useMusic': {
+                'autoPlay': true,
+                'loopPlay': true,
+                'src': "./media/victory.mp3"
+            }
+        });
+
+        $(" video").on("play", function () {
+            $(".music").toggleClass("play");
+            var audio = document.getElementById('audio');
+            audio.pause();
+        });
+        $(" video").on("pause", function () {
+            $(".music").toggleClass("play");
+            var audio = document.getElementById('audio');
+            audio.play();
+        });
+    })
+</script>
+<script>
+    //判断屏幕横屏
+    function oMobl() {
+        if (document.documentElement.clientHeight >= document.documentElement.clientWidth) {
+            return "protrait";
+        } else {
+            return "landscape";
+        }
+    }
+    //显示实例提示
+    function oMobx() {
+        var MoblieR = document.getElementById("MoblileR");
+        var oMobs = oMobl();
+        if (oMobs == "protrait") {
+            MoblieR.style.display = "none";
+        } else {
+            MoblieR.style.display = "block";
+        }
+    }
+    function oInit() {
+        oMobx();
+        window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function () {
+            setTimeout(oMobx, 200);
+        })
+    }
+    oInit();
+</script>
+</body>
+</html>
+

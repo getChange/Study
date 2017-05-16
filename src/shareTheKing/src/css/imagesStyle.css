@@ -1,0 +1,275 @@
+.loader {
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    text-align: center;
+    /* loader页面消失采用渐隐的方式*/
+    -webkit-transition: opacity 1s ease;
+    -moz-transition: opacity 1s ease;
+    -o-transition: opacity 1s ease;
+    transition: opacity 1s ease;
+}
+
+/* 使用base64编码嵌入加载的logo */
+.loader-content {
+    display: block;
+    position: relative;
+    padding-top: 50px;
+    top: 30%;
+
+}
+
+.fadeout {
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+/* logo出现动画 */
+@-webkit-keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0)
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0)
+    }
+}
+
+/*横屏提示页面*/
+
+.mob-con {
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #32373b;
+    z-index: 9990;
+}
+
+.mob-cen {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+.mob-cen i {
+    margin: auto;
+    display: block;
+    width: 128px;
+    height: 194px;
+    background: url("../images/landscape.png");
+    background-size: 128px 194px;
+    animation: mobileR 1.5s ease infinite alternate;
+    -webkit-animation: mobileR 1.5s ease infinite alternate;
+}
+
+.mob-cen div {
+    font-size: 22px;
+    margin-top: 20px;
+    color: #ffd40a;
+}
+
+@keyframes mobileR {
+    0% {
+        -webkit-transform: rotate(-90deg);
+    }
+    30% {
+        -webkit-transform: rotate(-90deg);
+    }
+    70% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+    }
+}
+
+@-webkit-keyframes mobileR {
+    0% {
+        -webkit-transform: rotate(-90deg);
+    }
+    30% {
+        -webkit-transform: rotate(-90deg);
+    }
+    70% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+    }
+}
+
+/*方法一：*/
+/* 媒体查询 orientation,定义'height'是否大于或等于'width'。值portrait代表是,landscape代表否  */
+@media screen and (orientation: landscape) {
+    .mob-con {
+        /*display: block;*/
+    }
+}
+
+/*内容页面*/
+.item1 {
+    background: url("../images/1@2x.png") no-repeat;
+    background-size: cover;
+}
+
+.item1 img {
+    width: 80%;
+    clear: both;
+    display: block;
+    margin: auto;
+}
+
+.item1 .part2 img {
+    width: 50%;
+}
+
+.item1 .part2 img:nth-child(2) {
+    width: 70%;
+    margin-top: 1rem;
+}
+
+.item1 .part1 {
+    width: inherit;
+    position: absolute;
+    top: 14rem;
+    text-align: center;
+}
+
+.item1 .part2 {
+    width: inherit;
+    position: absolute;
+    bottom: 5.2rem;
+    text-align: center;
+}
+
+.item2 {
+    background: url("../images/2@2x-min.png") no-repeat;
+    background-size: cover;
+}
+
+.item2 img {
+    width: 80%;
+    clear: both;
+    display: block;
+    margin: auto;
+}
+
+.item2 .part2 img {
+    width: 50%;
+}
+
+.item2 .part2 img:nth-child(2) {
+    width: 70%;
+    margin-top: 1rem;
+}
+
+.item2 .part1 {
+    width: inherit;
+    position: absolute;
+    top: 11rem;
+    text-align: center;
+}
+
+.item2 .part2 {
+    width: inherit;
+    position: absolute;
+    bottom: 5.2rem;
+    text-align: center;
+}
+
+.item3 {
+    background: url("../images/3@2x-min.png") no-repeat;
+    background-size: cover;
+}
+
+.item3 img {
+    width: 80%;
+    clear: both;
+    display: block;
+    margin: auto;
+}
+
+.item3 .part2 img {
+    width: 50%;
+}
+
+.item3 .part2 img:nth-child(2) {
+    width: 70%;
+    margin-top: 1rem;
+}
+
+.item3 .part1 {
+    width: inherit;
+    position: absolute;
+    top: 14rem;
+    text-align: center;
+}
+
+.item3 .part2 {
+    width: inherit;
+    position: absolute;
+    bottom: 5.2rem;
+    text-align: center;
+}
+
+.item4 {
+    background: url("../images/4@2x-min.png") no-repeat;
+    background-size: cover;
+}
+
+.item4 .mediaVideo {
+    width: 80%;
+    position: absolute;
+    top: 10rem;
+    width: inherit;
+}
+
+.item4 video {
+    width: 100%;
+    clear: both;
+    display: block;
+    margin: auto;
+}
+
+.item4 .part2 img {
+    width: 50%;
+}
+
+.item4 .part2 img:nth-child(2) {
+    width: 70%;
+    margin-top: 1rem;
+}
+
+.item4 .part2 img:nth-child(3) {
+    width: 70%;
+    margin-top: 1rem;
+}
+
+.item4 .part1 {
+    width: 80%;
+    margin: auto;
+}
+
+.item4 .part2 {
+    width: inherit;
+    position: absolute;
+    bottom: 3.2rem;
+    text-align: center;
+}
