@@ -218,14 +218,67 @@ function Person(name,age,job) {
 }
 
 var person1 = new Person("Jhon",29,"Web Engineer");
+var person2 = new Person("luffy",21,"caption");
 ```
 - 与工厂函数的不同之处：
     - 没有显示地创建对象；
     - 直接将属性和方法赋给了`this`对象；
     - 没有`return`语句；
 - 构造函数始终都应该以一个大写字母开头，非构造函数则应该以一个小写字母开头；
-- 要创建`Person`的新实例，必须使用`new`操作符
+- 要创建`Person`的新实例，必须使用`new`操作符。以`new`方式来调用构造函数共四个步骤：
     - 1.创建一个新对象；
     - 2.将构造函数的作用域赋给新对象（因此`this`指向了这个新对象）；
     - 3.执行构造函数中的代码（为这个新对象添加属性）；
     - 4.返回新对象    
+- `person1`和`person2`都保存着`Person`的一个不同的实例，都有一个`constructor`属性，该属性指向`Person`；
+- 对象的`constructor`属性是用来标识对象类型（`instanceof`操作符检测）
+- 构造函数优于工厂模式原因：构造函数可以将它的实例表示为一种特定的类型。
+##### 1.将构造函数当做函数
+- 构造函数与其他函数的唯一区别：调用方式。
+- 任何函数只要通过`new`操作符调用就可以作为构造函数。而任何函数不通过`new`操作符调用和普通函数没有什么区别。
+```javascript
+//当作构造函数
+var person = new Person("Jhon",29,"Web Engineer");
+person.say();
+//作为普通函数
+Person("Jhon",29,"Web Engineer"); //添加到window
+window.say();
+//在另一个对象的作用域调用
+var o = new Object();
+Person.call(o,"Jhon",29,"Web Engineer");
+o.say();
+```
+- 使用`new`创建新对象
+- 不使用`new`调用`Person`：属性和方法都被添加到window对象；使用`call`在某个特殊对象的作用域调用函数
+
+##### 2.构造函数的问题
+- 主要问题：每个方法都要在每个实例上重新创建一遍。
+- 解决办法：ECMAScript的函数是对象，因此每定义一个函数，也就是实例化一个对象
+```javascript
+function Person() {
+    this.name = name;
+    this.age = age;
+    this.job = job;
+    this.sayName = new Function("alert(this.name)");//声明函数在逻辑上是等价的
+}
+```
+- 优势：可以清楚知道每个`Person`实例都包含一个不同的`Function`实例的本质。创建`Function`新实例的机制是相等的；
+- 弊端：
+    - 1.会导致不同的作用域链和标识符解析，不同实例上的同名函数是不相等的。
+    - 2.创建两个完成同样任务的实例。
+- 修改之后
+```javascript    
+function Person() {
+    this.name = name;
+    this.age = age;
+    this.job = job;
+    this.sayName = sayName//声明函数在逻辑上是等价的
+}
+
+function sayName() {
+    alert(this.name);
+}
+
+var person1 = new Person("Jhon",29,"Web Engineer");
+var person2 = new Person("luffy",21,"caption");
+```
