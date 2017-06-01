@@ -110,6 +110,118 @@
     <!--文本域-->
     <h2>文本域</h2>
     <textarea class="form-control" rows="3"></textarea>
+    <!--多选、单选-->
+    <h2>多选、单选</h2>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" value="">
+            Option one is this and that&mdash;be sure to include why it's great
+        </label>
+    </div>
+    <div class="checkbox disabled">
+        <label>
+            <input type="checkbox" value="" disabled>
+            Option two is disabled
+        </label>
+    </div>
+
+    <div class="radio">
+        <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+            Option one is this and that&mdash;be sure to include why it's great
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+            Option two can be something else and selecting it will deselect option one
+        </label>
+    </div>
+    <div class="radio disabled">
+        <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+            Option three is disabled
+        </label>
+    </div>
+    <!--内联单选多选-->
+    <h2>内联单选多选</h2>
+    <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+    </label>
+    <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+    </label>
+    <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+    </label>
+
+    <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+    </label>
+    <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+    </label>
+    <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+    </label>
+    <!--不带label的-->
+    <h2>不带label的checkbox和radio</h2>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
+        </label>
+    </div>
+    <!--下拉菜单-->
+    <h2>下拉菜单</h2>
+    <select class="form-control">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+    </select>
+    <!--带multiple的下拉菜单-->
+    <h2>带multiple属性的下拉列表</h2>
+    <select multiple class="form-control">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+    </select>
+    <!--静态控件-->
+    <h2>静态控件</h2>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+                <p class="form-control-static">email@example.com</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+            </div>
+        </div>
+    </form>
+    <!--焦点状态-->
+    <h2>焦点状态</h2>
+    <form>
+        <input class="form-control" id="focusedInput" type="text" value="Demonstrative focus state">
+    </form>
+    <!--禁用状态-->
+    <h2>禁用状态</h2>
+
 </div>
 </body>
 </html>
