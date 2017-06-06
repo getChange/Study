@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>图片无须加载</title>
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        .box {
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            padding: 0 10px;
+            margin-right: 10px;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #eeeeee;
+        }
+
+        img {
+            width: 1200px;
+        }
+
+        /*loading*/
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #eee;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .progress {
+            margin-top: 300px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <img src="http://ossweb-img.qq.com/images/lol/web201310/skin/big17000.jpg" alt="默认皮肤" id="img"/>
+    <p>
+        <a href="javascript:;" class="btn" data-control="prev">上一页</a>
+        <a href="javascript:;" class="btn" data-control="next">下一页</a>
+    </p>
+</div>
+<div class="loading">
+    <p class="progress">
+        0%
+    </p>
+</div>
+</body>
+<script src="./js/jquery-3.1.1.js"></script>
+<script src="./js/preload.js"></script>
+<script>
+    //    var imgs = [
+    //        'http://ossweb-img.qq.com/images/lol/web201310/skin/big17000.jpg',
+    //        'http://ossweb-img.qq.com/images/lol/web201310/skin/big17001.jpg',
+    //        'http://ossweb-img.qq.com/images/lol/web201310/skin/big17002.jpg',
+    //        'http://ossweb-img.qq.com/images/lol/web201310/skin/big17003.jpg',
+    //        'http://ossweb-img.qq.com/images/lol/web201310/skin/big17004.jpg',
+    //        'http://ossweb-img.qq.com/images/lol/web201310/skin/big17005.jpg',
+    //        'http://ossweb-img.qq.com/images/lol/web201310/skin/big17006.jpg',
+    //        'http://ossweb-img.qq.com/images/lol/web201310/skin/big17007.jpg',
+    //        'http://ossweb-img.qq.com/images/lol/web201310/skin/big17008.jpg',
+    //        'http://ossweb-img.qq.com/images/lol/web201310/skin/big17014.jpg'
+    //    ];
+    //
+    //    var index = 0, len = imgs.length, count = 0, $progress = $('.progress');
+    //
+    //    $.each(imgs, function (i, src) {
+    //        var imgObj = new Image();
+    //
+    //        $(imgObj).on('load error', function () {//保证程序的运行在error的时候也执行相同的程序
+    //            $progress.html(Math.round((count + 1) / len * 100) + '%');
+    //            if (count >= len - 1) {
+    //                $('.loading').hide();
+    //                document.title = '1/' + len;
+    //            }
+    //            count++;
+    //        });
+    //        imgObj.src = src;
+    //    })
+    //
+    //    $('.btn').on('click', function () {
+    //        if ('prev' === $(this).data('control')) {//判断上一张
+    //            index = Math.max(0, --index);//判断index是否为0；相当于if语句对index进行判断
+    //        } else {//下一张
+    //            index = Math.min(len - 1, ++index);
+    //        }
+    //        document.title = (index + 1) + '/' + len;
+    //        $('#img').attr('src', imgs[index]);
+    //    })
+
+    //插件版本
+    var imgs = [
+        'http://ossweb-img.qq.com/images/lol/web201310/skin/big17000.jpg',
+        'http://ossweb-img.qq.com/images/lol/web201310/skin/big17001.jpg',
+        'http://ossweb-img.qq.com/images/lol/web201310/skin/big17002.jpg',
+        'http://ossweb-img.qq.com/images/lol/web201310/skin/big17003.jpg',
+        'http://ossweb-img.qq.com/images/lol/web201310/skin/big17004.jpg',
+        'http://ossweb-img.qq.com/images/lol/web201310/skin/big17005.jpg',
+        'http://ossweb-img.qq.com/images/lol/web201310/skin/big17006.jpg',
+        'http://ossweb-img.qq.com/images/lol/web201310/skin/big17007.jpg',
+        'http://ossweb-img.qq.com/images/lol/web201310/skin/big17008.jpg',
+        'http://ossweb-img.qq.com/images/lol/web201310/skin/big17014.jpg'
+    ];
+
+    var index = 0,
+            len = imgs.length,
+            $progress = $('.progress');
+
+    $.preload(imgs, {
+        each: function (count) {
+            $progress.html(Math.round((count + 1) / len * 100) + '%');
+        },
+        all: function () {
+            $('.loading').hide();
+            document.title = '1/' + len;
+        }
+    });
+
+    $('.btn').on('click', function () {
+        if ('prev' === $(this).data('control')) {//判断上一张
+            index = Math.max(0, --index);//判断index是否为0；相当于if语句对index进行判断
+        } else {//下一张
+            index = Math.min(len - 1, ++index);
+        }
+        document.title = (index + 1) + '/' + len;
+        $('#img').attr('src', imgs[index]);
+    })
+</script>
+</html>
