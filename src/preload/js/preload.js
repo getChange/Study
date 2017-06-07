@@ -4,15 +4,48 @@
     function Preload(imgs, options) {
         this.imgs = (typeof imgs === 'string') ? [imgs] : imgs;
         this.opts = $.extend({},Preload.DEFAULTS, options);
-        //无序加载的方法
-        this._unoredered();
+        if(this.opts.order === 'ordered'){
+            this._ordered();
+        } else {
+            this._unoredered();
+        }
     }
     Preload.DEFAULTS = {
+        order:'unordered',//无序预加载
         each: null, //每一张图片加载完毕后执行
         all: null//所有图片加载完毕之后执行
     };
 
-    Preload.prototype._unoredered = function () {//无序加载
+    //有序加载
+    Preload.prototype._ordered = function () {
+        var imgs = this.imgs,
+            opts = this.opts,
+            count = 0,
+            len = imgs.length;
+        load();
+
+        //有序预加载
+        function load() {
+            var imgObj = new Image();
+
+            $(imgObj).on('load error', function () {
+                //判断each是否存在
+                opts.each && opts.each(count);
+                if (count >= len) {
+                    //所有图片已经加载完毕
+                    opts.all && opts.all();
+                } else {
+                    load();
+                }
+                count++;
+            });
+
+            imgObj.src = imgs[count];
+        }
+    }
+
+    //无序加载
+    Preload.prototype._unoredered = function () {
         var imgs = this.imgs,
             opts = this.opts,
             count = 0,
