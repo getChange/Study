@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demo</title>
+    <style>
+        body,
+        input,
+        button,
+        select,
+        h1 {
+            font-size: 30px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>员工查询</h1>
+    <label>请输入员工编号：</label>
+    <input type="text" id="keywords" /><br>
+    <button id="search">查询</button><br>
+    <p id="searchResult"></p>
+
+    <h1>员工创建</h1>
+    <label>请输入员工姓名：</label>
+    <input type="text" id="staffName" /><br>
+    <label>请输入员工编号：</label>
+    <input type="text" id="staffNumber" /><br>
+    <label>请选择员工性别：</label>
+    <select id="staffSex">
+        <option>男</option>
+        <option>女</option>
+    </select>
+    <br>
+    <label>请输入员工职位：</label>
+    <input type="text" id="staffJob" /><br>
+    <button id="save">保存</button><br>
+    <p id="createResult"></p>
+
+
+    <script>
+        var searchBtn = document.getElementById('search');
+        var keywords = document.getElementById('keywords');
+        var searchResult = document.getElementById('searchResult');
+        var saveBtn = document.getElementById('save');
+        var staffName = document.getElementById('staffName');
+        var staffNumber = document.getElementById('staffNumber');
+        var staffSex = document.getElementById('staffSex');
+        var staffJob = document.getElementById('staffJob');
+        //GET请求查询
+        searchBtn.onclick = function() {
+            //发送查询请求并处理
+            var request = new XMLHttpRequest();
+            request.open('GET', 'service-json.php?number=' + keywords.value);
+            request.send();
+            request.onreadystatechange = function() {
+                if (request.readyState === 4) {
+                    if (request.status === 200) {
+                        var data = JSON.parse(request.responseText);
+                        if (data.success) {
+                            searchResult.innerHTML = data.msg;
+                        } else {
+                            searchResult.innerHTML = "error:" + data.msg;
+                        }
+
+                    } else {
+                        alert("发生错误" + request.status);
+                    }
+                }
+            }
+        }
+
+        //POST请求保存
+        saveBtn.onclick = function() {
+            //发送save请求并处理
+            var request = new XMLHttpRequest();
+            request.open('POST', 'service-json.php');
+            var data = "name=" + staffName.value +
+                "&number=" + staffNumber.value +
+                "&sex=" + staffSex.value +
+                "&job=" + staffJob.value;
+            //发送POST请求必须添加请求头    
+            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+            request.send(data);
+            request.onreadystatechange = function() {
+                if (request.readyState === 4) {
+                    if (request.status === 200) {
+                        var data = JSON.parse(request.responseText);
+                        if (data.success) {
+                            createResult.innerHTML = data.msg;
+                        } else {
+                            createResult.innerHTML = "error:" + data.msg;
+                        }
+                    } else {
+                        alert("发生错误" + request.status);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
