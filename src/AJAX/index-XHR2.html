@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demo</title>
+    <style>
+        body,
+        input,
+        button,
+        select,
+        h1 {
+            font-size: 30px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>员工查询</h1>
+    <label>请输入员工编号：</label>
+    <input type="text" id="keywords" /><br>
+    <button id="search">查询</button><br>
+    <p id="searchResult"></p>
+
+    <h1>员工创建</h1>
+    <label>请输入员工姓名：</label>
+    <input type="text" id="staffName" /><br>
+    <label>请输入员工编号：</label>
+    <input type="text" id="staffNumber" /><br>
+    <label>请选择员工性别：</label>
+    <select id="staffSex">
+        <option>男</option>
+        <option>女</option>
+    </select>
+    <br>
+    <label>请输入员工职位：</label>
+    <input type="text" id="staffJob" /><br>
+    <button id="save">保存</button><br>
+    <p id="createResult"></p>
+
+    <script src="../preload/js/jquery-3.1.1.js"></script>
+    <script>
+        $(function() {
+            $("#search").click(function() {
+                $.ajax({
+                    type: "GET",
+                    url: 'http://127.0.0.1/src/AJAX/service-XHR2.php?number=' + $("#keywords").val(),
+                    dataType: "json",
+                    success: function(data) {
+                        if (data.success) {
+                            $("#searchResult").html(data.msg);
+                        } else {
+                            $("#searchResult").html("出现错误：" + data.msg);
+                        }
+                    },
+                    error: function(jqXHR) {
+                        alert('发生错误：' + jqXHR.status);
+                    }
+                })
+            });
+
+            $("#save").click(function() {
+                $.ajax({
+                    type: "POST",
+                    url: 'http://127.0.0.1/src/AJAX/service-XHR2.php',
+                    data: {
+                        name: $("#staffName").val(),
+                        number: $("#staffNumber").val(),
+                        sex: $("#staffSex").val(),
+                        job: $("#staffJob").val()
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        if (data.success) {
+                            $("#createResult").html(data.msg);
+                        } else {
+                            $("#createResult").html("出现错误：" + data.msg);
+                        }
+                    },
+                    error: function(jqXHR) {
+                        alert('发生错误：' + jqXHR.status);
+                    }
+                })
+            })
+        });
+    </script>
+</body>
+
+</html>

@@ -173,8 +173,18 @@ var jsonObj = JSON.parse(jsondata);
     - `error`:请求失败的回调函数
 
 # 跨域
+- `JavaScript`出于安全方面的考虑，不允许跨域调用其他页面的对象。因为`JavaScript`同源策略的限制，`a.com`域名下的`js`无法操作`b.com`或是`c.a.com`域名下的对象
+## 处理跨域 -- 代理
+- 通过在同域名的`web`服务器端创建一个代理
+## 处理跨域 -- jsonp
+- 不支持`POST`请求的改造。只可以处理`GET`请求。
+## 处理跨域 -- XHR2
+- `HTML5`提供的`XMLHttpRequest Level2`已经实现了跨域
+- IE10以下不支持
+- 服务端的改造
+```php
 
-
+```
    
 # PHP
 - 创建动态交互性站点的服务器端脚本语言。
