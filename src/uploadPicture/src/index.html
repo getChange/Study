@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="cache-control" content="max-age=0"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>大神认证</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/uploadPicture.css">
+    <link rel="stylesheet" href="./font/iconfont.css">
+</head>
+<body>
+
+<h3>目前段位</h3>
+
+
+<h3>历史战绩</h3>
+<input id="historyBattle" name="pic" type="file" accept="image/*" style="width: 100%; height: 124px; display: none;">
+<div class="uploadBox">
+    <a class="btn" onclick="$('input[id=historyBattle]').click();">
+        <i class="icon iconfont"></i>
+    </a>
+    <img style="width: 100%; height: 124px; display: none;" id="historyBattleImg" src="" alt="">
+</div>
+
+<h3>常用英雄</h3>
+<input id="commonHero" name="pic" type="file" accept="image/*" style="width: 100%; height: 124px; display: none;">
+<div class="uploadBox">
+    <a class="btn" onclick="$('input[id=commonHero]').click();">
+        <i class="icon iconfont"></i>
+    </a>
+    <img style="width: 100%; height: 124px; display: none;"  id="commonHeroImg" src="" alt="">
+</div>
+
+<h3>个人荣誉</h3>
+<input id="personalHonor" name="pic" type="file" accept="image/*" style="width: 100%; height: 124px; display: none;">
+<div class="uploadBox">
+    <a class="btn" onclick="$('input[id=personalHonor]').click();">
+        <i class="icon iconfont"></i>
+    </a>
+    <img style="width: 100%; height: 124px; display: none;" id="personalHonorImg" src="" alt="">
+</div>
+<script src="../../preload/js/jquery-3.1.1.js"></script>
+<script>
+    $('input[id=historyBattle]').change(function() {
+        $("#historyBattleImg").css('display','block');
+        console.log($(this).val());
+        $('#historyBattleImg').attr("src",$(this).val());
+    });
+</script>
+</body>
+</html>
