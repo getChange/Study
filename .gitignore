@@ -5,3 +5,5 @@ comment
 !README.txt
 images
 .vscode
+browser-sync
+browser-sync.cmd
