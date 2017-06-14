@@ -46,7 +46,8 @@
 <script>
     $('input[id=historyBattle]').change(function() {
         $("#historyBattleImg").css('display','block');
-        console.log($(this).val());
+        console.log($(this).val().splice());
+
         $('#historyBattleImg').attr("src",$(this).val());
     });
 </script>

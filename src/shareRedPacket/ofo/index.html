@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)https://common.ofo.so/campaign/17-2-21/login.html?aff=18504739913 -->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>邀好友，得现金</title>
+    <script async="" src="./js/analytics.js.下载"></script>
+    <script language="JavaScript" type="text/javascript" src="./js/common.js"></script>
+    <script language="JavaScript" type="text/javascript" src="./js/script.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .reward {
+            padding: 25px 30px 35px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            background-color: #fff;
+            margin: 0;
+        }
+
+        .reward1 {
+            position: relative;
+            top: -20px;
+        }
+
+        .reward2 {
+            padding-bottom: 22px;
+        }
+
+        .input-wrap {
+            background-color: #fff;
+            border: 1px solid #CFCFCF;
+            height: 55px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            padding: 12px 16px 0;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .input-wrap input {
+            width: 100%;
+            height: 28px;
+            vertical-align: middle;
+            font-size: 14px;
+            border: none;
+            background-color: transparent;
+        }
+
+        .code-input {
+            float: left;
+            width: 70%;
+        }
+
+        .getcode {
+            position: absolute;
+            top: 6px;
+            right: 8px;
+            width: 100px;
+            height: 40px;
+            background-color: #ffd900;
+            border: none;
+            border-radius: 14px;
+        }
+
+        .getcode.visited {
+            background-color: #ebebeb;
+            color: #a7a191;
+        }
+
+        .submit {
+            display: block;
+            width: 100%;
+            height: 45px;
+            border-radius: 30px;
+            background-color: #FFD900;
+            box-shadow: 0 10px 20px 0 rgba(100, 100, 100, 0.20);
+            font-size: 16px;
+            margin: 0 auto;
+            border: none;
+        }
+
+        .captcha-mark {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 250;
+        }
+
+        .captcha-wrap {
+            position: absolute;
+            height: 150px;
+            top: 0;
+            left: 20px;
+            right: 20px;
+            bottom: 0;
+            margin: auto;
+            background-color: #fff;
+            border: 1px solid #000;
+            border-radius: 9px;
+            box-sizing: border-box;
+            padding: 15px;
+            z-index: 9;
+        }
+
+        .captcha-box {
+            padding-top: 10px;
+            height: 40px;
+        }
+
+        .captcha-code {
+            float: left;
+            height: 40px;
+            width: 60%;
+            padding: 5px;
+            box-sizing: border-box;
+            border-bottom: 1px solid #000;
+        }
+
+        .captcha-code input {
+            display: block;
+            width: 100%;
+            height: 25px;
+            font-size: 16px;
+            border: none;
+            background-color: transparent;
+        }
+
+        .captcha-image {
+            float: left;
+            height: 40px;
+            width: 40%;
+            box-sizing: border-box;
+            padding-left: 10px;
+        }
+
+        .captcha-btn {
+            text-align: right;
+            line-height: 30px;
+            padding-top: 20px;
+        }
+
+        .captcha-btn span {
+            display: inline-block;
+            padding: 0 10px;
+        }
+
+        .captcha-hint {
+            text-align: center;
+            font-size: 16px;
+        }
+    </style>
+    <script>
+        sendDebug('AcceptNewFriends_view__00202	', {'view': 'viewB'});
+
+        var GET_CAPTCHA_URL = '//' + (window.OFO_ENV.API_HOST) + '/ofo/Api/v2/getCaptcha';
+        var GET_VERIFY_CODE_URL = '//' + (window.OFO_ENV.API_HOST) + '/ofo/Api/v2/getVerifyCode';
+        var INVITE_LOGIN = '//' + (window.OFO_ENV.API_HOST) + '/ofo/Api/activity/inviteLogin';
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            var getcode = document.querySelector('#code-btn');
+            var captchaImage = document.querySelector('.captcha-image');
+            var cancelCaptcha = document.querySelector('.cancel-captcha');
+            var submitCaptcha = document.querySelector('.submit-captcha');
+            var Image = captchaImage.querySelector('img');
+            var submit = document.querySelector('.submit');
+            var detailBtn = document.querySelector('#detail-btn');
+            var phone = document.querySelector('#phone')
+
+            var phonePattern = /^1[34578][0-9]{9}$/;
+            var seconds = 60;
+            var source = window.OFO_ENV.sourceForApi;
+
+            var interval = function () {
+                getcode.classList.add('visited');
+                getcode.innerHTML = '等' + seconds + '秒';
+                getcode.disabled = true;
+                var timer = setInterval(function () {
+                    seconds--;
+                    if (seconds <= 0) {
+                        clearInterval(timer);
+                        getcode.classList.remove('visited');
+                        getcode.disabled = false;
+                        getcode.innerHTML = '发送验证码';
+                        console.log(getcode);
+                        seconds = 60;
+                        return;
+                    }
+                    getcode.innerHTML = '等' + seconds + '秒';
+                }, 1000);
+            }
+
+            getcode.addEventListener('click', function () {
+                sendDebug('AcceptNewFriends_click__00203', {'click': 'send'});
+                var phone = document.querySelector('#phone').value.trim();
+                if (!phonePattern.test(phone)) {
+                    window.tip('手机号码格式错误！');
+                    return;
+                }
+                ;
+                ajax({
+                    'url': GET_VERIFY_CODE_URL,
+                    'data': {'tel': phone},
+                    'success': function (result) {
+                        console.log(result)
+                        if (result.errorCode === 200) {
+                            interval();
+                        } else if (result.errorCode === 13010) {
+                            Image.src = 'data:image/jpeg;base64,' + result.values.captcha;
+                            show(['.captcha-mark']);
+                        } else {
+                            window.tip(result.msg);
+                        }
+                    }
+                });
+            })
+
+            cancelCaptcha.addEventListener('click', function () {
+                document.querySelector('#captcha').value = '';
+                hide(['.captcha-mark']);
+            });
+
+            submitCaptcha.addEventListener('click', function () {
+                var phone = document.querySelector('#phone').value.trim();
+                var captcha = document.querySelector('#captcha').value.trim();
+                ajax({
+                    'url': GET_VERIFY_CODE_URL,
+                    'data': {'tel': phone, 'captcha': captcha},
+                    'success': function (result) {
+                        if (result.errorCode === 200) {
+                            hide(['.captcha-mark']);
+                            document.querySelector('#captcha').value = '';
+                            interval();
+                        } else if (result.errorCode === 13010) {
+                            Image.src = 'data:image/jpeg;base64,' + result.values.captcha;
+                            window.tip('验证码输入错误');
+                        } else {
+                            window.tip(result.msg);
+                        }
+                    }
+                });
+            });
+            submit.addEventListener('click', function () {
+                sendDebug('AcceptNewFriends_click__00203', {'click': 'registered'});
+                var aff = window.OFO_ENV.query().aff;
+                var tel = document.querySelector('#phone').value.trim();
+                var verifyCode = document.querySelector('#verifyCode').value.trim();
+                if (!phonePattern.test(tel)) {
+                    window.tip('手机号码格式错误！');
+                    return;
+                }
+                ;
+                ajax({
+                    'url': INVITE_LOGIN,
+                    'data': {'aff': aff, 'tel': tel, 'source': source, 'code': verifyCode},
+                    'success': function (result) {
+                        if (result.errorCode === 200) {
+                            if (result.values.isNewuser) {
+                                //被邀请新用户，跳转押金页
+                                localStorage.setItem('ofo-tokened', result.values.token);
+                                window.location.replace('/newdist/?Identification&~cx=true');
+
+                            } else if (result.values.isInviteuser) {
+                                if (result.values.bond && result.values.oauth == 5) {
+                                    showDialog({
+                                        text: '您已被好友邀请，活动期间完成认证并骑车即可获得现金奖励。',
+                                        btnStr: '去骑车',
+                                        clickHandler: function () {
+                                            //去骑车
+                                            localStorage.setItem('ofo-tokened', result.values.token);
+                                            window.location.replace('/newdist/?Journey');
+                                        }
+                                    });
+                                } else {
+                                    showDialog({
+                                        text: '您已被好友邀请，活动期间完成认证并骑车即可获得现金奖励。',
+                                        btnStr: '去认证',
+                                        clickHandler: function () {
+                                            //去认证
+                                            localStorage.setItem('ofo-tokened', result.values.token);
+                                            window.location.replace('/newdist/?Identification&~cx=true');
+                                        }
+                                    });
+                                }
+                            } else if (!result.values.isNewuser && !result.values.isInviteuser) {
+                                showDialog({
+                                    text: '您已是ofo注册用户。现在邀请好友，立得现金奖励',
+                                    btnStr: '去首页',
+                                    clickHandler: function () {
+                                        //去首页
+                                        localStorage.setItem('ofo-tokened', result.values.token);
+                                        window.location.replace('/newdist/?Journey');
+                                    }
+                                });
+                            }
+                        } else {
+                            window.tip(result.msg);
+                        }
+                    }
+                });
+            });
+
+            phone.addEventListener('keyup', function () {
+                if (this.value.length >= 11) {
+                    getcode.classList.remove('visited');
+                    getcode.disabled = false;
+                } else {
+                    getcode.classList.add('visited');
+                    getcode.disabled = true;
+                }
+            });
+        })
+    </script>
+</head>
+
+<body>
+<div class="body ofo-iff">
+    <div class="head">
+        <img src="./images/login_head.png">
+    </div>
+    <div class="content">
+        <div class="reward reward1">
+            <div class="input-wrap">
+                <input type="number" inputmode="numeric" pattern="[0-9]*" placeholder="请输入手机号" id="phone"
+                       oninput="if(value.length&gt;11) {value=value.slice(0,11)}">
+            </div>
+            <div class="input-wrap">
+                <div class="code-input">
+                    <input type="number" inputmode="numeric" pattern="[0-9]*" placeholder="输入验证码" id="verifyCode">
+                </div>
+                <button class="getcode visited" id="code-btn" disabled="">发送验证码</button>
+            </div>
+            <button class="submit">立即注册</button>
+        </div>
+        <div class="reward reward2"><img src="./images/222_20.png"></div>
+        <div class="detail-btn"><span id="detail-btn">了解活动详细规则</span></div>
+    </div>
+    <div class="captcha-mark">
+        <div class="captcha-wrap">
+            <p class="captcha-hint">请输入正确的图形验证码</p>
+            <div class="captcha-box">
+                <div class="captcha-code"><input type="number" inputmode="numeric" pattern="[0-9]*" id="captcha"
+                                                 autofocus=""></div>
+                <div class="captcha-image"><img src="https://common.ofo.so/campaign/17-2-21/login.html?aff=18504739913">
+                </div>
+            </div>
+            <div class="captcha-btn">
+                <span class="cancel-captcha">取消</span>
+                <span class="submit-captcha">提交</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mark"></div>
+<div class="detail">
+    <span class="close-detail"></span>
+    <h1>活动规则</h1>
+    <h2>1 活动内容</h2>
+    <p>(1)ofo 的认证城市用户，通过活动发出链接邀请好友加入 ofo，一起绿色出行;
+    </p>
+    <p>(2)受邀者通过链接注册、认证并成功骑车一次，双方各获得 10 元出行现金奖励;
+    </p>
+    <p>(3)若您邀请的好友再成功邀请一位新用户，您将再得 1 元现金奖励，上不封顶;
+    </p>
+    <h2>2 参与方式</h2>
+    <p>(1)用户通过此次活动邀请好友注册，受邀者在邀请链接中输入注册手机号并提交，成功用车一次(完成至少一次超过的 200 米的骑行)，即算邀请成功，双方各得 10 元出行现金奖励;
+    </p>
+    <p>(2) 每位用户的邀请次数无上限。
+    </p>
+    <h2>3 注意事项</h2>
+    <p>(1)每位用户的邀请次数无上限;</p>
+    <p>(2)受邀者需从未注册过 ofo，每位新用户只能被邀请一次;</p>
+    <p>(3)邀请关系以受邀者第一次提交注册手机号信息为准，完成注册并交纳押金后邀请关系不可转移和解除;</p>
+    <p>(4)拥有相同账户、手机号及设备的用户视为同一用户，该规则适用于邀请者与被邀请者;</p>
+    <p>(5)通过此次活动获得的现金奖励可以充值至余额用于后续骑车，也可直接申请提现;</p>
+    <p>(6)充值至余额的现金奖励实时到账，到账后不可退款;</p>
+    <p>(7)现金奖励申请提现后第二个工作日到账</p>
+    <p>(8)每位用户每日只有一次提现机会;</p>
+    <p>(9)活动期间获得的现金奖励，请于<b style="color:red">7月 15 日 24 点</b>前完成提现，未完成提现的部分，将充值至您的余额。</p>
+    <h2>4 特别声明 </h2>
+    <p>我们包含邀请注册在内的所有优惠推广活动仅向正当、合法使用我们服务/车辆的用户。每位参与者(含邀请 人及被邀请人)的 ofo 帐号、手机号及其他身份认证信息必须是唯一的，任何信息与其他用户重合都不能参加
+        该活动。活动中，一旦发现您存在利用我们的规则漏洞进行任何形式的作弊行为(包括但不限于通过我们的活动获得不正当的经济利益)，我们有权取消与作弊行为相关账户的奖励、追回您作弊所得的不正当经济利益、关闭作弊账户或与您相关的所有账户，并保留取消您后续使用我们服务/车辆的权利，必要时会依据严重程度
+        追究您的法律责任。
+    </p>
+</div>
+<div class="mark-loading ofo-iff" id="mark-loading" style="display: none;"></div>
+<div class="tip ofo-iff" id="tip" style="display: none;">
+    <div class="load-wrap">
+        <div class="loading"></div>
+    </div>
+    <div class="tip-text" id="tip-text">加载中...</div>
+</div>
+
+
+<script>
+    window.onload = function () {
+        init();
+    }
+</script>
+</body>
+</html>
