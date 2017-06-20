@@ -1,0 +1,771 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+
+    <title>好友送你3次机会！</title>
+
+
+    <script src="js/jquery-3.1.1.js"></script>
+    <script src="js/index.js"></script>
+    <script>
+        var screenWidth = $(window).width();
+        $(document).ready(function () {
+            $('.lotteryBg').height(screenWidth);
+            $('#run').css({
+                'width': screenWidth * 153 / 520,
+                'height': screenWidth * 214 / 520,
+                'margin-left': -screenWidth * 153 / 520 / 2,
+                'margin-top': -screenWidth * 214 / 520 / 2
+            });
+            $('#btn_run').css({
+                'width': screenWidth * 125 / 520,
+                'height': screenWidth * 125 / 520,
+                'margin-left': -screenWidth * 125 / 520 / 2,
+                'margin-top': -screenWidth * 125 / 520 / 2
+            });
+
+        })
+    </script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .lotteryMain {
+            width: 100%;
+            padding: 20px 0;
+        }
+
+        .lotteryBg {
+            width: 100%;
+            margin: 0 auto;
+            /*background: url(picture\1_lotteryBg.jpg) no-repeat;*/
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lotteryBg .beijin {
+            width: 100%;
+            height: 100%;
+        }
+
+        #run {
+            /*width: 153px;*/
+            /*height: 214px;*/
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            /*margin-left: -76px;*/
+            /*margin-top: -107px;*/
+            z-index: 1;
+            transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+        }
+
+        #btn_run {
+            /*width: 125px;*/
+            /*height: 125px;*/
+            /*background: url(picture\2_btn_start.png) no-repeat;*/
+            border: none;
+            outline: none;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            /*margin-left: -62px;*/
+            /*margin-top: -62px;*/
+            z-index: 2;
+            cursor: pointer;
+        }
+    </style>
+
+
+    <script>
+        function getCookie(name) {
+            var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+
+            if (arr = document.cookie.match(reg))
+
+                return unescape(arr[2]);
+            else
+                return null;
+        }
+        if (getCookie('name') >= 3) {                                        //次数
+            location.href = 'award.html';            //5次后跳转的地址
+        }
+        function setCookie(name, value) {
+            var Days = 30;
+            var exp = new Date();
+            exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+            document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+        }
+        function share() {
+            /*  $('body').append('<div class="share">\
+             <img src="picture\3_2155484596.png" />\
+             <div class="clear"></div>\
+             </div>');*/
+            location.href = 'award.html';
+        }
+        function di3() {
+            if (!getCookie('name')) {
+                setCookie('name', 1)
+            } else {
+                var nowcookie = getCookie('name');
+                var newcookie = nowcookie - 1 + 2;
+                setCookie('name', newcookie);
+            }
+        }
+
+        di3();
+
+        function di2() {
+
+            setCookie('ti', 'yes');
+        }
+
+
+        function GetRandomNum(Min, Max) {
+            var Range = Max - Min;
+            var Rand = Math.random();
+            return (Min + Math.round(Rand * Range));
+        }
+
+
+    </script>
+    <script>
+        if (getCookie('ti') == 'yes') {
+            location.href = 'award.html';            //分享成功后跳转的地址
+        }
+    </script>
+    <style>
+        .share {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            width: 100%;
+            height: 100%;
+            color: #fff;
+            font: 14px/30px "榛戜綋";
+            /*14px/30px "榛戜綋"*/
+            background: rgba(0, 0, 0, .75);
+        }
+
+        .share img {
+            float: right;
+            width: 100%;
+            margin: 10px;
+        }
+
+        .share p {
+            padding: 0 10px;
+        }
+
+        .tr {
+            text-align: right;
+        }
+    </style>
+    <script type="text/javascript">
+        function stops() {
+            return false;
+        }
+        document.oncontextmenu = stops;
+    </script>
+</head>
+
+<body style="background: rgb(212, 22, 48);">
+
+<section class="lotteryMain">
+    <div style="text-align: center;color: white;font-family: 'arial', '微软雅黑'">恭喜您！获得3次抽♥奖机会！</div>
+    <div class="lotteryBg" style="height: 301px;">
+        <img src="images//TB2s1UOhpXXXXcWXpXXXXXXXXXX_!!534090410.jpg" alt="" class="beijin">
+        <img id="run" src="images/TB23So.gFXXXXa4XXXXXXXXXXXX_!!75928067.png"
+             style="width: 88.5635px; height: 123.873px; margin-left: -44.2817px; margin-top: -61.9365px;">
+        <div id="btn_run" onclick="choujiang();"
+             style="width: 72.3558px; height: 72.3558px; margin-left: -36.1779px; margin-top: -36.1779px;">
+            <img src="images/TB2JXL8hXXXXXbtXXXXXXXXXXXX_!!75928067.png" alt="" style="width: 100%;height: 100%">
+        </div>
+    </div>
+
+
+    <script>
+        var gundong_touxiang = new Array(
+                'http://wx.qlogo.cn/mmopen/PiajxSqBRaEKfv6SwrzPVicSvwPdl8ZP6Tx01koxSuTib7b7kNb27tZyicXufMx6EP8p0ejf7KibgrvZ37ib0l7rdstg/96',
+                'http://wx.qlogo.cn/mmopen/ajNVdqHZLLBZ0q8N3wBlQj6QibMRSgkHT3K0nribHBiaMw3888l5fqOcGJskibvCGgjYq5iaHFpW0pqsvOjUHdbsd6A/96',
+                'http://wx.qlogo.cn/mmopen/sv0wha7haJ74783FdxdedSadeKOpxeCGqkKvH4KicP8ibvexd4QcYZI8yGzXNAQ5iaIU0sgFRkReDVibkrZiaS6K86qm0rhZZp5aj/96',
+                'http://wx.qlogo.cn/mmopen/icz582VuVOHY8Pvxstm5oKibPL8FNJY3N2G0FqOKqibwia4AYgAKGsNjGcOZ73WkE0iasJ06sHHoYcNoLUkR7x0dicyEZgGrKEFh39/96',
+                'http://wx.qlogo.cn/mmopen/dibCvqHg4WneiaicfkPHjkZFiccS3dsC5pXj67viafXMqRYxjmfBiaYl2lgicibJgzRBzXEWMAFnJ8W08tHr66xqGYCmSN4RJic6Zm360/96',
+                'http://wx.qlogo.cn/mmopen/dibCvqHg4Wnc1W5krR5JOQ50AgF4lASm4hgoxMcEvpicqiau6jTpYMCxRI2I3WJ3fhb1f8bguDIUbd0xSH0ribnArGf5amuWZvcb/96',
+                'http://wx.qlogo.cn/mmopen/NFG2UYeaAliblvkzfl2CL6lhP5f1Z6U10J0ShSUAyTCHz21AngN1U87qwHoOGpu2m5gqV5ylW4VYDzuRziaIjNUUlvSfibIqHicF/96',
+                'http://wx.qlogo.cn/mmopen/NFG2UYeaAlicQmGO8X1VZcgApJ9yyKsvfPcsjw8WcbkAWYZ2JhFQ9mObJBkl78DE5xV4OC0Nd7Fn50JJqKicbbwFib8ymBkY4W7/96',
+                'http://wx.qlogo.cn/mmopen/sv0wha7haJ4UTtWQeZ560bOoAyZwpGBVeDpB2z6M2SBxPSKhkqwfOzcWKtjZmZbSpVfunm1vILo1aaWkyoFbXfAVib0FaUWRW/96',
+                'http://wx.qlogo.cn/mmopen/sv0wha7haJ5US8J1QRBsuIAFC8mWlSErASK63iaNXZylowD5APib1kUbU0VT17n0Ggr6377nibT6uYJg9OHJqic0NkNZwpzR74gd/96',
+                'http://wx.qlogo.cn/mmopen/icz582VuVOHaPNhVIAr51r8G7SsJo0ZLz0LkHPxEMlU6UvefQJLqS4wibz1Dictic00JqJpsLLNpeoRA2XFSKMHHbU15Zibln8fRY/96',
+                'http://wx.qlogo.cn/mmopen/icz582VuVOHY8Pvxstm5oK10xmHXIU9sXLEhJkaEx4AZFNK4WOaQl7ZLwgic4YnfbCTQRiaEicCZPf9I1eAmKM1AvQKGG5Lm9tgp/96',
+                'http://wx.qlogo.cn/mmopen/sv0wha7haJ74783FdxdedYlarCiapPsxTg1QZEXmkvvfKnq3yWuySXFkDWWnZDCYjibYiapOHEh340oaNicdJTOtxoIyPveWdOpP/96',
+                'http://wx.qlogo.cn/mmopen/icz582VuVOHYK8eb41v0IGkvKXAmGsE6odcdeywIRqOu8uUhmYwrqfr3NAae3uxz0JosSeTMD3MWzLr21iaQ9wwEJVKG007Vul/96',
+                'http://wx.qlogo.cn/mmopen/dibCvqHg4WneiaicfkPHjkZF05CNcXZhWicTctgiczlicBUiciculDEChAgMkEWtNPVCRCoSX4KFT1NgvyDnrseSd6Dr6blW72GGFqAz/96',
+                'http://wx.qlogo.cn/mmopen/PiajxSqBRaEJqIowicRftlHvu2bw6sBwUsr27F0PQb8ic1MGodrFQ3DtMWCibJPuJMzSaSA7vwkjrCmdKmgnRZ6Lhw/96',
+                'http://wx.qlogo.cn/mmopen/sv0wha7haJ74783FdxdedYjia67IXpp74nS3XaF5QJpibOmDbtHuM24ywypBTb3FILcZy0Dbb17lJBaQC6puZQMpYBiarnuFDZM/96',
+                'http://wx.qlogo.cn/mmopen/icz582VuVOHY8Pvxstm5oK2ttEyZvJtlUrs7J8PYQ13iaU8u8JgIQjVuibFGRgodXeduRYDAZkibf6tLwmEZYpKNRKBbRrPobevN/96',
+                'http://wx.qlogo.cn/mmopen/icz582VuVOHY8Pvxstm5oK4ibwOtxXGc9toTiaUonicv0JrJia3rRNVg3PU52QRic9IPQe36b8TdO5jicuaXA5EBMGAE1bBBEbhFTCu/96',
+                'http://wx.qlogo.cn/mmopen/NFG2UYeaAl8MBVSYQJmrqCpjFpuqkYnpMjIribMAqh7zRIQZiaGnfq8DWDnQzKibPHhwyQoPNBoHuicw10Y15LgRHmc4HaoibicF5m/96',
+                'http://wx.qlogo.cn/mmopen/NFG2UYeaAlicQmGO8X1VZcoR4s77VqzjMeuaZcR2PRguk2p8jJ0dLN4SBVUyJJVyYI9I6oocvTGI5kek7frNRTsc92aUvxj50/96',
+                'http://wx.qlogo.cn/mmopen/icz582VuVOHY8Pvxstm5oK9yPIcWSh33nBWWJ7M4X9LJg6LJcpfTWibGb3ric5FyiaAibceMia7eqSib7veIP1aLKX3llPpkLJyCzp1/96',
+                'http://wx.qlogo.cn/mmopen/icz582VuVOHbreWKlnyuXusXEtHzAwU2pmcUzTfGZfHqhW3KxPUZuuJczzaXtAoot0cK8gjkmIbjO6BPsU9GuDXqNwPGwZxicr/96',
+                'http://wx.qlogo.cn/mmopen/NFG2UYeaAlicQmGO8X1VZcovIGsrTbHJ9HkHjhYDTfslQnZz0PZEoqV2agacTNt1BVU6LpM2M8nTUHvv2xdZjXXhQiawcOKNQl/96',
+                'http://wx.qlogo.cn/mmopen/NFG2UYeaAlicI73wnUqwQvJklhW0jIEd33QZvGIf7emPyz8gvtuEswic6cXzas2Wf4TGhVJXgp7qEJFicEY4qOWjj41wyfSH4Y0/96',
+                'http://wx.qlogo.cn/mmopen/sv0wha7haJ7td6pBSHctzbSbeWBGHqlibcsOrBJIyxwpn0lEgRLaTZSAMGEPib5K1EzrY0OyibKTIEB5FfkGRba270HXKghytKic/96',
+                'http://wx.qlogo.cn/mmopen/dibCvqHg4WnelE8icwdWXlYEGrwWF6lnWaLmH9heCib0ANdDfxBcSbrDFtZGUBkKOUqU00ibtOicnponGcpicIAHicnpw/96',
+                'http://wx.qlogo.cn/mmopen/NFG2UYeaAl8U517fsqdraDP9iaCqicE6I80wFeMBDohZBiaC9kEfvSFibr6TpYNkrH9336kJngKSCLwb4dicTYgLTg9cPicyicbOB7ia/96',
+                'http://wx.qlogo.cn/mmopen/LBrOAQmYlluYQA4fM1sbDpPeklDoUl1xx2Qj2T38CS2FY5GVyZZ48cBG4ubcGPvKLoT7IesW0hpt7IXV5GKm9Vus4elmcFicR/96',
+                'http://wx.qlogo.cn/mmopen/dibCvqHg4WncOnjBU8bHibicicYicvniazgl1nhenHlfKRYmg6kVkNRWvCg2sAav0bq40Pl0NQ7qNEAnttafricIb3Xlqs7fSTviaLEo/96',
+                'http://wx.qlogo.cn/mmopen/sv0wha7haJ5x0XyoPBKXpSMicOnCaia4yHPvFTIPeaj10ic5fLpxqDE6ZibNcEYJ2qicfWLN0I5bMODtVibzmVc7vq5biaNRpVzbznv/96',
+                'http://wx.qlogo.cn/mmopen/dibCvqHg4WnfHHsYtGMllwcMcPcSsEZnyfvOzSeNEibasNJHhH1Qia2ZDEhWib8dNbImZnZGFLb9Z1g9OXSY8J11s6Qq70BpnSoo/96',
+                'http://wx.qlogo.cn/mmopen/icz582VuVOHY8Pvxstm5oKiccFkKufc710TSia6u98jKSOelW0X3u2HSgzNTCGia6UicwQpVD6jXngBkuBItFThlZk87cx7ibHqTqW/96',
+                'http://wx.qlogo.cn/mmopen/icz582VuVOHY8Pvxstm5oK8lvicArHZUiabgFfkcT0Ua1bzM3KsN0awqaTrKQib8Gndpn1ibx5fsiaAfmAicmv82YGogoDBbNqJaibzG/96',
+                'http://wx.qlogo.cn/mmopen/sv0wha7haJ5Qjkwx80T1U7BFeuGzn3Z0JJ7W7sFnY6icjCLANVRIeI0k4UZTKccGHnKu4ypHCFQY6050YC2hSjy3PibRUvl9G1/96',
+                'http://wx.qlogo.cn/mmopen/sv0wha7haJ74783FdxdedcpaVOXYkha8vF9p7YvS03E09QbZQxTRTokQ6lfrgZD2Cm0NxdzjPwLKo7nb23I3L1jcOypNkzq4/96',
+                'http://wx.qlogo.cn/mmopen/CpCibtib23t5DsyRo8hHuxb9TpICvgS8UB9FQicic2mjacpxIjc17js6WhmLNnWTibibW3mCMqj3GakULnEjPNeTvrG2K9mzOM6OEq/96',
+                'http://wx.qlogo.cn/mmopen/sv0wha7haJ74783FdxdedX4sykRv7TAgylicAadymu6aPYV8k5hibRhvHjKv2hhtNEzE6ZbML6LmoulgbnvCSzqf8BMvRXODN8/96',
+                'http://wx.qlogo.cn/mmopen/ajNVdqHZLLD7107Biackz45xD0tOT5EIhsyicc9uK9nFd0otQoKUcIMXysqyJ4EMKOSRicVuYOCY0eGk6W3n6keSJrLSzXjhy8am5dPT3yQpnk/96',
+                'http://wx.qlogo.cn/mmopen/sv0wha7haJ4OibfqPuoeDMGl8KflcXgUeK6yCH00oeSMrbYXpyBPICwNDuvA0DIzswibb8gD0v0IhnXDZOwu0EzzbnjrI4uzibQ/96',
+                'http://wx.qlogo.cn/mmopen/sv0wha7haJ6q2l4332xf9vwcxYTFSUVFWpicIDicIPNTzjmkicmgibw5XsLcLMVKS3EwUrYuiakMEslGUUhibjibzlI2xm4TurL0q9u/96',
+                'http://wx.qlogo.cn/mmopen/CpCibtib23t5CicZFK9jGz9cLrCbL4JNBc7TPs0OasS411m6OVbkM3NU8yd5CXtxicdsTjfTvkabw7nhGZE99vLnHxw821xpEBvb/96',
+                'http://wx.qlogo.cn/mmopen/NFG2UYeaAlicQmGO8X1VZctvGQtXkl6iavd4hG9uJ5yayzMh8YKoR24DZGNY2xyXu2mRaRCUL49FUiaRsYe10z4crQmeBS4icWyS/96',
+                'http://wx.qlogo.cn/mmopen/NFG2UYeaAl9Px1zpjkpH8q23d4GqwV2ficcyMORJjkwoYERasgXtvTmDicibtDBItQeQ89ibQBkA5JN4O8TibbsVVw0IvNSrnRfOK/96',
+                'http://wx.qlogo.cn/mmopen/NFG2UYeaAlicQmGO8X1VZcurs6t5Os1dG5BzViaUhvj5LZIgy57Fsjy8icfZvkv8Q8hHVJGFRxnksicxlLQ9D2h1QTLmTyTZmU5E/96',
+                'http://wx.qlogo.cn/mmopen/PiajxSqBRaEKfv6SwrzPVicSvwPdl8ZP6Tx01koxSuTib7b7kNb27tZyicXufMx6EP8p0ejf7KibgrvZ37ib0l7rdstg/96',
+                'http://wx.qlogo.cn/mmopen/icz582VuVOHZQmicSeZiayv4iacRywULiaVM9r8Dymvc8ia4ESBBTwT9ZZyu4ViaNLczcoBUyv2auNMhhxhZmib0zt6dlKXUMwhchhL2/96',
+                'http://wx.qlogo.cn/mmopen/dibCvqHg4WneiaicfkPHjkZFiccS3dsC5pXj67viafXMqRYxjmfBiaYl2lgicibJgzRBzXEWMAFnJ8W08tHr66xqGYCmSN4RJic6Zm360/96',
+                'http://wx.qlogo.cn/mmopen/icz582VuVOHY8Pvxstm5oK6dJv6Eic0kpbaW3YxGib2hVZnFnoQWouqehnQ3zSg15KicdqdI6DMdiaibA3ANQ5U4fXDFiaXl3wZNQA1/96',
+                'http://wx.qlogo.cn/mmopen/sv0wha7haJ74783FdxdedSadeKOpxeCGqkKvH4KicP8ibvexd4QcYZI8yGzXNAQ5iaIU0sgFRkReDVibkrZiaS6K86qm0rhZZp5aj/96',
+                'http://wx.qlogo.cn/mmopen/dibCvqHg4WneyMQxEWGO9etribwpib93ozMkthzn2KGbVfhXerWsU6VhJDY1p6JA9aGHyoChkPHFY2YLiaoGIE2Gd0Qf32IVnUFa/96',
+                'http://wx.qlogo.cn/mmopen/icz582VuVOHaf4bKHugJlUyJORBQFXib6T1EyHHPKGuzU9WibyoTME8mYoGMicRMYicicsdF5s9HZRygxrtsSPpzfuFIJ2emYMSW2r/96',
+                'http://wx.qlogo.cn/mmopen/NFG2UYeaAlibK27FKibbDCpcyOAm5Fq0icUFvPNttorK3xZznHEDOpziaKMgiaLicFsOFj1KTLSss72JELpoCpibGSlOjQibwqiaaLxPK/96',
+                'http://wx.qlogo.cn/mmopen/ajNVdqHZLLBZ0q8N3wBlQj6QibMRSgkHT3K0nribHBiaMw3888l5fqOcGJskibvCGgjYq5iaHFpW0pqsvOjUHdbsd6A/96',
+                'http://wx.qlogo.cn/mmopen/NFG2UYeaAlibY5jsiaicbsSSicicIJJaDP6gtxicQrXudVQs3UbWubicy4WNiaNd8Uua6XWpO1jsJq8vFrQvUrJtNbSBcjw70jeG7ubN/96',
+                'http://wx.qlogo.cn/mmopen/NFG2UYeaAlicQmGO8X1VZcvnIRrqysgYWsp9SAAco0vBXtynKczGtiam0gJ1pz5ZvbELaiaX0rwGkaPMwg9yd8cne0JUrpAp1Oe/96',
+                'http://wx.qlogo.cn/mmopen/icz582VuVOHblCyVfsh6trG4M3AsR9HR4qgZv8h1LMThHRA1s0wwQAoVoeBGpRJy3PAw4RDs8Tm5uXOQ1cucrGSZQwZa2KnXP/96',
+                'http://wx.qlogo.cn/mmopen/sv0wha7haJ5x0XyoPBKXpSMicOnCaia4yHPvFTIPeaj10ic5fLpxqDE6ZibNcEYJ2qicfWLN0I5bMODtVibzmVc7vq5biaNRpVzbznv/96',
+                'http://wx.qlogo.cn/mmopen/dibCvqHg4WnfHHsYtGMllwcMcPcSsEZnyfvOzSeNEibasNJHhH1Qia2ZDEhWib8dNbImZnZGFLb9Z1g9OXSY8J11s6Qq70BpnSoo/96',
+                'http://wx.qlogo.cn/mmopen/PiajxSqBRaEKfv6SwrzPVicSvwPdl8ZP6Tx01koxSuTib7b7kNb27tZyicXufMx6EP8p0ejf7KibgrvZ37ib0l7rdstg/96',
+                'http://wx.qlogo.cn/mmopen/icz582VuVOHY8Pvxstm5oKiccFkKufc710TSia6u98jKSOelW0X3u2HSgzNTCGia6UicwQpVD6jXngBkuBItFThlZk87cx7ibHqTqW/96',
+                'http://wx.qlogo.cn/mmopen/ajNVdqHZLLBZ0q8N3wBlQj6QibMRSgkHT3K0nribHBiaMw3888l5fqOcGJskibvCGgjYq5iaHFpW0pqsvOjUHdbsd6A/96',
+                'http://wx.qlogo.cn/mmopen/sv0wha7haJ74783FdxdedSadeKOpxeCGqkKvH4KicP8ibvexd4QcYZI8yGzXNAQ5iaIU0sgFRkReDVibkrZiaS6K86qm0rhZZp5aj/96',
+                'http://wx.qlogo.cn/mmopen/sv0wha7haJ5Qjkwx80T1U7BFeuGzn3Z0JJ7W7sFnY6icjCLANVRIeI0k4UZTKccGHnKu4ypHCFQY6050YC2hSjy3PibRUvl9G1/96',
+                'http://wx.qlogo.cn/mmopen/dibCvqHg4WneiaicfkPHjkZFiccS3dsC5pXj67viafXMqRYxjmfBiaYl2lgicibJgzRBzXEWMAFnJ8W08tHr66xqGYCmSN4RJic6Zm360/96',
+                'http://wx.qlogo.cn/mmopen/CpCibtib23t5CicZFK9jGz9cLrCbL4JNBc7TPs0OasS411m6OVbkM3NU8yd5CXtxicdsTjfTvkabw7nhGZE99vLnHxw821xpEBvb/96',
+                'http://wx.qlogo.cn/mmopen/sv0wha7haJ74783FdxdedcpaVOXYkha8vF9p7YvS03E09QbZQxTRTokQ6lfrgZD2Cm0NxdzjPwLKo7nb23I3L1jcOypNkzq4/96',
+                'http://wx.qlogo.cn/mmopen/NFG2UYeaAlicQmGO8X1VZcurs6t5Os1dG5BzViaUhvj5LZIgy57Fsjy8icfZvkv8Q8hHVJGFRxnksicxlLQ9D2h1QTLmTyTZmU5E/96',
+                'http://wx.qlogo.cn/mmopen/icz582VuVOHY8Pvxstm5oKibPL8FNJY3N2G0FqOKqibwia4AYgAKGsNjGcOZ73WkE0iasJ06sHHoYcNoLUkR7x0dicyEZgGrKEFh39/96',
+                'http://wx.qlogo.cn/mmopen/icz582VuVOHY8Pvxstm5oK6dJv6Eic0kpbaW3YxGib2hVZnFnoQWouqehnQ3zSg15KicdqdI6DMdiaibA3ANQ5U4fXDFiaXl3wZNQA1/96',
+                'http://wx.qlogo.cn/mmopen/NFG2UYeaAlicQmGO8X1VZctvGQtXkl6iavd4hG9uJ5yayzMh8YKoR24DZGNY2xyXu2mRaRCUL49FUiaRsYe10z4crQmeBS4icWyS/96',
+                'http://wx.qlogo.cn/mmopen/sv0wha7haJ4OibfqPuoeDMGl8KflcXgUeK6yCH00oeSMrbYXpyBPICwNDuvA0DIzswibb8gD0v0IhnXDZOwu0EzzbnjrI4uzibQ/96',
+                'http://wx.qlogo.cn/mmopen/icz582VuVOHY8Pvxstm5oK8lvicArHZUiabgFfkcT0Ua1bzM3KsN0awqaTrKQib8Gndpn1ibx5fsiaAfmAicmv82YGogoDBbNqJaibzG/96',
+                'http://wx.qlogo.cn/mmopen/sv0wha7haJ74783FdxdedX4sykRv7TAgylicAadymu6aPYV8k5hibRhvHjKv2hhtNEzE6ZbML6LmoulgbnvCSzqf8BMvRXODN8/96',
+                'http://wx.qlogo.cn/mmopen/icz582VuVOHZQmicSeZiayv4iacRywULiaVM9r8Dymvc8ia4ESBBTwT9ZZyu4ViaNLczcoBUyv2auNMhhxhZmib0zt6dlKXUMwhchhL2/96',
+                'http://wx.qlogo.cn/mmopen/NFG2UYeaAl9Px1zpjkpH8q23d4GqwV2ficcyMORJjkwoYERasgXtvTmDicibtDBItQeQ89ibQBkA5JN4O8TibbsVVw0IvNSrnRfOK/96',
+                'http://wx.qlogo.cn/mmopen/CpCibtib23t5DsyRo8hHuxb9TpICvgS8UB9FQicic2mjacpxIjc17js6WhmLNnWTibibW3mCMqj3GakULnEjPNeTvrG2K9mzOM6OEq/96',
+                'http://wx.qlogo.cn/mmopen/NFG2UYeaAlicQmGO8X1VZcgApJ9yyKsvfPcsjw8WcbkAWYZ2JhFQ9mObJBkl78DE5xV4OC0Nd7Fn50JJqKicbbwFib8ymBkY4W7/96',
+                'http://wx.qlogo.cn/mmopen/ajNVdqHZLLD7107Biackz45xD0tOT5EIhsyicc9uK9nFd0otQoKUcIMXysqyJ4EMKOSRicVuYOCY0eGk6W3n6keSJrLSzXjhy8am5dPT3yQpnk/96',
+                'http://wx.qlogo.cn/mmopen/sv0wha7haJ74783FdxdedYjia67IXpp74nS3XaF5QJpibOmDbtHuM24ywypBTb3FILcZy0Dbb17lJBaQC6puZQMpYBiarnuFDZM/96',
+                'http://wx.qlogo.cn/mmopen/sv0wha7haJ6q2l4332xf9vwcxYTFSUVFWpicIDicIPNTzjmkicmgibw5XsLcLMVKS3EwUrYuiakMEslGUUhibjibzlI2xm4TurL0q9u/96',
+                'http://wx.qlogo.cn/mmopen/dibCvqHg4Wnc1W5krR5JOQ50AgF4lASm4hgoxMcEvpicqiau6jTpYMCxRI2I3WJ3fhb1f8bguDIUbd0xSH0ribnArGf5amuWZvcb/96',
+                'http://wx.qlogo.cn/mmopen/dibCvqHg4WneLoBuBh55KOSCjickSOfK2EZdSYBNc1ibgicUtLl5KQ2EZlz1yALrPlrP2NJSt1W6TibYhJ43uWGkgNQ/96',
+                'http://wx.qlogo.cn/mmopen/dibCvqHg4WneyMQxEWGO9etribwpib93ozMkthzn2KGbVfhXerWsU6VhJDY1p6JA9aGHyoChkPHFY2YLiaoGIE2Gd0Qf32IVnUFa/96',
+                'http://wx.qlogo.cn/mmopen/icz582VuVOHYqftZbQ3FOEKRgcLK3sO7ickheADdxfrQ0tA9p1GcOeicYD6C8TxwCt9wyzvhCpuqCpQbibFaeicYyDGstiaeYMKmcp/96'
+        );
+
+        var gundong_name = new Array(
+                '彭先森用',
+                '少司命',
+                '☞公mthongbao',
+                '阿迪姐姐.',
+                '朋友',
+                '新天亿官方',
+                '薇信(APP44B)',
+                '雨若无痕',
+                '無邪気',
+                '加.薪.號ny46kt',
+                '素雅',
+                '赚客帮小雄',
+                '专属§味道',
+                '烟花、绽放过后只剩黑暗',
+                '阿静',
+                'uan551618',
+                '☞☞268630',
+                '辰锦网络传媒。',
+                '唐浩',
+                '4345687',
+                '巨花魔芋',
+                '^_^尾巴',
+                '天使^_^',
+                '叫我王翔就好了。',
+                '梦雪儿',
+                '屁屁屁',
+                '十五',
+                '真性情',
+                '✎﹏ℳ๓﹏恋ღ',
+                '红包总裁',
+                '兔子样?',
+                '小姑凉',
+                '【古风】',
+                '青山',
+                '东方',
+                '滨州孙杰',
+                '火爆捡钱',
+                'A今天',
+                '小彩',
+                'Vroo',
+                '李23',
+                '日照孙磊',
+                'aerla',
+                '巧巧',
+                'xuan',
+                '嗯',
+                '十一年',
+                '彭先森',
+                '莫小琳',
+                '朋友',
+                '谢明',
+                '范二小超人?',
+                '☞ongbao',
+                '艾特',
+                '丽丽',
+                '创造机遇?',
+                '少司命我的女神',
+                '林佳鹏',
+                'suc0000',
+                'Q100773',
+                '兔子样?',
+                '小姑凉',
+                '彭先亚',
+                '【古风】',
+                '我的女神',
+                '满天红包☞',
+                '东方',
+                '朋友',
+                'aerla',
+                '滨州孙杰',
+                '十一年',
+                '阿迪姐姐.',
+                '范二小超人?',
+                '巧巧',
+                'Vroo',
+                '青山',
+                'A今天',
+                '莫小琳',
+                '嗯',
+                '日照孙磊',
+                'huan888',
+                '雨若无痕',
+                '小彩',
+                '满天飞☞☞4268630',
+                'xuan',
+                '李23',
+                '新天亿官方',
+                'waldenpond',
+                '艾特',
+                '思思'
+        );
+
+        function fenzhong() {
+            var fen = GetRandomNum(0, 60);
+            if (fen < 10) {
+                fen = '0' + fen;
+            }
+            return fen;
+        }
+
+        function xiaoshi() {
+            var fen = GetRandomNum(0, 24);
+            if (fen < 10) {
+                fen = '0' + fen;
+            }
+            return fen;
+        }
+        function touxiang() {
+            var url = gundong_touxiang[GetRandomNum(0, gundong_touxiang.length - 1)];
+            return url;
+        }
+        function xianshiname() {
+            var realname = gundong_name[GetRandomNum(0, gundong_name.length - 1)];
+            return realname;
+        }
+
+        var chouzhongjiangping = new Array(
+                '5元优惠券已到账!',
+                '20元优惠券已到账!',
+                '10元话费已到账!',
+                '时尚腕表已发货!',
+                '168元红包已到账!',
+                'iPhone 6s已发货!'
+        );
+
+        function xianshichouzhong() {
+            var chouzhong = chouzhongjiangping[GetRandomNum(0, chouzhongjiangping.length - 1)];
+            return chouzhong;
+        }
+    </script>
+
+    <div class="oul">
+        <div class="bd">
+
+            <style>
+                * {
+                    font-family: "arial", "微软雅黑";
+                }
+            </style>
+
+            <ul id="pst_1" style="height:270px; overflow: hidden;">
+                <script>
+                    for (var i = 0; i < 20; i++) {
+                        document.write('<li><img src="' + touxiang() + '" width="40" height="40"><strong>' + xianshiname() + '</strong>' + xiaoshi() + ':' + fenzhong() + '抽中&nbsp;' + xianshichouzhong() + '</li>')
+                    }
+                </script>
+                <li style="opacity: 0.0109262; margin-top: -47.4755px;"><img
+                        src="http://wx.qlogo.cn/mmopen/dibCvqHg4WneiaicfkPHjkZFiccS3dsC5pXj67viafXMqRYxjmfBiaYl2lgicibJgzRBzXEWMAFnJ8W08tHr66xqGYCmSN4RJic6Zm360/96"
+                        width="40" height="40"><strong>【古风】</strong>20:17抽中&nbsp;5元优惠券已到账!
+                </li>
+                <li><img
+                        src="http://wx.qlogo.cn/mmopen/dibCvqHg4Wnc1W5krR5JOQ50AgF4lASm4hgoxMcEvpicqiau6jTpYMCxRI2I3WJ3fhb1f8bguDIUbd0xSH0ribnArGf5amuWZvcb/96"
+                        width="40" height="40"><strong>红包总裁</strong>21:58抽中&nbsp;5元优惠券已到账!
+                </li>
+                <li><img
+                        src="http://wx.qlogo.cn/mmopen/ajNVdqHZLLD7107Biackz45xD0tOT5EIhsyicc9uK9nFd0otQoKUcIMXysqyJ4EMKOSRicVuYOCY0eGk6W3n6keSJrLSzXjhy8am5dPT3yQpnk/96"
+                        width="40" height="40"><strong>十五</strong>03:40抽中&nbsp;时尚腕表已发货!
+                </li>
+                <li><img
+                        src="http://wx.qlogo.cn/mmopen/PiajxSqBRaEKfv6SwrzPVicSvwPdl8ZP6Tx01koxSuTib7b7kNb27tZyicXufMx6EP8p0ejf7KibgrvZ37ib0l7rdstg/96"
+                        width="40" height="40"><strong>东方</strong>15:08抽中&nbsp;168元红包已到账!
+                </li>
+                <li><img
+                        src="http://wx.qlogo.cn/mmopen/dibCvqHg4WneLoBuBh55KOSCjickSOfK2EZdSYBNc1ibgicUtLl5KQ2EZlz1yALrPlrP2NJSt1W6TibYhJ43uWGkgNQ/96"
+                        width="40" height="40"><strong>朋友</strong>10:15抽中&nbsp;168元红包已到账!
+                </li>
+                <li><img
+                        src="http://wx.qlogo.cn/mmopen/sv0wha7haJ74783FdxdedSadeKOpxeCGqkKvH4KicP8ibvexd4QcYZI8yGzXNAQ5iaIU0sgFRkReDVibkrZiaS6K86qm0rhZZp5aj/96"
+                        width="40" height="40"><strong>aerla</strong>08:29抽中&nbsp;时尚腕表已发货!
+                </li>
+                <li><img
+                        src="http://wx.qlogo.cn/mmopen/dibCvqHg4WnelE8icwdWXlYEGrwWF6lnWaLmH9heCib0ANdDfxBcSbrDFtZGUBkKOUqU00ibtOicnponGcpicIAHicnpw/96"
+                        width="40" height="40"><strong>☞公mthongbao</strong>13:35抽中&nbsp;10元话费已到账!
+                </li>
+                <li><img
+                        src="http://wx.qlogo.cn/mmopen/sv0wha7haJ5US8J1QRBsuIAFC8mWlSErASK63iaNXZylowD5APib1kUbU0VT17n0Ggr6377nibT6uYJg9OHJqic0NkNZwpzR74gd/96"
+                        width="40" height="40"><strong>aerla</strong>23:24抽中&nbsp;5元优惠券已到账!
+                </li>
+                <li><img
+                        src="http://wx.qlogo.cn/mmopen/ajNVdqHZLLD7107Biackz45xD0tOT5EIhsyicc9uK9nFd0otQoKUcIMXysqyJ4EMKOSRicVuYOCY0eGk6W3n6keSJrLSzXjhy8am5dPT3yQpnk/96"
+                        width="40" height="40"><strong>阿静</strong>08:35抽中&nbsp;5元优惠券已到账!
+                </li>
+                <li><img
+                        src="http://wx.qlogo.cn/mmopen/icz582VuVOHY8Pvxstm5oK6dJv6Eic0kpbaW3YxGib2hVZnFnoQWouqehnQ3zSg15KicdqdI6DMdiaibA3ANQ5U4fXDFiaXl3wZNQA1/96"
+                        width="40" height="40"><strong>【古风】</strong>01:51抽中&nbsp;时尚腕表已发货!
+                </li>
+                <li><img
+                        src="http://wx.qlogo.cn/mmopen/sv0wha7haJ4OibfqPuoeDMGl8KflcXgUeK6yCH00oeSMrbYXpyBPICwNDuvA0DIzswibb8gD0v0IhnXDZOwu0EzzbnjrI4uzibQ/96"
+                        width="40" height="40"><strong>4345687</strong>10:07抽中&nbsp;168元红包已到账!
+                </li>
+                <li><img
+                        src="http://wx.qlogo.cn/mmopen/NFG2UYeaAl8MBVSYQJmrqCpjFpuqkYnpMjIribMAqh7zRIQZiaGnfq8DWDnQzKibPHhwyQoPNBoHuicw10Y15LgRHmc4HaoibicF5m/96"
+                        width="40" height="40"><strong>林佳鹏</strong>07:30抽中&nbsp;20元优惠券已到账!
+                </li>
+                <li><img
+                        src="http://wx.qlogo.cn/mmopen/ajNVdqHZLLBZ0q8N3wBlQj6QibMRSgkHT3K0nribHBiaMw3888l5fqOcGJskibvCGgjYq5iaHFpW0pqsvOjUHdbsd6A/96"
+                        width="40" height="40"><strong>火爆捡钱</strong>04:24抽中&nbsp;时尚腕表已发货!
+                </li>
+                <li><img
+                        src="http://wx.qlogo.cn/mmopen/dibCvqHg4WneyMQxEWGO9etribwpib93ozMkthzn2KGbVfhXerWsU6VhJDY1p6JA9aGHyoChkPHFY2YLiaoGIE2Gd0Qf32IVnUFa/96"
+                        width="40" height="40"><strong>东方</strong>17:15抽中&nbsp;5元优惠券已到账!
+                </li>
+                <li><img
+                        src="http://wx.qlogo.cn/mmopen/icz582VuVOHY8Pvxstm5oKiccFkKufc710TSia6u98jKSOelW0X3u2HSgzNTCGia6UicwQpVD6jXngBkuBItFThlZk87cx7ibHqTqW/96"
+                        width="40" height="40"><strong>suc0000</strong>13:21抽中&nbsp;时尚腕表已发货!
+                </li>
+                <li><img
+                        src="http://wx.qlogo.cn/mmopen/sv0wha7haJ7td6pBSHctzbSbeWBGHqlibcsOrBJIyxwpn0lEgRLaTZSAMGEPib5K1EzrY0OyibKTIEB5FfkGRba270HXKghytKic/96"
+                        width="40" height="40"><strong>xuan</strong>15:26抽中&nbsp;10元话费已到账!
+                </li>
+                <li><img
+                        src="http://wx.qlogo.cn/mmopen/NFG2UYeaAl9Px1zpjkpH8q23d4GqwV2ficcyMORJjkwoYERasgXtvTmDicibtDBItQeQ89ibQBkA5JN4O8TibbsVVw0IvNSrnRfOK/96"
+                        width="40" height="40"><strong>艾特</strong>22:02抽中&nbsp;10元话费已到账!
+                </li>
+                <li><img
+                        src="http://wx.qlogo.cn/mmopen/PiajxSqBRaEJqIowicRftlHvu2bw6sBwUsr27F0PQb8ic1MGodrFQ3DtMWCibJPuJMzSaSA7vwkjrCmdKmgnRZ6Lhw/96"
+                        width="40" height="40"><strong>waldenpond</strong>15:15抽中&nbsp;5元优惠券已到账!
+                </li>
+                <li><img
+                        src="http://wx.qlogo.cn/mmopen/NFG2UYeaAlicQmGO8X1VZcurs6t5Os1dG5BzViaUhvj5LZIgy57Fsjy8icfZvkv8Q8hHVJGFRxnksicxlLQ9D2h1QTLmTyTZmU5E/96"
+                        width="40" height="40"><strong>新天亿官方</strong>15:55抽中&nbsp;5元优惠券已到账!
+                </li>
+                <li><img
+                        src="http://wx.qlogo.cn/mmopen/CpCibtib23t5CicZFK9jGz9cLrCbL4JNBc7TPs0OasS411m6OVbkM3NU8yd5CXtxicdsTjfTvkabw7nhGZE99vLnHxw821xpEBvb/96"
+                        width="40" height="40"><strong>嗯</strong>03:60抽中&nbsp;10元话费已到账!
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+
+    <style>
+        .oul {
+            width: 100%;
+        }
+
+        .oul .bd {
+            overflow: hidden;
+            font-size: 1.0rem;
+            /*background: #e47104;*/
+            /*background: #d65645;*/
+            background: url("images/TB2UaoWhpXXXXbaXpXXXXXXXXXX_!!534090410.jpg") repeat;
+            width: 100%;
+        }
+
+        .oul .bd ul {
+            height: 540px;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .oul .bd li {
+            width: 100%;
+            height: 54px;
+            line-height: 54px;
+            padding: 0px 10px;
+            border-bottom: 1px dotted #d0d0d0;
+            font-size: 14px;
+            /*color: #888;*/
+            color: #ffffff;
+            overflow: hidden;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            text-align: left;
+
+        }
+
+        .oul .bd li img {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            margin: 0px 10px -8px 0px;
+            border-radius: 27px;
+        }
+
+        .oul .bd li strong {
+            margin: 0 5px 0 0;
+            font-weight: normal;
+            color: #1977d8;
+        }
+
+        .te {
+            width: 100%;
+            height: 40px;
+            background: #e47104;
+        }
+
+    </style>
+
+
+    <script type="text/javascript">
+
+        var total = new Array(3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13);
+
+        function GetRandomNum(Min, Max) {
+            var Range = Max - Min;
+            var Rand = Math.random();
+            return (Min + Math.round(Rand * Range));
+        }
+
+        function GetRequest() {
+
+            var url = location.search;
+
+            var theRequest = new Object();
+
+            if (url.indexOf("?") != -1) {
+
+                var str = url.substr(1);
+
+                strs = str.split("&");
+
+                for (var i = 0; i < strs.length; i++) {
+
+                    theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+
+                }
+
+            }
+
+            return theRequest;
+
+        }
+
+        var req_params = GetRequest();
+
+
+        $(document).ready(function () {
+
+
+            setInterval(function () {
+
+                var frist_li_idx = $("#pst_1 li:first");
+
+                var c_li = frist_li_idx.clone();
+
+                frist_li_idx.animate({
+
+                    "marginTop": "-48px",
+
+                    "opacity": "hide"
+
+                }, 600, function () {
+
+                    $(this).remove();
+
+                    $("#pst_1").append(c_li);
+
+                });
+
+            }, 2000);
+
+
+            $("#pst_scroll").animate({
+
+                "marginTop": "-54px"
+
+            }, 'normal', function () {
+
+                $("#pst_1 li:first").appendTo("#pst_1");
+
+            });
+
+//            for (i = 0, n = income_list.length; i < n; i++) {
+//
+//                income_html += '<li>'
+//
+//                + '		<img src="' + income_list[i]['avatar'] + '" >'
+//
+//                + '		<span class="h-if"><b>' + income_list[i]['nickname'] + '</b><i class="days">' + income_list[i]['use_days'] + '天</i></span><em class="h-money">' + income_list[i]['history_income'] + '元</em>'
+//
+//                + '	</li>';
+//
+//            }
+//
+//            $("#pst_2").html(income_html);
+        });
+
+    </script>
+
+    <div>
+        <img src="images/TB2z5xagVXXXXaWXXXXXXXXXXXX_!!75928067.jpg" alt="" style="width: 100%">
+    </div>
+
+
+</section>
+
+
+<script>
+
+
+    function choujiangcishu() {
+        if (!getCookie('times')) {
+            setCookie('times', 1)
+        } else {
+            var nowcookie = getCookie('times');
+            var newcookie = nowcookie - 1 + 2;
+            setCookie('times', newcookie);
+        }
+    }
+
+    var powerby = 0;
+
+    function choujiang() {
+
+        $("#btn_run").attr('disabled', true).css("cursor", "default");
+        if (getCookie('times') < 3) {
+            if (powerby == 0) {
+                powerby = 1;
+                choujiangcishu();
+                playVid();
+                lottery();
+            }
+        }
+    }
+
+
+    function buzhong() {
+        $.ajax({
+            type: 'get',
+            url: 'json.js',
+            dataType: 'json',
+            cache: false,
+            error: function () {
+                return false;
+            },
+            success: function (obj) {
+                $("#run").rotate({
+                    duration: 3000,
+                    angle: 0,
+                    animateTo: 360 * 6 + obj.rotate,
+                    easing: $.easing.easeOutSine,
+                    callback: function () {
+                        alert(obj.results);
+                        powerby = 0;
+                        $("#btn_run").attr('disabled', false).css("cursor", "pointer");
+                    }
+                });
+            }
+        });
+    }
+
+    function zhong() {
+        $.ajax({
+            type: 'get',
+            url: 'json_award.js',
+            dataType: 'json',
+            cache: false,
+            error: function () {
+                return false;
+            },
+            success: function (obj) {
+                $("#run").rotate({
+                    duration: 3000,
+                    angle: 0,
+                    animateTo: 360 * 6 + obj.rotate,
+                    easing: $.easing.easeOutSine,
+                    callback: function () {
+                        alert(obj.results);
+                        $("#btn_run").attr('disabled', false).css("cursor", "pointer");
+                        share();
+                        powerby = 1;
+                    }
+
+                });
+            }
+        });
+    }
+
+    function lottery() {
+        var now_times = getCookie('times');
+        if (now_times < 3) {
+            buzhong();
+        } else {
+            zhong();
+            di2();
+        }
+    }
+
+</script>
+<div style="width: 100%;height: 50px"></div>
+
+
+</body>
+</html>
