@@ -1,0 +1,17 @@
+{
+	"index.html": {
+		"resources": [
+			"一等奖.PNG",
+			"js/TweenMax.min.js",
+			"js/Draggable.min.js",
+			"css/style.css",
+			"js/index.js",
+			"js/jquery.js",
+			"谢谢惠顾.PNG",
+			"js/rem.js",
+			"ggk.png",
+			"a1.jpg",
+			"css/rq.css"
+		]
+	}
+}

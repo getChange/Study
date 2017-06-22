@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta content="target-densitydpi=device-dpi,width=1024,user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="css/padH5.css"/>
+    <script src="js/jquery.js"></script>
+    <script src="js/rem1.js"></script>
+    <title></title>
+</head>
+<body>
+<div class="alltitle"></div>
+   <div class='leftnav'>
+         <ul>
+             <li> <i class="fa fa-user userin"></i><span class="username">name</span></li>
+             <li>设备Profile</li>
+             <li class="active">矩阵配置</li>
+             <li>原名&Tally</li>
+             <li>面板配置</li>
+             <li>命令集</li>
+             <li>拓补图</li>
+             <li>工位调度</li>
+             <li>工位调度</li>
+             <li>电视墙布局</li>
+         </ul>
+   </div>
+   <div class="rightbox">
+       <div class="righthead">
+           <ul>
+               <li></li>
+               <li>格飞矩阵配置</li>
+               <li><i class="fa fa-power-off m-r-19"></i></li>
+           </ul>
+       </div>
+      <div class="content">
+          <div class="c-left">
+              <div class="left-top">
+                    <p class="c-title">应用模式</p>
+                  <p class="font-11 c-inputleft"><span>矩阵设置：</span><select name="" id="" class="c-select"></select></p>
+                  <p class="font-11 c-inputleft-tow">矩阵配置：<select name="" id="" class="c-select"></select></p>
+                    <p class=ctop-end style="font-size: 24px">
+                        <button>启用Take按钮</button>
+                    </p>
+              </div>
+              <div class="left-bonttom">
+                  <ul>
+                      <li ><button ><i class="fa fa-unlock-alt"></i>Protect</button></li>
+                      <li><button><i class="fa fa-unlock"></i>Unlock</button></li>
+                      <li class="c-leftactive"><button><i class="fa fa-floppy-o"></i>take</button></li>
+                      <li><button><i class="fa fa-search-plus "></i>放大 </button></li>
+                      <li><button><i class="fa fa-search-minus "></i>缩小</button></li>
+                  </ul>
+              </div>
+              <div class="right-bonttom">
+                  <ul>
+                     <li >源</li>
+                      <li class="rightli-active">目的</li>
+                      <li>切换工具</li>
+                  </ul>
+              </div>
+          </div>
+           <div class="c-right">
+               <div class='box-left'>
+                   <ul>
+
+
+                   </ul>
+               </div>
+               <div class="box-right">
+                   <div class="right-smallbox">
+                         <div class="move">
+                             <ul class="out-ul">
+
+                             </ul>
+                         </div>
+                   </div>
+               </div>
+           </div>
+      </div>
+   </div>
+
+</body>
+</html>
+<script>
+    $(function(){
+        $(".leftnav").find("li").each(function(i,v){
+            $(v).click(function(){
+
+               $(".leftnav").find("li").removeClass("active")
+                $(v).addClass("active")
+            })
+        })
+        $(".left-bonttom").find("li").each(function(i,v){
+            $(v).click(function(){
+
+                $(".left-bonttom").find("li").removeClass("c-leftactive")
+                $(this).addClass("c-leftactive")
+            })
+        })
+        $(".right-bonttom").find("li").each(function(i,v){
+            $(v).click(function(){
+
+                $(".right-bonttom").find("li").removeClass("rightli-active")
+                $(this).addClass("rightli-active")
+            })
+        })
+        var isdrag=false;
+        var tx, x,t,ty;
+       var outarr=[{"name":"output1"},{"name":"output1"},{"name":"output1"},{"name":"output1"},{"name":"output1"},{"name":"output1"},{"name":"output1"},{"name":"output100"},{"name":"output1"},{"name":"output1"},{"name":"output1"},{"name":"output1"},{"name":"output1"},{"name":"output1"},{"name":"output1"},{"name":"output100"}]
+        var inarr=[{"name":"inpot1"},{"name":"inpot2"},{"name":"inpot3"},{"name":"inpot4"},{"name":"inpot5"},{"name":"inpot1"},{"name":"inpot2"},{"name":"inpot3"},{"name":"inpot4"},{"name":"inpot5"},{"name":"inpot1"},{"name":"inpot2"},{"name":"inpot3"},{"name":"inpot4"},{"name":"inpot5"},
+
+        ]
+        for(var i= 0;i<inarr.length;i++){
+
+            $(".box-left").find("ul").append(" <li><span>"+inarr[i].name+"</span></li>")
+        };
+        for(var j=0;j<outarr.length;j++){
+
+            $(".out-ul").append("<li class='lisheight'><span class='titleout'>"+outarr[j].name+"</span><ul class='outlist'></ul></li>")
+
+
+        }
+        for(var m=0;m<inarr.length;m++){
+            $(".outlist").append("<li><span class='contentspan'></span></li>")
+
+        }
+        $(".outlist>li").css("background","#323232")
+        $(".outlist>li").on('click',function(){
+            $(".titleout").css("background","black")
+
+            $(".box-left>ul>li").children("span").css("background","black")
+            $(this).find("span").css("background","blue")
+            var newindex=$(this).index()
+            console.log($(this).index());
+            $(".outlist>li>span").css("background","#171717")
+            $(".out-ul>li>span").css("color","#535353")
+            $(".box-left>ul>li").children("span").css("color","#525252")
+            $(this).find("span").css("background","black")
+            $(this).prevAll().children("span").css("background","#361D1D")
+            $(this).parent().prev("span").css("background","#E94440")
+            $(this).parent().prev("span").css("color","white")
+            $(".box-left>ul>li").eq(newindex).children("span").css("background","#4BA64F")
+            $(".box-left>ul>li").eq(newindex).children("span").css("color","white")
+            $(this).parent().parent().prevAll().each(function(i,v){
+                console.log($(v));
+                $(v).children("ul").find("li").eq(newindex).children("span").css("background","#361D1D")
+            })
+            console.log($(this).parent().parent().prevAll().length);
+        })
+        $(function(){
+            document.querySelector(".right-smallbox").addEventListener('touchend',function(){
+                sdrag = false;
+            });
+            document.querySelector(".right-smallbox").addEventListener('touchstart',selectmouse);
+            document.querySelector(".right-smallbox").addEventListener('touchmove',movemouse);
+        });
+
+        function movemouse(e){
+
+            if (isdrag){
+                var n = tx + e.touches[0].pageX - x;
+                var y = ty + e.touches[0].pageY - t;
+                if(n>0){
+                    n=0
+                }
+                if(y>0){
+                    y=0
+                }
+                if(y<0){
+
+                }
+//                console.log($(".move").width()-Math.abs(n));
+//                console.log($(".right-smallbox").width());
+                if($(".right-smallbox").height()-$(".move").height()>y){
+                   y=$(".right-smallbox").height()-$(".move").height()
+
+            }
+
+                if($(".box-right").width()-$(".move").width()>n){
+                      n=$(".box-right").width()-$(".move").width()
+                }
+                $(".right-smallbox").css("top",y);
+                $(".box-left").css("top",y)
+                $(".right-smallbox").css("left",n);
+                $(".showtitle").css("left",n)
+
+                return false;
+            }
+        }
+
+        function selectmouse(e){
+            isdrag = true;
+            tx = parseInt(document.querySelector(".right-smallbox").style.left+0);
+            ty = parseInt(document.querySelector(".right-smallbox").style.top+0);
+            x = e.touches[0].pageX;
+            t=e.touches[0].pageY;
+            return false;
+        }
+    })
+
+</script>

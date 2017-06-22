@@ -475,4 +475,21 @@ if(geo) {
 ```
 
 ### arguments
-- 
+- 类似数组的对象,对应传递函数的参数.
+- `arguments`对象并不是一个`Array`.类似于数组,除`长度`外没有任何属性.
+```javascript
+//将arguments对象转换为真正的数组
+let args = Array.prototype.slice.call(arguments); 
+
+let args = [].slice.call(arguments);
+//另一种转换方式
+let args = Array.from(arguments);//ES6新语法
+
+let args = [...arguments];
+```
+### Array.prototype.includes()
+- 用来判断一个数组是否包含一个指定的值;返回`true`或`false`.
+```javascript
+arr.includes(searchElement)
+arr.includes(searchElement, fromIndex)
+```

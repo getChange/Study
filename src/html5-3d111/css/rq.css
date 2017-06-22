@@ -1,0 +1,127 @@
+.imgBox{
+    width: 100%;
+
+}
+.imgBox img{
+    width: 100%;
+
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    background-color: red;
+}
+.logoImg{
+    padding: 0;
+    width: 100%;
+    height: 26rem;
+    background-color: blue;
+}
+.logoImg img{
+    width: 100%;
+    height: 100%;
+    margin-top:0;
+    margin-left:-0.2rem;
+}
+.guaGua{
+    position:absolute;
+    bottom: 0;
+    width: 100%;
+    height: 4rem;
+    background-color: gray;
+    text-align: center;
+    line-height: 2;
+    font-size: 2rem;
+}
+.guaGua1{
+    position:absolute;
+    bottom: 0;
+    width: 100%;
+    height: 4rem;
+    background-color: pink;
+    text-align: center;
+    line-height: 2;
+    font-size: 2rem;
+
+}
+canvas{
+    position: relative;
+    left: 0;
+
+    z-index: 999999999;
+}
+.bigBox{
+    border-radius: 20px;
+    width:23rem;
+    height: 17rem;
+    margin-left:15%;
+    margin-top:20% ;
+    background-color:white;
+    border:1px solid;
+    z-index: 1000000;
+    position: absolute;
+    font-size: 1.3rem;
+    padding: 0.8rem;
+    display: none;
+}
+.title{
+    text-align: center;
+}
+.left{
+    width: 30%;
+    height: 20%;
+    background-color: green;
+    float:left ;
+    border: 4px solid yellow;
+    margin-left: 10%;
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 3;
+}
+.right{
+    width: 30%;
+    height: 20%;
+    background-color: green;
+    float:right ;
+    border: 4px solid yellow;
+    margin-right: 10%;
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 3;
+}
+.fl{
+    margin-left:2rem ;
+}
+.container{
+    width: 100%;
+    height: 80%;
+}
+.nn{
+    position: absolute;
+    top: 15rem;
+    width: 90%;
+    height: 35rem;
+    overflow: hidden;
+    margin-left: 2rem;
+    z-index: 9999;
+}
+.maxmask{
+       position:fixed;
+    top: 10rem;
+    width: 100%;
+    height: 30rem;
+    z-index: 1;
+    z-index: 9999;
+}
+.guaGuabox{
+    position: relative;
+
+    left: 6.8rem;
+    width: 19rem;
+    height: 4rem;
+    background-color: yellow;
+
+}

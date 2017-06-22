@@ -7,18 +7,23 @@
 <body>
 <script>
     function destroyer(arr) {
+        /*第一种解法*/
+        /*
         var args = Array.prototype.slice.call(arguments);
-        var newArr = [];
-        args.filter(function (val) {
-            for (var i = 1; i < args.length; i++) {
-                console.log(val);
-                if(args[0].indexOf(args[i])<-1){
-                    newArr.push(args[i]);
+        for(var i = 0;i<arr.length;i++){
+            for(var j=1;j<args.length;j++){
+                if(arr[i] === args[j]){
+                    delete arr[i];
                 }
             }
+        }
+        return arr.filter(Boolean);
+        */
+        /*第二种解法*/
+        var args = Array.from(arguments).slice(1);//ES6 新语法 Array.from(arguments)等价于Array.prototype.slice.call(arguments)
+        return arr.filter(function (val) {
+            return !args.includes(val);
         });
-
-
     }
 
     destroyer([3, 5, 1, 2, 2], 2, 3, 5);
