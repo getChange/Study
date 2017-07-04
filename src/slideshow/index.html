@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1, user-scalable=0" charset="UTF-8">
+    <title>swipeSlide</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            /* 防止点击闪烁 */
+            -webkit-tap-highlight-color:rgba(0,0,0,0);
+            /* 缩放网页，文字大小不变 */
+            -webkit-text-size-adjust:none;
+        }
+        body{
+            font-size: 14px;
+        }
+        .slide{
+            position: relative;
+            max-width: 640px;
+            overflow: hidden;
+            margin: 20px auto;
+        }
+        .slide:after{
+            content: '';
+            display: block;
+            width: 100%;
+            padding-top: 50%;
+        }
+        .slide ul{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .slide li{
+            list-style: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: red;
+        }
+        /* 解决js阻塞页面显示首屏 */
+        .slide li:first-child{
+            z-index: 1;
+        }
+        
+        .slide a span {
+            font-size: 16px;
+        }
+        .slide .dot{
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            z-index: 5;
+            font-size: 0;
+        }
+        .slide .dot span{
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            margin-left: 5px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+        }
+        .slide .dot .cur{
+            background-color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+<div class="slide" id="slide3">
+    <ul>
+        <li>
+            <a href="//m.yhd.com/">
+                <span>我是一只小浣熊</span>
+            </a>
+        </li>
+        <li>
+            <a href="//www.baidu.com/">
+                <span>我是一只小浣熊</span>
+            </a>
+        </li>
+        <li>
+            <a href="//m.taobao.com/">
+                <span>我是一只小浣熊</span>
+            </a>
+        </li>
+        <li>
+            <a href="//www.qq.com/">
+                <span>我是一只小浣熊</span>
+            </a>
+        </li>
+    </ul>
+    <div class="dot">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<script src="../preload/js/jquery-3.1.1.js"></script>
+<script src="js/slide.js"></script>
+<script>
+    $(function(){
+        // demo1
+        $('#slide1').swipeSlide();
+
+        // demo2
+        $('#slide2').swipeSlide({
+            autoSwipe : false,
+            continuousScroll:true,
+            lazyLoad : true
+        });
+
+        // demo3
+        $('#slide3').swipeSlide({
+            continuousScroll:true,
+            speed : 3000,
+            transitionType : 'cubic-bezier(0.22, 0.69, 0.72, 0.88)',
+            firstCallback : function(i,sum,me){
+                me.find('.dot').children().first().addClass('cur');
+            },
+            callback : function(i,sum,me){
+                me.find('.dot').children().eq(i).addClass('cur').siblings().removeClass('cur');
+            }
+        });
+    });
+</script>
+</body>
+</html>
