@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>anime</title>
+    <style>
+        .ball{
+            width: 20px;
+            height: 20px;
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+<div class="ball">
+
+</div>
+</body>
+<script src="../anime/anime.js"></script>
+<script>
+    var bouncingBall = anime({
+        targets: '.ball',
+        translateY: '50vh',
+        duration: 1000,
+        loop: true,
+        direction: 'alternate',
+        easing: 'easeInCubic'
+    });
+</script>
+</html>
