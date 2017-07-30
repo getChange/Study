@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on事件监听</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <style type="text/css">
+
+        .js_box{
+            width: 800px;
+            height: 800px;
+            margin-top: 50px;
+        }
+
+
+        .child{
+            width: 200px;
+            height: 100px;
+            border: 3px solid #666;
+            float: left;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+        input{
+            margin-top: 15px;
+            margin-bottom: 10px
+
+        }
+
+        button{
+            position: absolute;
+            top: 0;
+            left: 0;
+
+
+        }
+    </style>
+</head>
+<body>
+<div id="app1">
+    <div class="js_box">
+
+        <button v-on:click="add(str)">点击</button>
+        <div class="child">
+            <input type="text" placeholder="这里可以输入文字">
+            <input type="text" placeholder="这里可以输入文字">
+        </div>
+    </div>
+</div>
+<script>
+    var vm = new Vue({
+        el: "#app1",
+        data: {
+            str:'<div class="child">'+
+            '<input type="text" name="">'+
+            '<input type="text" name="">'+
+            '</div>'
+        },
+        //在 `methods` 对象中定义方法
+        methods: {
+            add: function (str) {
+                this.appendChild(str);
+            }
+        }
+    })
+
+    //用js方法直接调用
+    //vm.greet()
+</script>
+</body>
+</html>

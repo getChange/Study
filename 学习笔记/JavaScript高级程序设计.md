@@ -282,3 +282,70 @@ function sayName() {
 var person1 = new Person("Jhon",29,"Web Engineer");
 var person2 = new Person("luffy",21,"caption");
 ```
+- 新问题产生：全局作用域中定义的的函数实际上只能被某个对象调用；如果对象需要定义很多方法，那么就要定义多个全局函数 --- 解决办法： 原型模式
+
+#### 6.2.3 原型模型
+- 每一个函数都有一个`prototype`（原型）属性，指向一个对象，用来包含可以由特定类型的所有实例共享的属性和方法。
+- `prototype`：可以让所有对象实例共享它所包含的属性和方法。（不必在构造函数中定义对象实例的信息，而可将这些信息直接添加到原型对象中）
+```javascript
+function Person () {
+
+}
+
+Person.prototype.name = "Nicholas";
+Person.prototype.age = 29;
+Person.prototype.job = "Software Engineer";
+Person.prototype.sayName = function () {
+    alert(this.name);
+};
+
+var person1 = new Person();
+person1.sayName(); //'Nicholas'
+
+var person2 = new Person();
+person2.sayName(); //'Nicholas'
+
+alert(person1.sayName === person2.sayName); //true
+
+```
+-  `sayName()`方法和所有属性直接添加到`Person`的`prototype`属性，构造函数变成了空函数。也仍然可以通过调用构造函数来创建新对象，新对象还会具有相同的属性和方法。
+- 不同的是：新对象的这些属性和方法是有所有实例共享的。
+
+##### 1.理解原型对象
+- 只要创建一个新函数，就会根据一组特定的规则为该函数创建一个`prototype`属性，这个属性指向函数的原型对象。默认情况下，所有原型对象都会自动获得一个`constructor`属性（指向`prototype`）属性所在函数的指针。通过构造函数继续为源性对象添加其他属性和方法。
+- 创建自定义函数，其原型默认对象只会取得`constructor`属性；其他方法继承自`Object`。当调用构造函数创建一个新实例后，该实力的内部将包含一个指针，指向构造函数的原型。这个指针是（__proto__）对脚本完全是不可见的。这个连接存在于实例与构造函数的原型之间，而不存在与实例与构造函数之间。
+- <img src="./图6-1.png" alt="pic6-1" />
+- `Person.prototype`指向了原型对象，而`Person.prototype.constructor`又指回了`Person`。原型对象中除了包含`constructor`属性之外，还包括后来添加的其他属性。`Person`的每一个实例`person1`和`person2`都包含一个内部属性，该属性仅仅指向`Person.prototype`。通过 查找对象属性的过程实现对实例所不具有的属性方法的调用
+- `[[Prototype]]`指向调用`isPrototypeOf()`方法的对象`(Person.prototype)`,返回`true`。
+- ES5新增`Object.getPrototypeOf()`，返回`[[Prototype]]`的值。使用`Object.getPrototypeOf()`可以方便取的一个对象的的原型
+- 每当代码读取某个对象的某个属性时，都会执行一次搜索，目标是具有给定名字的属性。搜搜首先从对象实例本身开始。如果在实例中找到了具有给定名字的属性，则返回该属性的值；如果没有找到，则继续搜索指针指向的原型对象，在原型对象中查找具有给定名字的属性。如果在原型对象中找到这个属性，则返回该属性的值。
+- *原型最初只包含`constructor`这个属性，该属性是共享的，可以通过对象实例访问*
+- 可以通过对象实例访问保存在原型中的值，却不能通过对象实例重写原型中的值。给实例中添加一个属性，该属性与实例原型中的属性同名，则在实例中创建该属性，改属性将会屏蔽原型中的属性。
+```javascript
+function Person() {
+
+}
+
+Person.prototype.name = "Nichoals";
+Person.prototype.age = 29;
+Person.prototype.job = "Software Engineer";
+Person.prototype.sayName = function () {
+    console.log(this.name);
+};
+
+var person1 = new Person();
+var person2 = new Person();
+person1.name = "Greg";
+console.log(person1.name); //Greg 来自实例
+console.log(person2.name); //Nichoals 来自原型
+```
+- 当为对象实例添加一个属性时，这个属性就会屏蔽原型对象中保存的同名属性；（添加这个属性只会阻止我们访问原型中的那个属性，但不会修改那个属性，即使将这个属性设置为null，也只会在实例中设置这个属性，而不会恢复其指向原型的连接。
+- 使用`delete`操作符可以完全删除实例属性，从而访问原型中的属性。
+- 使用`hasOwnPrototype()`方法可以检测一个属性是存在于实例中，还是存在于原型中。指在给定属性存在于对象的实例中时返回`true`。
+- *ES5的`Object.getOwnPrototypeDescriptor()`方法只能用于实例属性，要取的原型属性的描述符，必须直接在原型对象上调用`Object.getOwnPrototypeDescriptor()`方法*。
+##### 2.原型与`in`操作符
+- 两种使用方式：单独使用/`for-in`
+    - 单独使用：通过对象能够访问给定属性时返回`true`，无论该属性存在于实例中还是原型中。
+```javascript
+
+```    
