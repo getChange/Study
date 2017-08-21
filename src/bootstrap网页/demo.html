@@ -1,75 +1,49 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <meta content="target-densitydpi=device-dpi,width=640,user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="css/outpot.css"/>
-    <script src="../preload/js/jquery-3.1.1.js"></script>
-    <script src="js/rem.js"></script>
-    <title></title>
+
+    <title>title</title>
 </head>
+
 <body>
-<div class="box">
-    <div class='left'>
-        <ul>
 
-        </ul>
-    </div>
-    <div class="right">
-        <div class='top'>
-            <ul class='out-ul'>
-
-            </ul>
-        </div>
-    </div>
-
-</div>
 </body>
 <script>
-    $(function () {
-
-        var outarr = [
-            {
-                "name": "outpot1",
-                "ul": [1, 2, 3, 4, 5]
-            },
-            {
-                "name": "outpot2",
-                "ul": [1, 2, 3, 4, 5]
-            },
-            {
-                "name": "outpot3",
-                "ul": [1, 2, 3, 4, 5]
-            },
-            {
-                "name": "outpot4",
-                "ul": [1, 2, 3, 4, 5]
-            }]
-        var inarr = [
-            {"name": "inpot1"},
-            {"name": "inpot2"},
-            {"name": "inpot3"},
-            {"name": "inpot4"}]
-        for (var i = 0; i < inarr.length; i++) {
-            $(".left").find("ul").append(" <li>" + inarr[i].name + "</li>");
-        };
-        for (var j = 0; j < outarr.length; j++) {
-            $(".out-ul").append("<li><span class='titleout'>" + outarr[j].name + "</span><ul class='outlist'></ul></li>")
-        };
-        for (var m = 0; m < inarr.length; m++) {
-            $(".outlist").append("<li class='liclick"+m+"'>" + m + "</li>")
-        };
-
-        $(".out-ul").find(".titleout").on("click", function () {
-            console.log("可以")
+    var first = "james";
+    var last = "tom";
+    var name = `Your name is ${first} ${last}.`
+    console.log(name);
+    var roadPoem = `Then took the other, as just as fair,
+    And having perhaps the better claim
+    Because it was grassy and wanted wear,
+    Though as for that the passing there
+    Had worn them really about the same,`
+    console.log(roadPoem);
+    var wait1000 = new Promise(function(resolve, reject) {
+        setTimeout(resolve, 1000);
+    });
+    wait1000
+        .then(function() {
+            console.log("Hello"); // 1秒后输出"Hello"
+            return wait1000;
         })
-
-//        $(".liclick").on("click", function () {
-//            console.log("游泳啦")
-//        })
-
-    })
-
-
+        .then(function() {
+            console.log("Fundebug"); // 1秒后输出"Fundebug"
+        });
+    class Point {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+        }
+        add() {
+            return this.x + this.y;
+        }
+    }
+    var p = new Point(1, 2);
+    console.log(p.add()); // 输出3
 </script>
+
 </html>
