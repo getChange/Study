@@ -208,17 +208,20 @@ console.log(service.port) // 输出3000
 
 - ES6中使用export与import关键词实现模块化。
 
-module.js中使用export导出port变量和getAccounts函数：
-
+- `module.js`中使用`export`导出`port`变量和`getAccounts`函数：
+```javascript
 export var port = 3000
 export function getAccounts(url) {
   ...
 }
-main.js中使用import导入module.js，可以指定需要导入的变量：
-
+```
+- `main.js`中使用`import`导入`module.js`，可以指定需要导入的变量：
+```javascript
 import {port, getAccounts} from 'module'
 console.log(port) // 输出3000
-也可以将全部变量导入：
-
+```
+- 也可以将全部变量导入：
+```javascript
 import * as service from 'module'
 console.log(service.port) // 3000
+```
