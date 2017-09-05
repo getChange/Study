@@ -346,6 +346,38 @@ console.log(person2.name); //Nichoals 来自原型
 ##### 2.原型与`in`操作符
 - 两种使用方式：单独使用/`for-in`
     - 单独使用：通过对象能够访问给定属性时返回`true`，无论该属性存在于实例中还是原型中。
-```javascript
 
-```    
+        ```javascript
+        function Person() {
+
+        }
+
+        Person.prototype.name = "Nichoals";
+        Person.prototype.age = 29;
+        Person.prototype.job = "Software Engineer";
+        Person.prototype.sayName = function () {
+            console.log(this.name);
+        };
+
+        var person1 = new Person();
+        var person2 = new Person();
+
+        console.log(person1.hasOwnPrototype("name")); //false
+        console.log("name" in person1); //true
+
+        person1.name = "Greg";
+        console.log(person1.name); //Greg --- 来自实例
+        console.log(person1.hasOwnPrototype("name")); //true
+        console.log("name" in person1); //true
+
+        console.log(person2.name); //Nichoals --- 来自原型
+        console.log(person2.hasOwnPrototype("name")); //false
+        console.log("name" in person2); //true
+
+        delete person1.name；
+        console.log(person1.name); //Nichoals --- 来自原型
+        console.log(person1.hasOwnPrototype("name")); //false
+        console.log("name" in person1); //true
+        ```   
+
+    - 使用`hasOwnPrototype()`和`in`操作符，就可以确定该属性到底是存在与对象中，还是存在于原型中；`in`操作符只要通过对象能够访问到属性就返回`true`， `hasOwnPrototype()`只有属性存在于实例中才会返回`true`   
