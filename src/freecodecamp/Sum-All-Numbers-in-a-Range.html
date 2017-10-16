@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function sumAll(arr) {
+        var max_num = Math.max.apply(0, arr);
+        var min_num = Math.min.apply(0, arr);
+        var newArr = [];
+        for (var i = min_num; i <= max_num; i++) {
+            newArr.push(i);
+        };
+        return newArr.reduce(function (a, b) {
+            return a + b;
+        });
+    }
+
+    sumAll([5, 4]);
+</script>
+</body>
+</html>
