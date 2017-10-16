@@ -1,57 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>component</title>
+    <style>
+        .red_words {
+            color: red;
+        }
+        
+        .red_words span {
+            font-size: 15px;
+            color: #999caa;
+        }
+    </style>
     <script src="../node_modules/vue/dist/vue.js"></script>
 </head>
+
 <body>
-<div id="app">
-    <my-component></my-component>
-</div>
-<div id="app2">
-    <simple-counter></simple-counter>
-    <simple-counter></simple-counter>
-    <simple-counter></simple-counter>
-    <child message="Hello!!!"></child>
-    <name-space my-message="你好"></name-space>
-</div>
+    <div id="app">
+        <my-component></my-component>
+        <name-space my-message="你好"></name-space>
+        <child message="Hello!!!"></child>
+    </div>
+    <div id="app2">
+        <simple-counter></simple-counter>
+        <simple-counter></simple-counter>
+        <simple-counter></simple-counter>
 
 
-<script>
-    //确保在初始化根实例之前注册组件
-    //组件在注册之后便可以在父实例的模块中以自定义元素`<my-component></my-component>`形式使用
-    Vue.component("my-component", {
-        template: '<div>A custom component!</div>'
-    })
-    //camelCase(驼峰命名)和kebab-case(短横线隔开式)
-    Vue.component("name-space", {
-        props: ['myMessage'],
-        template: "<span>{{myMessage}}</span>"
-    })
-    Vue.component("child", {
-        props: ['message'],
-        template: "<span>{{message}}</span>"
-    })
-    var data = {counter: 0}
+    </div>
 
-    Vue.component("simple-counter", {
-        template: '<button v-on:click="counter +=1">{{counter}}</button>',
-        data: function () {
-            return {
-                counter: 0
-            };
-        }
-    })
 
-    new Vue({
-        el: "#app2"
-    })
+    <script>
+        //确保在初始化根实例之前注册组件
+        //组件在注册之后便可以在父实例的模块中以自定义元素`<my-component></my-component>`形式使用
+        Vue.component("my-component", {
+                template: '<div class="red_words">' +
+                    '<span>A custom component!</span>' +
+                    '<div>Next line</div>' +
+                    '</div>',
+                data: function() {
+                    return {
+                        counter: 0
+                    };
+                }
+            })
+            //camelCase(驼峰命名)和kebab-case(短横线隔开式)
+        Vue.component("name-space", {
+            props: ['myMessage'],
+            template: "<span>{{myMessage}}</span>"
+        })
+        Vue.component("child", {
+            props: ['message'],
+            template: "<span>{{message}}</span>"
+        })
+        Vue.component("simple-counter", {
+            template: '<button v-on:click="counter +=1">{{counter}}</button>',
+            data: function() {
+                return {
+                    counter: 0
+                };
+            }
+        })
 
-    var app = new Vue({
-        el: "#app",
-        data: {}
-    })
-</script>
+        new Vue({
+            el: "#app2"
+        })
+
+        var app = new Vue({
+            el: "#app",
+            data: {}
+        })
+    </script>
 </body>
+
 </html>

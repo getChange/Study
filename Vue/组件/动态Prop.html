@@ -1,28 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>动态Props</title>
+    <style>
+        child {
+            display: block;
+        }
+    </style>
     <script src="../node_modules/vue/dist/vue.js"></script>
 </head>
-<body>
-<div id="app">
-    <input type="text" placeholder="Message from parent" v-model="parentMsg">
-    <br>
-    <my-component v-bind:my-message="parentMsg"></my-component>
-</div>
 
-<script>
-    Vue.component("my-component", {
-        props: ['myMessage'],
-        template: "<p>{{myMessage}}</p>"
-    })
-    new Vue({
-        el: "#app",
-        data: {
-            parentMsg: "Message from parent"
-        }
-    })
-</script>
+<body>
+    <div id="app">
+        <input type="text" placeholder="Message from parent" v-model="parentMsg">
+        <br/>
+        <child :my-message="parentMsg"></child>
+    </div>
+    <div id="app_1">
+        <input v-model="parentMsg">
+        <br/>
+        <todo-item v-bind="todo"></todo-item>
+    </div>
+    <script>
+        // Vue.component("child", {
+        //     props: ["myMessage"],
+        //     template: "<span>{{myMessage}}</span"
+        // })
+        new Vue({
+            el: "#app",
+            data: {
+                parentMsg: "Message from parent"
+            },
+            components: {
+                child: {
+                    props: ["myMessage"],
+                    template: "<span>{{myMessage}}</span>"
+                }
+            }
+        })
+
+        new Vue({
+            el: "#app_1",
+            data: {
+                todo: {
+                    text: 'Learn Vue',
+                    isComplete: "完成"
+                },
+                parentMsg: "Message from parent"
+            },
+            components: {
+                todoItem: {
+                    props: ['todo'],
+                    template: "<span>{{todo}}</span>"
+
+                }
+            }
+        })
+    </script>
 </body>
+
 </html>

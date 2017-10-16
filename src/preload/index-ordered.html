@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>图片加载-有序预加载</title>
@@ -7,7 +8,7 @@
         .box {
             text-align: center;
         }
-
+        
         .btn {
             display: inline-block;
             height: 30px;
@@ -18,67 +19,68 @@
             margin-right: 10px;
             color: #333;
         }
-
+        
         a {
             text-decoration: none;
         }
-
+        
         .btn:hover {
             background-color: #eeeeee;
         }
-
+        
         img {
             width: 1200px;
         }
     </style>
 </head>
+
 <body>
-<div class="box">
-    <img src="http://45.34.137.202:8080/comicdata/12307/1/0.jpg"
-         alt="默认皮肤" id="img"/>
-    <p>
-        <a href="javascript:;" class="btn" data-control="prev">上一页</a>
-        <a href="javascript:;" class="btn" data-control="next">下一页</a>
-    </p>
-</div>
-<script src="./js/jquery-3.1.1.js"></script>
-<script src="./js/preload.js"></script>
-<script>
-    var imgs = [
-        'http://45.34.137.202:8080/comicdata/12307/1/0.jpg',
-        'http://45.34.137.202:8080/comicdata/12307/1/1.jpg',
-        'http://45.34.137.202:8080/comicdata/12307/1/2.jpg',
-        'http://45.34.137.202:8080/comicdata/12307/1/3.jpg',
-        'http://45.34.137.202:8080/comicdata/12307/1/4.jpg',
-        'http://45.34.137.202:8080/comicdata/12307/1/5.jpg',
-        'http://45.34.137.202:8080/comicdata/12307/1/6.jpg',
-        'http://45.34.137.202:8080/comicdata/12307/1/7.jpg',
-        'http://45.34.137.202:8080/comicdata/12307/1/8.jpg',
-        'http://45.34.137.202:8080/comicdata/12307/1/9.jpg',
-        'http://45.34.137.202:8080/comicdata/12307/1/10.jpg',
-        'http://45.34.137.202:8080/comicdata/12307/1/11.jpg',
-        'http://45.34.137.202:8080/comicdata/12307/1/12.jpg',
-        'http://45.34.137.202:8080/comicdata/12307/1/13.jpg',
-        'http://45.34.137.202:8080/comicdata/12307/1/14.jpg',
-        'http://45.34.137.202:8080/comicdata/12307/1/15.jpg',
-    ];
-    var len = imgs.length,
+    <div class="box">
+        <img src="http://45.34.137.202:8080/comicdata/12307/1/0.jpg" alt="默认皮肤" id="img" />
+        <p>
+            <a href="javascript:;" class="btn" data-control="prev">上一页</a>
+            <a href="javascript:;" class="btn" data-control="next">下一页</a>
+        </p>
+    </div>
+    <script src="../public/js/jquery-3.1.1.js"></script>
+    <script src="./js/preload.js"></script>
+    <script>
+        var imgs = [
+            'http://45.34.137.202:8080/comicdata/12307/1/0.jpg',
+            'http://45.34.137.202:8080/comicdata/12307/1/1.jpg',
+            'http://45.34.137.202:8080/comicdata/12307/1/2.jpg',
+            'http://45.34.137.202:8080/comicdata/12307/1/3.jpg',
+            'http://45.34.137.202:8080/comicdata/12307/1/4.jpg',
+            'http://45.34.137.202:8080/comicdata/12307/1/5.jpg',
+            'http://45.34.137.202:8080/comicdata/12307/1/6.jpg',
+            'http://45.34.137.202:8080/comicdata/12307/1/7.jpg',
+            'http://45.34.137.202:8080/comicdata/12307/1/8.jpg',
+            'http://45.34.137.202:8080/comicdata/12307/1/9.jpg',
+            'http://45.34.137.202:8080/comicdata/12307/1/10.jpg',
+            'http://45.34.137.202:8080/comicdata/12307/1/11.jpg',
+            'http://45.34.137.202:8080/comicdata/12307/1/12.jpg',
+            'http://45.34.137.202:8080/comicdata/12307/1/13.jpg',
+            'http://45.34.137.202:8080/comicdata/12307/1/14.jpg',
+            'http://45.34.137.202:8080/comicdata/12307/1/15.jpg',
+        ];
+        var len = imgs.length,
             count = 0,
             index = 0;
 
-    $.preload(imgs,{
-        order:'ordered'
-    })
+        $.preload(imgs, {
+            order: 'ordered'
+        })
 
-    $('.btn').on('click', function () {
-        if ('prev' === $(this).data('control')) {//判断上一张
-            index = Math.max(0, --index);//判断index是否为0；相当于if语句对index进行判断
-        } else {//下一张
-            index = Math.min(len - 1, ++index);
-        }
-        document.title = (index + 1) + '/' + len;
-        $('#img').attr('src', imgs[index]);
-    })
-</script>
+        $('.btn').on('click', function() {
+            if ('prev' === $(this).data('control')) { //判断上一张
+                index = Math.max(0, --index); //判断index是否为0；相当于if语句对index进行判断
+            } else { //下一张
+                index = Math.min(len - 1, ++index);
+            }
+            document.title = (index + 1) + '/' + len;
+            $('#img').attr('src', imgs[index]);
+        })
+    </script>
 </body>
+
 </html>

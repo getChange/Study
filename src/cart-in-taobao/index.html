@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>iggd Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="./index.css">
+
+</head>
+
+<body class="skin-black fixed ">
+    <div class="wrapper">
+        <header class="main-header">
+        </header>
+        <div class="content-wrapper">
+            <section class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form method="POST" id="orderForm" enctype="multipart/form-data">
+                            <input type="hidden" name="_token" value="i29836xsmo0aNXOaPEVN49NCJWfo5Am4ikYRUKzY">
+                            <div class="box">
+                                <div class="box-body">
+
+
+                                    <div class="form-group">
+                                        <div class="form-group clearfix">
+                                            <label class="col-sm-2 control-label">产品信息</label>
+                                        </div>
+                                        <div class="form-group clearfix">
+                                            <div class="col-sm-12 all-right">
+                                                <button type="button" class="btn btn-default btn_act"><i
+                                                class="glyphicon glyphicon-plus" style="margin-right: 5px;"></i>添加一行
+                                    </button>
+                                                <button type="button" class="btn btn-default btn_act1"><i
+                                                class="glyphicon glyphicon-minus" style="margin-right: 5px;"></i>删除最后一行
+                                    </button>
+                                            </div>
+                                        </div>
+                                        <section class="cartMain">
+                                            <div class="cartMain_hd">
+                                                <ul class="order_lists cartTop">
+                                                    <li class="list_chk">
+                                                        <!--所有商品全选-->
+                                                        <input type="checkbox" id="all" class="whole_check">
+                                                        <label for="all"></label> 全选
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="cartBox">
+                                                <div class="order_content">
+
+                                                </div>
+                                            </div>
+                                            <div class="bar-wrapper">
+                                                <div class="bar-right">
+                                                    <div class="piece">已选商品<strong class="piece_num">0</strong>件</div>
+                                                    <div class="totalMoney">共计: <strong class="total_text">0.00</strong></div>
+                                                    <div class="calBtn"><a href="javascript:;">结算</a></div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <footer class="main-footer">
+        </footer>
+    </div>
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.7.0/jquery.min.js"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
