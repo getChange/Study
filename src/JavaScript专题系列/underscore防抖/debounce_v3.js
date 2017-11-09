@@ -1,7 +1,5 @@
 /**
- * 第四版
- * 新需求:立刻执行
- * 添加immediately参数判断是否立刻执行
+ * 添加自主控制按钮
  */
 var count = 1;
 var container = document.getElementById("container");
@@ -11,15 +9,9 @@ function getUserAction(e) {
 };
 
 function debounce(func, wait, immediate) {
-    /**
-     * 返回值
-     * result 用来解决immediate为false时,值为undefined
-     * 使用了setTimeout ，
-     * 我们将func.apply(context, args)的返回值赋给变量，
-     * 最后再 return 的时候，值将会一直是 undefined
-     */
+
     var timeout, result;
-    return function() {
+    var debounced = function() {
         /**
          * 解决this指向问题
          */
@@ -43,6 +35,19 @@ function debounce(func, wait, immediate) {
         }
         return result;
     }
+
+    debounced.cancel = function() {
+        clearTimeout(timeout);
+        timeout = null;
+    }
+
+    return debounced;
 }
 //container.onmousemove = getUserAction;
-container.onmousemove = debounce(getUserAction, 1000, true);
+var setUserAction = debounce(getUserAction, 1000, true);
+container.onmousemove = setUserAction;
+
+var btn = document.getElementById("btn");
+btn.addEventListener("click", function() {
+    setUserAction.cancel();
+})
