@@ -16,5 +16,9 @@ const options = {
 //获取数据
 function getDataList(url) {
     options.url = url;
-    request.get
+    request.get(options, function(error, response, body) {
+        if (!error && response.statusCode == 200) {
+
+        }
+    })
 }
