@@ -18,7 +18,37 @@ function getDataList(url) {
     options.url = url;
     request.get(options, function(error, response, body) {
         if (!error && response.statusCode == 200) {
-
+            const response = JSON.parse(response.body);
+            const zhLsit = response.data;
+            zhLsit.forEach(item => {
+                //item.gender == 0
+                if (item.gender == 0) {
+                    console.log(`正在抓取${item.avatar_url}`);
+                    users.push({
+                        "name": item.name,
+                        "img": item.avatar_url.replace("_is", ""),
+                        "url_token": item.url_token
+                    })
+                }
+            });
+            //is_end 当前用户的关注用户是否达到最后一页
+            if (response.paging.is_end) {
+                //判断抓取条数
+                if (users.length >= 1000) {
+                    console.log(`抓取完成`);
+                    return;
+                } else {
+                    console.log(`第${i+1}个用户的数据`);
+                    getDataList(zurl.replace("demouser", users[i].url_token));
+                    i++;
+                }
+            } else {
+                if (users.length >= 1000) {
+                    console.log(`抓取完成`);
+                    return;
+                }
+                getDataList(response.paging.next);
+            }
         }
     })
 }
