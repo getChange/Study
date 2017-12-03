@@ -36,6 +36,7 @@ function getDataList(url) {
                 //判断抓取条数
                 if (users.length >= 1000) {
                     console.log(`抓取完成`);
+                    downloadContent(JSON.stringify(users));
                     return;
                 } else {
                     console.log(`第${i+1}个用户的数据`);
@@ -45,10 +46,21 @@ function getDataList(url) {
             } else {
                 if (users.length >= 1000) {
                     console.log(`抓取完成`);
+                    downloadContent(JSON.stringify(users));
                     return;
                 }
                 getDataList(response.paging.next);
             }
         }
     })
+}
+
+function downloadContent(cont) {
+    fs.appendFile('./' + 'data.js', "module.exports =" + cont, 'utf-8', function(err) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("success");
+        }
+    });
 }
